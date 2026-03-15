@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Abdul Gaffar Shaikh — Senior Software Engineer with 7+ years in .NET modernisation, Kubernetes, and production AI systems. Currently at Capgemini, Mumbai.">
+<meta property="og:title" content="Abdul Gaffar Shaikh — Senior Software Engineer">
+<meta property="og:description" content="7+ years in .NET modernisation, Kubernetes infrastructure, and production AI. Building intelligent systems at scale.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<title>Abdul Gaffar Shaikh — Senior Software Engineer</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230a0f1a' width='100' height='100' rx='12'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='system-ui' font-weight='700' fill='%2363e6be'>A</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<canvas id="particles" aria-hidden="true"></canvas>
+
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<nav class="nav-dots" aria-label="Page sections">
+  <div class="nav-dot active" role="button" tabindex="0" aria-label="Navigate to Introduction" data-label="INTRO" data-target="hero"></div>
+  <div class="nav-dot" role="button" tabindex="0" aria-label="Navigate to Timeline" data-label="TIMELINE" data-target="timeline"></div>
+  <div class="nav-dot" role="button" tabindex="0" aria-label="Navigate to Impact" data-label="IMPACT" data-target="impact"></div>
+  <div class="nav-dot" role="button" tabindex="0" aria-label="Navigate to Skills" data-label="SKILLS" data-target="skills"></div>
+  <div class="nav-dot" role="button" tabindex="0" aria-label="Navigate to Certifications" data-label="CERTS" data-target="certs"></div>
+</nav>
+
+<nav class="mobile-nav" aria-label="Page sections">
+  <div class="pill active" role="button" tabindex="0" data-target="hero">Intro</div>
+  <div class="pill" role="button" tabindex="0" data-target="timeline">Timeline</div>
+  <div class="pill" role="button" tabindex="0" data-target="impact">Impact</div>
+  <div class="pill" role="button" tabindex="0" data-target="skills">Skills</div>
+  <div class="pill" role="button" tabindex="0" data-target="certs">Certs</div>
+</nav>
+
+<button class="theme-toggle" id="theme-toggle" aria-label="Switch to light mode">
+  <svg class="icon-moon" aria-hidden="true" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+  <svg class="icon-sun" aria-hidden="true" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+</button>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">
+  <svg aria-hidden="true" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/></svg>
+</button>
+
+<header id="hero">
+  <div id="hero-content"></div>
+</header>
+
+<div class="divider"></div>
+
+<main id="main-content">
+
+<section id="timeline">
+  <div class="section-label">Career Timeline</div>
+  <div class="timeline">
+    <svg class="timeline-spine" aria-hidden="true"></svg>
+    <div id="timeline-entries"></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="impact">
+  <div class="section-label">Strategic Impact</div>
+  <div class="impact-grid-full" id="impact-cards"></div>
+</section>
+
+<div class="divider"></div>
+
+<section id="skills">
+  <div class="section-label">Core Capabilities</div>
+  <div class="skills-grid" id="skills-grid"></div>
+</section>
+
+<div class="divider"></div>
+
+<section id="certs">
+  <div class="section-label">Certifications</div>
+  <div class="certs-strip" id="certs-list"></div>
+</section>
+
+<div class="divider"></div>
+
+<section id="cta" class="cta-section">
+  <div class="cta-inner" id="cta-content"></div>
+</section>
+
+<footer id="footer-content"></footer>
+
+</main>
+
+<script src="js/script.js" defer></script>
+</body>
+</html>
