@@ -3,7 +3,7 @@
     "title": "Abdul Gaffar Shaikh — Senior Software Engineer",
     "description": "Abdul Gaffar Shaikh — Senior Software Engineer with 7+ years in .NET modernisation, Kubernetes, distributed systems, and production AI. Delivering for a global investment bank in a high-availability, high-compliance financial services environment.",
     "ogTitle": "Abdul Gaffar Shaikh — Senior Software Engineer",
-    "ogDescription": "7+ years in .NET modernisation, Kubernetes, distributed systems, and production AI in high-availability financial services. Building intelligent systems at scale."
+    "ogDescription": "Abdul Gaffar Shaikh — Senior Software Engineer with 7+ years in .NET modernisation, Kubernetes, distributed systems, and production AI. Delivering for a global investment bank in a high-availability, high-compliance financial services environment."
   },
   "hero": {
     "name": "ABDUL GAFFAR",
@@ -66,7 +66,7 @@
       "hot": false
     },
     {
-      "label": "Helm Charts",
+      "label": "Helm",
       "hot": false
     },
     {
