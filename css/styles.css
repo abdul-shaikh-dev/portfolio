@@ -505,6 +505,24 @@
     color: var(--ink2);
     flex: 1;
   }
+  .cert-link {
+    text-decoration: none;
+    color: var(--ink2);
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .cert-link:hover { color: var(--mint); }
+  .cert-verify {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--mint);
+    opacity: 0;
+    transition: opacity 0.2s;
+    letter-spacing: 0.04em;
+  }
+  .cert-link:hover .cert-verify { opacity: 1; }
   .cert-year {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;

@@ -122,9 +122,12 @@ function renderSkills(items) {
 function renderCerts(items) {
   var html = '';
   items.forEach(function(item) {
+    var nameHtml = item.url
+      ? '<a class="cert-name cert-link" href="' + item.url + '" target="_blank" rel="noopener">' + item.name + ' <span class="cert-verify">↗ verify</span></a>'
+      : '<span class="cert-name">' + item.name + '</span>';
     html += '<div class="cert-row reveal">' +
       '<span class="cert-badge">' + item.badge + '</span>' +
-      '<span class="cert-name">' + item.name + '</span>' +
+      nameHtml +
       '<span class="cert-year">' + item.year + '</span>' +
     '</div>';
   });
