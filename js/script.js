@@ -17,14 +17,14 @@ function renderHero(hero, chips) {
   }).join('');
 
   var html =
-    '<div class="eyebrow" style="opacity:0; animation: fadeUp 0.7s ease forwards 0.2s;">' +
+    '<div class="eyebrow">' +
       '<span class="status-dot"></span>' +
       hero.eyebrow +
     '</div>' +
-    '<h1 style="opacity:0; animation: fadeUp 0.7s ease forwards 0.35s;">' + hero.name + ' <span class="accent">' + hero.accent + '</span></h1>' +
-    '<p class="tagline" style="opacity:0; animation: fadeUp 0.7s ease forwards 0.5s;">' + hero.tagline + '</p>' +
-    '<div class="chips" style="opacity:0; animation: fadeUp 0.7s ease forwards 0.65s;">' + chipsHtml + '</div>' +
-    '<div class="contact-row" style="opacity:0; animation: fadeUp 0.7s ease forwards 0.8s;">' +
+    '<h1>' + hero.name + ' <span class="accent">' + hero.accent + '</span></h1>' +
+    '<p class="tagline">' + hero.tagline + '</p>' +
+    '<div class="chips">' + chipsHtml + '</div>' +
+    '<div class="contact-row">' +
       '<a class="contact-link" href="mailto:' + addr + '">' +
         '<svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>' +
         addr +
@@ -37,10 +37,10 @@ function renderHero(hero, chips) {
         '<svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>' +
         hero.github.label +
       '</a>' +
-      '<span class="contact-link">' +
+      '<a class="contact-link" href="tel:' + hero.phone.replace(/\s/g, '') + '">' +
         '<svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>' +
         hero.phone +
-      '</span>' +
+      '</a>' +
     '</div>' +
     '<div class="scroll-hint" style="opacity:0; animation: fadeUp 0.7s ease forwards 1.1s;">SCROLL TO EXPLORE</div>';
 
@@ -131,7 +131,7 @@ function renderCerts(items) {
   document.getElementById('certs-list').innerHTML = html;
 }
 
-function renderCTA(cta, email) {
+function renderCTA(cta, email, linkedin) {
   var addr = email.user + '@' + email.domain;
   var html =
     '<div class="section-label section-label-centered">Get In Touch</div>' +
@@ -139,7 +139,7 @@ function renderCTA(cta, email) {
     '<p class="cta-body">' + cta.body + '</p>' +
     '<div class="cta-buttons">' +
       '<a href="mailto:' + addr + '" class="btn-primary">EMAIL ME</a>' +
-      '<a href="https://linkedin.com/in/abdul-gaffar-shaikh21/" target="_blank" rel="noopener" class="btn-outline">LINKEDIN</a>' +
+      '<a href="' + linkedin.url + '" target="_blank" rel="noopener" class="btn-outline">LINKEDIN</a>' +
     '</div>';
   document.getElementById('cta-content').innerHTML = html;
 }
@@ -303,8 +303,9 @@ function initTimelineSpine() {
   }
 
   initSpine();
+  onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', initSpine);
+  window.addEventListener('resize', function() { initSpine(); onScroll(); });
 }
 
 function initParticles() {
@@ -359,24 +360,38 @@ function initParticles() {
 /* ─── MAIN INIT ─── */
 
 async function init() {
-  var response = await fetch('data/data.json');
-  var data = await response.json();
+  try {
+    var response = await fetch('data/data.json');
+    if (!response.ok) throw new Error('HTTP ' + response.status);
+    var data = await response.json();
 
-  renderMeta(data.meta);
-  renderHero(data.hero, data.chips);
-  renderTimeline(data.timeline);
-  renderImpact(data.impact);
-  renderSkills(data.skills);
-  renderCerts(data.certs);
-  renderCTA(data.cta, data.hero.email);
-  renderFooter(data.footer);
+    renderMeta(data.meta);
+    renderHero(data.hero, data.chips);
+    renderTimeline(data.timeline);
+    renderImpact(data.impact);
+    renderSkills(data.skills);
+    renderCerts(data.certs);
+    renderCTA(data.cta, data.hero.email, data.hero.linkedin);
+    renderFooter(data.footer);
 
-  initNavigation();
-  initThemeToggle();
-  initBackToTop();
-  initScrollReveal();
-  initTimelineSpine();
-  initParticles();
+    initNavigation();
+    initThemeToggle();
+    initBackToTop();
+    initScrollReveal();
+    initTimelineSpine();
+    initParticles();
+  } catch (err) {
+    console.error('Portfolio failed to load:', err);
+    var hero = document.getElementById('hero-content');
+    if (hero) {
+      hero.innerHTML =
+        '<div class="eyebrow"><span class="status-dot"></span>Senior Software Engineer &middot; 7+ Years</div>' +
+        '<h1>ABDUL GAFFAR <span class="accent">SHAIKH</span></h1>' +
+        '<p class="tagline" style="margin-top:28px">Portfolio data failed to load. ' +
+        'Please serve this project via a local HTTP server (e.g. <code>npx serve .</code>) rather than opening the HTML file directly.</p>';
+    }
+    initThemeToggle();
+  }
 }
 
 init();
