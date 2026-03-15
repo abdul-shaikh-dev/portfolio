@@ -1,122 +1,266 @@
 {
   "meta": {
-    "title": "Abdul Gaffar Shaikh \u2014 Senior Software Engineer",
-    "description": "Abdul Gaffar Shaikh \u2014 Senior Software Engineer with 7+ years in .NET modernisation, Kubernetes, and production AI systems. Currently at Capgemini, Mumbai.",
-    "ogTitle": "Abdul Gaffar Shaikh \u2014 Senior Software Engineer",
+    "title": "Abdul Gaffar Shaikh — Senior Software Engineer",
+    "description": "Abdul Gaffar Shaikh — Senior Software Engineer with 7+ years in .NET modernisation, Kubernetes, and production AI systems. Currently at Capgemini, Mumbai.",
+    "ogTitle": "Abdul Gaffar Shaikh — Senior Software Engineer",
     "ogDescription": "7+ years in .NET modernisation, Kubernetes infrastructure, and production AI. Building intelligent systems at scale."
   },
   "hero": {
     "name": "ABDUL GAFFAR",
     "accent": "SHAIKH",
-    "eyebrow": "Senior Software Engineer \u00b7 7+ Years",
-    "tagline": "Senior engineer at the intersection of .NET modernisation, Kubernetes infrastructure, and production AI \u2014 turning legacy systems into cloud-native platforms and unstructured data into intelligent, searchable knowledge. Based in Mumbai.",
+    "eyebrow": "Senior Software Engineer · 7+ Years",
+    "tagline": "Senior engineer specialising in microservices architecture, Kubernetes deployments, distributed systems, and production AI — including RAG pipelines adopted as the enterprise standard across 4 teams. Experienced in system design, CI/CD pipelines, and REST API development, delivering for a global investment bank at Capgemini. Based in Mumbai.",
     "phone": "+91 88986 71746",
-    "email": { "user": "abdul219428", "domain": "gmail.com" },
-    "linkedin": { "url": "https://linkedin.com/in/abdul-gaffar-shaikh21/", "label": "linkedin.com/in/abdul-gaffar-shaikh21" },
-    "github": { "url": "https://github.com/abdul219428", "label": "github.com/abdul219428" }
+    "email": {
+      "user": "abdul219428",
+      "domain": "gmail.com"
+    },
+    "linkedin": {
+      "url": "https://linkedin.com/in/abdul-gaffar-shaikh21/",
+      "label": "linkedin.com/in/abdul-gaffar-shaikh21"
+    },
+    "github": {
+      "url": "https://github.com/abdul219428",
+      "label": "github.com/abdul219428"
+    }
   },
   "chips": [
-    { "label": ".NET Core / C#", "hot": false },
-    { "label": "Python", "hot": false },
-    { "label": "Kubernetes", "hot": false },
-    { "label": "Rancher", "hot": false },
-    { "label": "FastAPI", "hot": false },
-    { "label": "RAG / LangChain", "hot": true },
-    { "label": "MCP Development", "hot": true },
-    { "label": "Agentic AI Dev", "hot": true },
-    { "label": "Azure", "hot": false },
-    { "label": "Solace Messaging", "hot": false },
-    { "label": "Helm Charts", "hot": false },
-    { "label": "Docker", "hot": false },
-    { "label": "AWS / EKS", "hot": false },
-    { "label": "OCR / pytesseract", "hot": false }
+    {
+      "label": ".NET Core / C#",
+      "hot": false
+    },
+    {
+      "label": "Python",
+      "hot": false
+    },
+    {
+      "label": "Kubernetes",
+      "hot": false
+    },
+    {
+      "label": "Rancher",
+      "hot": false
+    },
+    {
+      "label": "FastAPI",
+      "hot": false
+    },
+    {
+      "label": "RAG / LangChain",
+      "hot": true
+    },
+    {
+      "label": "Model Context Protocol (MCP)",
+      "hot": true
+    },
+    {
+      "label": "Agentic AI Dev",
+      "hot": true
+    },
+    {
+      "label": "Azure",
+      "hot": false
+    },
+    {
+      "label": "Solace Messaging",
+      "hot": false
+    },
+    {
+      "label": "Helm Charts",
+      "hot": false
+    },
+    {
+      "label": "Docker",
+      "hot": false
+    },
+    {
+      "label": "AWS / EKS",
+      "hot": false
+    },
+    {
+      "label": "OCR / pytesseract",
+      "hot": false
+    },
+    {
+      "label": "CI/CD",
+      "hot": false
+    },
+    {
+      "label": "REST APIs",
+      "hot": false
+    },
+    {
+      "label": "Distributed Systems",
+      "hot": false
+    }
   ],
   "timeline": [
     {
-      "period": "May 2023 \u2014",
+      "period": "May 2023 —",
       "periodNow": true,
       "title": "Senior Software Engineer",
-      "org": "Capgemini \u00b7 Mumbai",
+      "org": "Capgemini · Mumbai",
       "currentBadge": true,
       "client": "// Global Investment Bank",
       "bullets": [
-        "Modernised <strong>legacy .NET applications</strong> into <strong>microservices</strong> across multiple programmes \u2014 decomposed monoliths, upgraded frameworks, and containerised services for <strong>cloud-native</strong> deployment on Kubernetes via Rancher.",
-        "Achieved <strong>zero post-deployment defects</strong> across 7 Solace <strong>event-driven</strong> messaging service migrations \u2014 resolved connection failover, message redelivery, and consumer group binding misconfigurations, independently leading 3 of the 7 migrations.",
-        "Designed and built a <strong>reusable RAG template</strong> in <strong>Python</strong> (FastAPI, LangChain, ChromaDB <strong>vector database</strong>), adopted as the account standard across 4 teams \u2014 supporting contract field extraction (50+ docs with OCR), knowledge management (4,000+ Confluence &amp; Jira pages), tax &amp; policy queries (100+ curated documents), and termsheet comparison.",
-        "Developed <strong>MCP servers end-to-end</strong> with JWT and Kerberos authentication, deployed as standalone services on <strong>Kubernetes</strong> via standard ingress on Rancher, enabling AI agents to securely interact with internal enterprise systems.",
-        "Contributed to <strong>critical incident recovery</strong> during a US data centre outage at quarter-end \u2014 mobilised as part of the global SME team (India, US, EMEA) to help restore trading operations under time pressure.",
-        "Recognised by the client's <strong>Corporate CIO</strong> as a key contributor to the enterprise Knowledge Management Template \u2014 featured in the firm-wide Modernization Update (Dec 2025).",
-        "<strong>Supports team growth</strong> \u2014 mentors junior developers through architecture reviews and code quality standards; conducts technical interviews aligned with the client's engineering and cultural standards.",
+        "Modernised <strong>legacy .NET applications</strong> into <strong>microservices</strong> across multiple programmes — decomposed monoliths, upgraded frameworks, and containerised services for <strong>cloud-native</strong> deployment on Kubernetes via Rancher.",
+        "Achieved <strong>zero post-deployment defects</strong> across 7 Solace <strong>event-driven</strong> messaging service migrations — resolved connection failover, message redelivery, and consumer group binding misconfigurations, independently leading 3 of the 7 migrations.",
+        "Designed and built a <strong>reusable RAG template</strong> in <strong>Python</strong> (FastAPI, LangChain, ChromaDB <strong>vector database</strong>), adopted as the account standard across 4 teams — supporting contract field extraction (50+ docs with OCR), knowledge management (4,000+ Confluence &amp; Jira pages), tax &amp; policy queries (100+ curated documents), and termsheet comparison.",
+        "Developed <strong>Model Context Protocol (MCP) servers</strong> with JWT and Kerberos authentication, deployed as standalone services on <strong>Kubernetes</strong> via standard ingress on Rancher, enabling AI agents to securely interact with internal enterprise systems.",
+        "Contributed to <strong>critical incident recovery</strong> during a US data centre outage at quarter-end — mobilised as part of the global SME team (India, US, EMEA) to help restore trading operations under time pressure.",
+        "Recognised by the client's <strong>Corporate CIO</strong> as a key contributor to the enterprise Knowledge Management Template — featured in the firm-wide Modernization Update (Dec 2025).",
+        "<strong>Supports team growth</strong> — mentors junior developers through architecture reviews and code quality standards; conducts technical interviews aligned with the client's engineering and cultural standards.",
         "Maintains high code quality through <strong>unit testing</strong> (xUnit in .NET Core, pytest in Python) and <strong>SonarQube</strong> static analysis integrated into the CI pipeline.",
-        "Integrates <strong>agentic AI tooling</strong> into daily engineering work \u2014 uses Claude Code for development, debugging, and technical research, and GitHub Copilot agent mode for coding workflows."
+        "Accelerates delivery using <strong>agentic AI workflows</strong> — Claude Code for architecture exploration and debugging, GitHub Copilot agent mode for coding; reduced time spent on boilerplate and investigation, freeing capacity for system design and code review."
       ],
       "tags": [
-        { "label": ".NET Core", "color": "mint" },
-        { "label": "Python / FastAPI", "color": "mint" },
-        { "label": "Kubernetes", "color": "amber" },
-        { "label": "Helm", "color": "amber" },
-        { "label": "LangChain", "color": "violet" },
-        { "label": "LangGraph", "color": "violet" },
-        { "label": "ChromaDB", "color": "violet" },
-        { "label": "MCP", "color": "violet" },
-        { "label": "Solace", "color": "mint" },
-        { "label": "pytesseract", "color": "mint" },
-        { "label": "xUnit", "color": "mint" },
-        { "label": "pytest", "color": "mint" },
-        { "label": "SonarQube", "color": "amber" }
+        {
+          "label": ".NET Core",
+          "color": "mint"
+        },
+        {
+          "label": "Python / FastAPI",
+          "color": "mint"
+        },
+        {
+          "label": "Kubernetes",
+          "color": "amber"
+        },
+        {
+          "label": "Helm",
+          "color": "amber"
+        },
+        {
+          "label": "LangChain",
+          "color": "violet"
+        },
+        {
+          "label": "LangGraph",
+          "color": "violet"
+        },
+        {
+          "label": "ChromaDB",
+          "color": "violet"
+        },
+        {
+          "label": "MCP",
+          "color": "violet"
+        },
+        {
+          "label": "Solace",
+          "color": "mint"
+        },
+        {
+          "label": "pytesseract",
+          "color": "mint"
+        },
+        {
+          "label": "xUnit",
+          "color": "mint"
+        },
+        {
+          "label": "pytest",
+          "color": "mint"
+        },
+        {
+          "label": "SonarQube",
+          "color": "amber"
+        }
       ]
     },
     {
-      "period": "Dec 2021 \u2014 May 2023",
+      "period": "Dec 2021 — May 2023",
       "periodNow": false,
       "title": "Senior Software Engineer",
-      "org": "Accenture Solutions Pvt. Ltd \u00b7 Mumbai",
+      "org": "Accenture Solutions Pvt. Ltd · Mumbai",
       "currentBadge": false,
       "client": "// Financial Services",
       "bullets": [
-        "Led the <strong>API design and architecture</strong> for migrating legacy C# class library features to ASP.NET Core 3.1 \u2014 making key decisions on error handling patterns, <strong>microservices</strong> API structure, and compatibility with Duck Creek's configuration model for P&amp;C insurance.",
+        "Led the <strong>API design and architecture</strong> for migrating legacy C# class library features to ASP.NET Core 3.1 — making key decisions on error handling patterns, <strong>microservices</strong> API structure, and compatibility with Duck Creek's configuration model for P&amp;C insurance.",
         "Designed and delivered a high-volume <strong>email-trigger application</strong> processing 100+ emails/day from a shared mailbox into the claims pipeline using Azure Logic Apps, Blob Storage, and REST APIs.",
         "Documented APIs using <strong>OpenAPI specification and Swagger</strong>, making newly migrated services easier to onboard and consume across teams.",
         "Maintained code quality and delivery velocity through <strong>GitHub version control, SonarQube analysis, and CI/CD</strong> via Azure DevOps and Jenkins."
       ],
       "tags": [
-        { "label": "ASP.NET Core 3.1", "color": "mint" },
-        { "label": "Azure Logic Apps", "color": "mint" },
-        { "label": "Azure Blob Storage", "color": "mint" },
-        { "label": "Azure DevOps", "color": "amber" },
-        { "label": "Jenkins", "color": "amber" },
-        { "label": "Duck Creek V12", "color": "mint" },
-        { "label": "Swagger / OpenAPI", "color": "mint" },
-        { "label": "C#", "color": "mint" }
+        {
+          "label": "ASP.NET Core 3.1",
+          "color": "mint"
+        },
+        {
+          "label": "Azure Logic Apps",
+          "color": "mint"
+        },
+        {
+          "label": "Azure Blob Storage",
+          "color": "mint"
+        },
+        {
+          "label": "Azure DevOps",
+          "color": "amber"
+        },
+        {
+          "label": "Jenkins",
+          "color": "amber"
+        },
+        {
+          "label": "Duck Creek V12",
+          "color": "mint"
+        },
+        {
+          "label": "Swagger / OpenAPI",
+          "color": "mint"
+        },
+        {
+          "label": "C#",
+          "color": "mint"
+        }
       ]
     },
     {
-      "period": "Dec 2020 \u2014 Dec 2021",
+      "period": "Dec 2020 — Dec 2021",
       "periodNow": false,
       "title": "Software Engineer",
-      "org": "Accenture Solutions Pvt. Ltd \u00b7 Mumbai",
+      "org": "Accenture Solutions Pvt. Ltd · Mumbai",
       "currentBadge": false,
       "client": "// Financial Services",
       "bullets": [
         "Collaborated with stakeholders, developers, and business analysts during <strong>agile sprints</strong> using Azure Boards on the Scrum framework for effective communication and organisation.",
         "Implemented <strong>HTTP-triggered Azure Functions</strong> and 3 APIs to retrieve documents from the policy application and store them in the claims application.",
         "Built a Windows-based <strong>decompiler analyser tool</strong> generating codebase metrics (override/virtual/base methods) across 40+ project solutions for development effort estimation.",
-        "Deepened understanding of the <strong>P&amp;C insurance domain</strong> \u2014 claims lifecycle, policy structures, and Duck Creek configuration \u2014 building the domain foundation that enabled architectural ownership in the following role."
+        "Deepened understanding of the <strong>P&amp;C insurance domain</strong> — claims lifecycle, policy structures, and Duck Creek configuration — building the domain foundation that enabled architectural ownership in the following role."
       ],
       "tags": [
-        { "label": "ASP.NET Core 3.1", "color": "mint" },
-        { "label": "Azure Functions", "color": "mint" },
-        { "label": "Azure API Management", "color": "mint" },
-        { "label": "JWT Auth", "color": "amber" },
-        { "label": "Azure Boards", "color": "mint" },
-        { "label": "C#", "color": "mint" }
+        {
+          "label": "ASP.NET Core 3.1",
+          "color": "mint"
+        },
+        {
+          "label": "Azure Functions",
+          "color": "mint"
+        },
+        {
+          "label": "Azure API Management",
+          "color": "mint"
+        },
+        {
+          "label": "JWT Auth",
+          "color": "amber"
+        },
+        {
+          "label": "Azure Boards",
+          "color": "mint"
+        },
+        {
+          "label": "C#",
+          "color": "mint"
+        }
       ]
     },
     {
-      "period": "Oct 2018 \u2014 Dec 2020",
+      "period": "Oct 2018 — Dec 2020",
       "periodNow": false,
       "title": "Associate Software Engineer",
-      "org": "Accenture Solutions Pvt. Ltd \u00b7 Mumbai",
+      "org": "Accenture Solutions Pvt. Ltd · Mumbai",
       "currentBadge": false,
       "client": "// Financial Services",
       "bullets": [
@@ -126,90 +270,126 @@
         "Upgraded <strong>3 web applications</strong> from ASP.NET Framework 4.0 to 4.6.2."
       ],
       "tags": [
-        { "label": "C#", "color": "mint" },
-        { "label": "SQL Server", "color": "mint" },
-        { "label": "ASP.NET", "color": "mint" },
-        { "label": "DuckCreek V12", "color": "amber" }
+        {
+          "label": "C#",
+          "color": "mint"
+        },
+        {
+          "label": "SQL Server",
+          "color": "mint"
+        },
+        {
+          "label": "ASP.NET",
+          "color": "mint"
+        },
+        {
+          "label": "DuckCreek V12",
+          "color": "amber"
+        }
       ]
     },
     {
-      "period": "Sep 2015 \u2014 Jul 2018",
+      "period": "Sep 2015 — Jul 2018",
       "periodNow": false,
       "title": "B.E. in Electronics & Telecommunication",
-      "org": "VESIT \u00b7 Mumbai",
+      "org": "VESIT · Mumbai",
       "currentBadge": false
     }
   ],
   "impact": [
     {
-      "icon": "\ud83d\udcf0",
+      "icon": "📰",
       "title": "Corporate CIO Newsletter Feature",
-      "body": "The RAG-powered Knowledge Management solution was highlighted in the client's firm-wide Modernization Update (Dec 2025) \u2014 with the Corporate CIO personally recognising the contribution to enterprise AI adoption."
+      "body": "The RAG-powered Knowledge Management solution was highlighted in the client's firm-wide Modernization Update (Dec 2025) — with the Corporate CIO personally recognising the contribution to enterprise AI adoption."
     },
     {
-      "icon": "\u2638\ufe0f",
+      "icon": "☸️",
       "title": "Zero-Defect K8s Migration",
       "body": "7 messaging services migrated to Kubernetes with zero business disruption. The migration pattern established during this work became the standard approach for subsequent service migrations across the account."
     },
     {
-      "icon": "\ud83e\udde0",
-      "title": "Enterprise RAG Template \u2014 4 Teams",
-      "body": "What started as a single use case grew into the account-wide standard \u2014 4 teams now build on the same RAG template for contract extraction, knowledge search across 4,000+ documents, tax & policy queries, and termsheet comparison."
+      "icon": "🧠",
+      "title": "Enterprise RAG Template — 4 Teams",
+      "body": "What started as a single use case grew into the account-wide standard — 4 teams now build on the same RAG template for contract extraction, knowledge search across 4,000+ documents, tax & policy queries, and termsheet comparison."
     }
   ],
   "skills": [
     {
-      "icon": "\u2699\ufe0f",
+      "icon": "⚙️",
       "name": "Backend Engineering",
       "badge": "7+ yrs",
       "desc": "7+ years in .NET Core C# with growing Python depth. REST APIs, event-driven architectures, Solace messaging, xUnit & pytest unit testing, and SonarQube code quality analysis."
     },
     {
-      "icon": "\u2638\ufe0f",
+      "icon": "☸️",
       "name": "Cloud & Kubernetes",
       "badge": "5+ yrs",
       "desc": "Azure (API Management, Functions, DevOps) at Accenture; AWS and Kubernetes via Rancher at Capgemini. Helm chart authoring, legacy app containerisation, and zero-disruption production migrations."
     },
     {
-      "icon": "\ud83e\udde0",
+      "icon": "🧠",
       "name": "AI / RAG Systems",
       "badge": "8 mos",
       "desc": "Multimodal RAG with LangChain, LangGraph, and ChromaDB. Document ingestion for PDF, Word, images, Confluence, Jira. Full OCR pipeline with pytesseract. Adopted by 4 teams in production."
     },
     {
-      "icon": "\ud83d\udd0c",
-      "name": "MCP & Agentic Dev",
+      "icon": "🔌",
+      "name": "MCP & Agentic Systems",
       "badge": "4 mos",
-      "desc": "End-to-end MCP server development with JWT and Kerberos auth. Daily use of Claude Code and Copilot agent mode \u2014 early adopter building production agentic workflows."
+      "desc": "End-to-end Model Context Protocol (MCP) server development with JWT and Kerberos auth. Daily use of Claude Code and Copilot agent mode — early adopter building production agentic workflows with measurable delivery impact."
     },
     {
-      "icon": "\ud83d\udee1\ufe0f",
+      "icon": "🛡️",
       "name": "Auth & Security",
       "badge": "",
-      "desc": "Applied across every layer of delivery \u2014 JWT bearer token authentication, Kerberos for enterprise SSO, Azure API Management gateway security, and end-to-end auth design for MCP servers."
+      "desc": "Applied across every layer of delivery — JWT bearer token authentication, Kerberos for enterprise SSO, Azure API Management gateway security, and end-to-end auth design for MCP servers."
     },
     {
-      "icon": "\ud83d\udc65",
+      "icon": "👥",
       "name": "Technical Leadership",
       "badge": "2+ yrs",
       "desc": "Mentoring junior developers, architecture reviews, code quality standards, technical hiring, and bridging complex engineering decisions with business needs."
     }
   ],
   "certs": [
-    { "badge": "AZ-204", "name": "Microsoft Certified: Azure Developer Associate", "year": "2020" },
-    { "badge": "AI-900", "name": "Microsoft Certified: Azure AI Fundamentals", "year": "2023" },
-    { "badge": "AZ-900", "name": "Microsoft Certified: Azure Fundamentals", "year": "2019" },
-    { "badge": "SC-900", "name": "Microsoft Certified: Security, Compliance, and Identity Fundamentals", "year": "2021" },
-    { "badge": "DUCK CREEK", "name": "Duck Creek Claims Configurator", "year": "2022" },
-    { "badge": "DUCK CREEK", "name": "Duck Creek Claims Basic Configuration", "year": "2019" }
+    {
+      "badge": "AZ-204",
+      "name": "Microsoft Certified: Azure Developer Associate",
+      "year": "2020"
+    },
+    {
+      "badge": "AI-900",
+      "name": "Microsoft Certified: Azure AI Fundamentals",
+      "year": "2023"
+    },
+    {
+      "badge": "AZ-900",
+      "name": "Microsoft Certified: Azure Fundamentals",
+      "year": "2019"
+    },
+    {
+      "badge": "SC-900",
+      "name": "Microsoft Certified: Security, Compliance, and Identity Fundamentals",
+      "year": "2021"
+    },
+    {
+      "badge": "DUCK CREEK",
+      "name": "Duck Creek Claims Configurator",
+      "year": "2022"
+    },
+    {
+      "badge": "DUCK CREEK",
+      "name": "Duck Creek Claims Basic Configuration",
+      "year": "2019"
+    }
   ],
   "cta": {
     "heading": "Let's build something <span class=\"accent\">meaningful</span> together.",
-    "body": "Whether you're looking for a senior engineer to lead backend modernisation, build AI-powered systems, or strengthen your team's technical foundations \u2014 I'd love to connect."
+    "body": "Whether you're looking for a senior engineer to lead backend modernisation, build AI-powered systems, or strengthen your team's technical foundations — I'd love to connect."
   },
   "footer": {
     "name": "Abdul Gaffar Shaikh",
-    "meta": "Senior Software Engineer \u00b7 Capgemini (May 2023\u2013Present) \u00b7 Mumbai, Maharashtra",
+    "meta": "Senior Software Engineer · Capgemini (May 2023–Present) · Mumbai, Maharashtra",
     "year": "2026"
   }
 }
