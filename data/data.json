@@ -9,7 +9,7 @@
     "name": "ABDUL GAFFAR",
     "accent": "SHAIKH",
     "eyebrow": "Senior Software Engineer · 7+ Years",
-    "tagline": "Senior engineer specialising in microservices, distributed systems, Kubernetes, and production AI — including RAG pipelines and MCP servers adopted as enterprise standards. Delivering for a global investment bank in a high-availability, high-compliance financial services environment. Based in Mumbai.",
+    "tagline": "Senior engineer with 7+ years of experience specialising in microservices, distributed systems, Kubernetes, and production AI — including RAG pipelines and MCP servers adopted as enterprise standards. Delivering for a global investment bank in a high-availability, high-compliance financial services environment. Based in Mumbai.",
     "phone": "+91 88986 71746",
     "email": {
       "user": "abdul219428",
@@ -328,7 +328,7 @@
     {
       "icon": "🧠",
       "name": "AI / RAG Systems",
-      "badge": "8 mos",
+      "badge": "1+ yr",
       "desc": "Multimodal RAG with LangChain, LangGraph, and ChromaDB. Document ingestion for PDF, Word, images, Confluence, Jira. Full OCR pipeline with pytesseract. Adopted by 4 teams in production."
     },
     {
