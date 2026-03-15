@@ -9,7 +9,7 @@
     "name": "ABDUL GAFFAR",
     "accent": "SHAIKH",
     "eyebrow": "Senior Software Engineer · 7+ Years",
-    "tagline": "Senior engineer specialising in microservices architecture, Kubernetes deployments, distributed systems, and production AI — including RAG pipelines adopted as the enterprise standard across 4 teams. Experienced in system design, CI/CD pipelines, and REST API development, with a track record of technical leadership, mentoring, and driving adoption across teams. Delivering for a global investment bank in a high-availability, high-compliance financial services environment at Capgemini. Based in Mumbai.",
+    "tagline": "Senior engineer specialising in microservices, distributed systems, Kubernetes, and production AI — including RAG pipelines and MCP servers adopted as enterprise standards. Delivering for a global investment bank in a high-availability, high-compliance financial services environment. Based in Mumbai.",
     "phone": "+91 88986 71746",
     "email": {
       "user": "abdul219428",
@@ -54,7 +54,7 @@
       "hot": true
     },
     {
-      "label": "Agentic AI Dev",
+      "label": "Agentic Workflows",
       "hot": true
     },
     {
@@ -106,10 +106,10 @@
         "Modernised <strong>legacy .NET applications</strong> into <strong>microservices</strong> across multiple programmes — decomposed monoliths, upgraded frameworks, and containerised services for <strong>cloud-native</strong> deployment on Kubernetes via Rancher.",
         "Achieved <strong>zero post-deployment defects</strong> across 7 Solace <strong>event-driven</strong> messaging service migrations — resolved connection failover, message redelivery, and consumer group binding misconfigurations, independently leading 3 of the 7 migrations.",
         "Designed and built a <strong>reusable RAG template</strong> in <strong>Python</strong> (FastAPI, LangChain, ChromaDB <strong>vector database</strong>), adopted as the account standard across 4 teams — supporting contract field extraction (50+ docs with OCR), knowledge management (4,000+ Confluence &amp; Jira pages), tax &amp; policy queries (100+ curated documents), and termsheet comparison.",
-        "Developed <strong>Model Context Protocol (MCP) servers</strong> with JWT and Kerberos authentication, deployed as standalone services on <strong>Kubernetes</strong> via standard ingress on Rancher, enabling AI agents to securely interact with internal enterprise systems.",
+        "Developed <strong>Model Context Protocol (MCP) servers</strong> with JWT and Kerberos authentication, deployed as standalone services on <strong>Kubernetes</strong> via standard ingress on Rancher, enabling AI agents to securely interact with internal <strong>distributed systems</strong> and enterprise services.",
         "Contributed to <strong>critical incident recovery</strong> during a US data centre outage at quarter-end — mobilised as part of the global SME team (India, US, EMEA) to help restore trading operations under time pressure.",
         "Recognised by the client's <strong>Corporate CIO</strong> as a key contributor to the enterprise Knowledge Management Template — featured in the firm-wide Modernization Update (Dec 2025).",
-        "<strong>Supports team growth</strong> — mentors junior developers through architecture reviews and code quality standards; conducts technical interviews aligned with the client's engineering and cultural standards.",
+        "<strong>Mentors junior developers</strong> through architecture reviews and code quality standards; conducts technical interviews aligned with the client's engineering and cultural standards.",
         "Maintains high code quality through <strong>unit testing</strong> (xUnit in .NET Core, pytest in Python) and <strong>SonarQube</strong> static analysis integrated into the CI pipeline.",
         "Accelerates delivery using <strong>agentic AI workflows</strong> — Claude Code for architecture exploration and debugging, GitHub Copilot agent mode for coding; reduced time spent on boilerplate and investigation, freeing capacity for system design and code review."
       ],
@@ -266,8 +266,7 @@
       "bullets": [
         "Maintained and enhanced insurance claims application across <strong>10 monthly releases</strong>, working directly with client stakeholders.",
         "Designed document extraction and migration tool moving <strong>4 million claims documents</strong> from SQL Server to third-party storage systems.",
-        "Built automated document verification tool eliminating <strong>200+ hours of manual effort</strong> for file extension validation.",
-        "Upgraded <strong>3 web applications</strong> from ASP.NET Framework 4.0 to 4.6.2."
+        "Built automated document verification tool eliminating <strong>200+ hours of manual effort</strong> for file extension validation."
       ],
       "tags": [
         {
