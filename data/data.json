@@ -3,13 +3,13 @@
     "title": "Abdul Gaffar Shaikh — Senior Software Engineer",
     "description": "Abdul Gaffar Shaikh — Senior Software Engineer with 7+ years in .NET modernisation, Kubernetes, and production AI systems. Currently at Capgemini, Mumbai.",
     "ogTitle": "Abdul Gaffar Shaikh — Senior Software Engineer",
-    "ogDescription": "7+ years in .NET modernisation, Kubernetes infrastructure, and production AI. Building intelligent systems at scale."
+    "ogDescription": "7+ years in .NET modernisation, Kubernetes, distributed systems, and production AI in high-availability financial services. Building intelligent systems at scale."
   },
   "hero": {
     "name": "ABDUL GAFFAR",
     "accent": "SHAIKH",
     "eyebrow": "Senior Software Engineer · 7+ Years",
-    "tagline": "Senior engineer specialising in microservices architecture, Kubernetes deployments, distributed systems, and production AI — including RAG pipelines adopted as the enterprise standard across 4 teams. Experienced in system design, CI/CD pipelines, and REST API development, delivering for a global investment bank at Capgemini. Based in Mumbai.",
+    "tagline": "Senior engineer specialising in microservices architecture, Kubernetes deployments, distributed systems, and production AI — including RAG pipelines adopted as the enterprise standard across 4 teams. Experienced in system design, CI/CD pipelines, and REST API development, with a track record of technical leadership, mentoring, and driving adoption across teams. Delivering for a global investment bank in a high-availability, high-compliance financial services environment at Capgemini. Based in Mumbai.",
     "phone": "+91 88986 71746",
     "email": {
       "user": "abdul219428",
@@ -318,7 +318,7 @@
       "icon": "⚙️",
       "name": "Backend Engineering",
       "badge": "7+ yrs",
-      "desc": "7+ years in .NET Core C# with growing Python depth. REST APIs, event-driven architectures, Solace messaging, xUnit & pytest unit testing, and SonarQube code quality analysis."
+      "desc": "7+ years in .NET Core C# with growing Python depth. REST APIs, event-driven architectures, Solace messaging, Test-Driven Development, xUnit & pytest unit testing, and SonarQube code quality analysis."
     },
     {
       "icon": "☸️",
