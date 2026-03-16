@@ -1,0 +1,234 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
+%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
+% \end{tabular*}
+
+\begin{center}
+    \textbf{\Huge \scshape Abdul Gaffar Shaikh} \\ \vspace{1pt}
+    \small \href{tel:+91 8898671746}{\underline{+91 8898671746}} $|$ \href{mailto:abdul219428@gmail.com}{\underline{abdul219428@gmail.com}} $|$ 
+    \href{https://www.linkedin.com/in/abdul-gaffar-shaikh21/}{\underline{linkedin.com/in/abdul-gaffar-shaikh21/}} $|$
+    \href{https://github.com/abdul219428}{\underline{github.com/abdul219428}}
+\end{center}
+\setlength{\footskip}{4.08003pt}
+
+
+
+%-----------EXPERIENCE-----------
+\section{Experience} %increase font size
+\vspace{1pt}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Senior Software Engineer}{December 2021 -- Present} %indtroduce a break line between role and comapany
+      {Accenture Solutions Pvt. Ltd}{Mumbai, Maharashtra}
+      \resumeItemListStart
+      
+ \resumeItem {Designed and implemented an email trigger based application that exported 100+ emails per day from a shared mailbox to the claims application using Azure Logic Apps,Azure Blob Storage and APIs.
+ }
+ 
+ \resumeItem{Developed RESTful APIs based on ASP.NET Core 3.1 and documented using the OpenAPI specification and swagger tools for accelerating development and consumption.}
+ \resumeItem {Configured 3 Property and Casualty lines of business with reserves, payments, lines, coverages, and assignment setup on Duck Creek
+Claims V12 to support diverse insurance needs.}
+
+ \resumeItem  {Managed version control with GitHub, performed code quality analysis with Sonar Analyzer, and used Azure DevOps and Jenkins for continuous integration and continuous delivery of web applications.}
+
+     
+      \resumeItemListEnd
+      
+% -----------Multiple Positions Heading-----------
+%    \resumeSubSubheading
+%     {Software Engineer I}{Oct 2014 - Sep 2016}
+%     \resumeItemListStart
+%        \resumeItem{Apache Beam}
+%          {Apache Beam is a unified model for defining both batch and streaming data-parallel processing pipelines}
+%     \resumeItemListEnd
+%    \resumeSubHeadingListEnd
+%-------------------------------------------
+\vspace{1pt}
+    \resumeSubheading
+      {Software Engineer}{December 2020 -- December 2021}
+      {Accenture Solutions Pvt. Ltd}{Mumbai, Maharashtra}
+      \resumeItemListStart
+      
+\resumeItem {Collaborated with stakeholders, developers and business analysts during agile sprints using the Azure Boards on the scrum framework for effective communication and organization.}
+\resumeItem {Implemented HTTP trigger-based Azure Functions and 3 APIs to efficiently retrieve documents from the policy application and store in the claims application.}
+ \resumeItem {Transformed 11 features in the form of C\# class library projects into RESTful APIs based on ASP.NET Core 3.1,integrated with Azure API Management using JWT bearer token authentication for secure access.}
+\resumeItem {Coded Windows-based analyser tool to decompile an insurance application with over 40 projects in the solution.
+The tool generates metrics such as classes with override, virtual, and base methods for development effort estimation.}
+
+    \resumeItemListEnd
+\vspace{1pt}
+    \resumeSubheading
+       {Associate Software Engineer}{October 2018 -- December 2020}
+       {Accenture Solutions Pvt. Ltd}{Mumbai, Maharashtra}
+      \resumeItemListStart
+      
+\resumeItem {Enhanced and maintained an insurance claims application for 10 monthly releases, consistently providing clients with support and meeting requirements.}
+\resumeItem {Designed Windows-based application for extracting and migrating 4 million claims related documents stored in SQL database to third-party systems.}
+\resumeItem {Built Windows-based application for automating the manual verification of documents with missing file extensions, resulting in significant time savings of 200 hours.}
+\resumeItem {Upgraded ASP.NET Framework of 3 web applications from version 4.0 to version 4.6.2, ensuring that the applications remained up-to-date and functional.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%
+%-----------PROGRAMMING SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: C\#,SQL,JavaScript,HTML,CSS} \\
+     \vspace{1pt}
+     \textbf{Frameworks}{: ASP.NET Core,ASP.NET,ADO.NET,Dapper,MSTest,Moq,DuckCreek Claims V12,Scrum} \\
+     \vspace{1pt}
+     \textbf{Database}{: MS SQL Server 2019} \\
+     \vspace{1pt}
+     \textbf{Developer Tools}{:Visual Studio,Visual Studio Code,SQL Server Management Studio,Swagger,Azure DevOps,Azure
+Boards,GitHub,Git Extensions,Jira,Postman,Application Insights} \\
+     
+    }}
+ \end{itemize}
+
+
+ 
+
+ 
+%-----------CERTIFICATIONS-----------
+ 
+ \section{Certifications}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {Duck Creek Claims Configurator} {October 2022}
+      \resumeProjectHeading
+          {Microsoft Certified: Security, Compliance, and Identity Fundamentals} {September 2021}
+      \resumeProjectHeading 
+          {Microsoft Certified: Azure Developer Associate} {July 2020}
+      \resumeProjectHeading
+          {Microsoft Certified: Azure Fundamentals}{December 2019}
+       \resumeProjectHeading
+          {Duck Creek Claims Basic Configuration} {October 2019}
+         
+          
+    \resumeSubHeadingListEnd
+
+ %-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {B.E in Electronics and Telecommunication } {September 2015 -- July 2018}
+      {Vivekanand Education Society's Institute of Technology}{Mumbai, Maharashtra}
+  \resumeSubHeadingListEnd
+
+  
+ 
+ %
+
+%-------------------------------------------
+\end{document}
