@@ -312,7 +312,7 @@
     {
       "icon": "",
       "title": "Knowledge Management Template Recognition",
-      "body": "Recognised in the CIO newsletter in 2026 for the template, adopted by another team for contract-field extraction."
+      "body": "Recognised in the CIO newsletter in 2026 for the template, adopted for contract-field extraction."
     }
   ],
   "skills": [
@@ -411,7 +411,7 @@
       "intro": "A shared foundation for enterprise knowledge use cases, extended to coding agents with controlled access.",
       "context": "Designed a reusable knowledge-management template for document extraction, internal knowledge search, and termsheet comparison. Adopted as the account standard, it has also been used by another team to implement contract-field extraction.",
       "notes": "Vertical slice architecture keeps ingestion modules independently removable; environment variables can disable modules such as Jira ingestion. The template supports enterprise authentication through Kerberos and JWT-based API keys. Its MCP integration makes knowledge available in Claude Code and Copilot CLI, with group-based authorisation and time-limited credentials.",
-      "recognition": "Recognised in the CIO newsletter in 2026 for the knowledge-management template, which another team adopted for contract-field extraction.",
+      "recognition": "Recognised in the CIO newsletter in 2026 for the knowledge-management template, adopted for contract-field extraction.",
       "capabilities": [
         {
           "title": "Extraction that follows the missing fields",
