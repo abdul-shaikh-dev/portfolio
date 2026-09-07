@@ -52,7 +52,7 @@ function markCurrent(links, id) {
 }
 function updateNavigation() {
   scrollPending = false;
-  const offset = header.getBoundingClientRect().bottom + 30;
+  const offset = header.getBoundingClientRect().bottom + 40;
   const section = sectionAtReadingPosition(sections, offset);
   markCurrent(mainLinks, section === 'work-index' ? 'impact' : section);
   markCurrent(workLinks, sectionAtReadingPosition(stories, offset));

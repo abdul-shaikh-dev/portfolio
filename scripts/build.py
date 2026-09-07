@@ -11,7 +11,7 @@ projects.append({
     'id': 'migrations', 'shortTitle': 'Messaging service migrations',
     'group': 'platform', 'category': 'Production modernisation',
     'intro': 'Seven Solace services migrated to Kubernetes, with zero post-deployment defects.',
-    'summary': 'Migrated seven Solace messaging services to Kubernetes, independently leading three migrations. Resolved connection failover, message redelivery and consumer-group binding issues.',
+    'summary': 'Migrated seven Solace messaging services to Kubernetes, independently leading three migrations. Resolved messaging reliability and deployment issues.',
     'detail': 'The work involved moving existing messaging services into the Kubernetes environment while maintaining business continuity. The migration pattern established during this work became the approach for subsequent service migrations across the account.',
     'outcome': 'Seven service migrations with zero post-deployment defects and zero business disruption.',
     'tags': ['Solace', 'Kubernetes', 'Rancher'],
@@ -28,14 +28,21 @@ def external(url, label):
     return f'<a href="{e(url)}" target="_blank" rel="noopener noreferrer">{label} <span aria-hidden="true">↗</span></a>'
 
 def technical_notes(p):
+    if not p.get('detail'):
+        return ''
     extra = f'<p>{e(p["notes"])}</p>' if p.get('notes') else ''
     return f'<details class="technical-notes"><summary>Implementation notes <span aria-hidden="true">+</span></summary><div><p>{e(p["detail"])}</p>{extra}</div></details>'
 
+def walkthrough(key, title, description):
+    return f'<figure class="system-figure walkthrough" data-walkthrough="{key}"><figcaption>{e(title)}<span>{e(description)}</span></figcaption><div class="walkthrough-interactive" hidden></div><p class="walkthrough-fallback">{e(description)} Full architecture and implementation details are available in the accompanying notes.</p></figure>'
+
 figures = {
-    'mcp': '''<figure class="system-figure knowledge-figure"><figcaption>Shared knowledge,<br>available where teams work.</figcaption><div class="source-line">Documents · Confluence · Jira</div><div class="vertical-link" aria-hidden="true"></div><div class="foundation-node"><strong>Knowledge management template</strong><span>OCR, adaptive extraction and search</span></div><div class="knowledge-branches"><div><strong>Team applications</strong><span>Search, extraction<br>and comparison</span></div><div><strong>Coding agents</strong><span>MCP access<br>with group checks</span></div></div><p class="figure-note">Adopted as the account standard.</p></figure>''',
-    'modernisation': '''<figure class="system-figure dashboard-figure"><figcaption>From dashboard prototype<br>to a maintainable application.</figcaption><div class="architecture-now"><span class="stage-label">Deployed on Rancher</span><div class="architecture-nodes"><strong>React<br><small>Dashboard</small></strong><span aria-hidden="true">↔</span><strong>Python<br><small>REST API</small></strong></div></div><div class="architecture-next"><span class="stage-label">Planned next stage</span><p>Prefect flows <span aria-hidden="true">→</span> SQL <span aria-hidden="true">→</span> API</p></div><p class="figure-note">Phased architecture improvements. Work ongoing.</p></figure>''',
-    'engineering-support': '''<figure class="system-figure deployment-figure"><figcaption>PDF clause extraction,<br>running in production.</figcaption><dl class="repo-contract"><div><dt>Application readiness</dt><dd>Configuration cleanup and Linux-compatible OCR.</dd></div><div><dt>Deployment readiness</dt><dd>GitLab CI and model artifacts packaged into the container.</dd></div><div><dt>Production</dt><dd>Successfully deployed on Rancher and running reliably for about a year.</dd></div></dl></figure>''',
+    'mcp': walkthrough('extraction', 'Find what’s missing.', 'Adaptive extraction inside the knowledge template · fictional example.'),
+    'modernisation': '''<figure class="system-figure architecture-sketch"><figcaption>A clearer separation of responsibilities.</figcaption><div class="architecture-before"><span class="diagram-label">Before · coupled implementation</span><p>Python script <span aria-hidden="true">→</span> Generated JSON files <span aria-hidden="true">→</span> React dashboard</p><small>Spreadsheet dependencies and application logic intertwined.</small></div><div class="architecture-now"><span class="diagram-label">Current · deployed on Rancher</span><div class="service-pair"><div><span class="sketch-symbol" aria-hidden="true">▤</span><strong>React</strong><small>Present the dashboard</small></div><span class="service-link">REST API <span aria-hidden="true">↔</span></span><div><span class="sketch-symbol" aria-hidden="true">{ }</span><strong>Python</strong><small>Serve application data</small></div></div></div><div class="architecture-next"><span class="diagram-label">Next · planned data pipeline</span><ol class="pipeline-line"><li><strong>ServiceNow</strong><small>Source</small></li><li><strong>Prefect</strong><small>Collect</small></li><li><strong>SQL</strong><small>Store</small></li><li><strong>Python API</strong><small>Serve data</small></li><li><strong>React</strong><small>Display dashboard</small></li></ol></div></figure>''',
+    'engineering-support': '<section class="delivery-changes" aria-labelledby="delivery-changes-title"><h4 id="delivery-changes-title">What changed</h4><dl><div><dt>Application engineering</dt><dd>Restructured the Python codebase and resolved application and Linux runtime issues.</dd></div><div><dt>Internal model delivery</dt><dd>Packaged the embedding model through the internal artifact repository to work within the firm’s network restrictions.</dd></div><div><dt>Production deployment</dt><dd>Adopted established GitLab CI builds, resolved deployment blockers, and brought the application into production on Rancher.</dd></div></dl></section>',
+
 }
+
 headings = {
     'mcp': 'A shared foundation<br>for enterprise knowledge.',
     'modernisation': 'Modernising an<br>infrastructure dashboard.',
@@ -47,7 +54,7 @@ for key in data['featuredWork']:
     context = f'<p>{e(p["context"])}</p>' if p.get('context') else ''
     capabilities = '<div class="project-capabilities">' + ''.join(f'<div><h4>{e(c["title"])}</h4><p>{e(c["body"])}</p></div>' for c in p['capabilities']) + '</div>' if p.get('capabilities') else ''
     recognition = f'<p class="recognition">{e(p["recognition"])}</p>' if p.get('recognition') else ''
-    stories += f'''<article class="work-story story-{key}" id="project-{key}"><div class="story-heading"><p class="project-category">{e(p['category'])}</p><h3>{headings[key]}</h3></div><div class="story-layout"><div class="story-copy">{context}<p>{e(p['summary'])}</p>{tags(p['tags'])}{technical_notes(p)}</div>{figures[key]}</div>{capabilities}{recognition}</article>'''
+    stories += f'''<article class="work-story story-{key}" id="project-{key}"><div class="story-heading"><p class="project-category">{e(p['category'])}</p><h3>{headings[key]}</h3></div><div class="story-layout"><div class="story-copy">{context}<p>{e(p['summary'])}</p>{tags(p['tags'])}{technical_notes(p)}{capabilities}</div>{figures[key]}</div>{recognition}</article>'''
 
 supporting = ''
 supporting_groups = [
@@ -68,7 +75,7 @@ current_details = '<details class="career-details"><summary>Full responsibilitie
 earlier = ''
 for role in data['timeline'][1:-1]:
     earlier += f'<div class="earlier-role"><h4>{e(role["title"])}</h4><p class="role-date">{e(role["period"])}</p><ul>'+''.join('<li>'+b+'</li>' for b in role['bullets'])+'</ul></div>'
-career = f'''<article class="employer current-employer"><div class="employer-heading"><div><p class="role-date">May 2023 — Present</p><h3>Senior Software Engineer</h3><p>Capgemini · Mumbai</p></div><span class="current-label">Current</span></div><p class="role-summary">Backend modernisation, production AI, and engineering automation for a global investment bank.</p><ul class="career-highlights"><li>Developed the knowledge-management template as a shared foundation for enterprise AI use cases.</li><li>Brought a PDF clause-extraction application into production through code, OCR, CI, and deployment improvements.</li><li>Lead phased architecture improvements for a Python and React dashboard, with both applications now deployed on Rancher.</li><li>Built and deployed a .NET business-data API and reduced financial API memory use through query optimisation.</li><li>Guide teammates delivering modernisation work and adoption of established CI and deployment practices.</li></ul>{current_details}</article><article class="employer"><div class="employer-heading"><div><p class="role-date">October 2018 — May 2023</p><h3>Associate to Senior Software Engineer</h3><p>Accenture · Mumbai</p></div></div><p class="role-summary">Progressed through three engineering roles in financial services, working on insurance platforms, API modernisation, Azure integrations, and document automation.</p><details class="career-details"><summary>Earlier roles & contributions <span aria-hidden="true">+</span></summary>{earlier}</details></article><div class="education"><span>Education</span><div><strong>{e(data['timeline'][-1]['title'])}</strong><p>{e(data['timeline'][-1]['org'])} · 2015–2018</p></div></div>'''
+career = f'''<article class="employer current-employer"><div class="employer-heading"><div><p class="role-date">May 2023 — Present</p><h3>Senior Software Engineer</h3><p>Capgemini · Mumbai</p></div><span class="current-label">Current</span></div><p class="role-summary">Backend modernisation, production AI, and engineering automation for a global investment bank.</p><ul class="career-highlights"><li>Developed the knowledge-management template as a shared foundation for enterprise AI use cases.</li><li>Modernised a PDF clause-extraction application and delivered it into production.</li><li>Lead phased architecture improvements for a Python and React dashboard, with both applications now deployed on Rancher.</li><li>Built and deployed a .NET business-data API and reduced financial API memory use through query optimisation.</li><li>Guide teammates delivering modernisation work and adoption of established CI and deployment practices.</li></ul>{current_details}</article><article class="employer"><div class="employer-heading"><div><p class="role-date">October 2018 — May 2023</p><h3>Associate to Senior Software Engineer</h3><p>Accenture · Mumbai</p></div></div><p class="role-summary">Progressed through three engineering roles in financial services, working on insurance platforms, API modernisation, Azure integrations, and document automation.</p><details class="career-details"><summary>Earlier roles & contributions <span aria-hidden="true">+</span></summary>{earlier}</details></article><div class="education"><span>Education</span><div><strong>{e(data['timeline'][-1]['title'])}</strong><p>{e(data['timeline'][-1]['org'])} · 2015–2018</p></div></div>'''
 
 skills = ''.join(f'<article class="skill-item"><h3>{e(x["name"])}</h3><p>{e(x["desc"])}</p></article>' for x in data['skills'])
 certs = ''
@@ -86,7 +93,7 @@ html = f'''<!doctype html>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%232434ad' width='100' height='100' rx='16'/%3E%3Ctext x='50' y='69' text-anchor='middle' font-size='66' font-family='sans-serif' fill='%23ffffff'%3Ea%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css"><script src="js/script.js" defer></script>
+<link rel="stylesheet" href="css/styles.css"><script src="js/script.js" defer></script><script src="js/diagrams.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
