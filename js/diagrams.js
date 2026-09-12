@@ -76,6 +76,10 @@
   const next=document.createElement('button');next.type='button';next.className='extract-next';next.textContent='Next step →';controls.append(next);
   const reset=document.createElement('button');reset.type='button';reset.className='extract-reset';reset.textContent='Reset';controls.append(reset);
   reset.addEventListener('click',()=>{autoStarted=true;stop();render(0);});
+  const toolbar=document.createElement('div');toolbar.className='demo-toolbar';toolbar.innerHTML='<span>Interactive example</span>';toolbar.append(controls);host.prepend(toolbar);
+  const views=document.createElement('div');views.className='demo-views';views.setAttribute('aria-label','Demo view');views.innerHTML='<button type="button" data-view="source">Source &amp; prompt</button><button type="button" data-view="results">Extracted fields</button>';get('.extract-scene').before(views);
+  function selectView(view) {figure.dataset.demoView=view;views.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===view)));}
+  views.addEventListener('click',event=>{const b=event.target.closest('button');if(b){stop();autoStarted=true;selectView(b.dataset.view);}});
   let index=0, timer=null, playing=false, autoStarted=false;
   function stop() { clearTimeout(timer);timer=null;playing=false;figure.classList.add('extraction-paused');updateControls(); }
   function updateControls() {
@@ -86,6 +90,7 @@
   function render(i) {
     const previous=stages[index];index=i;const step=stages[i];
     figure.classList.remove('inspecting-evidence');
+    selectView(['return','done'].includes(step.phase)?'results':'source');
     progress.firstElementChild.style.width=`${(i/(stages.length-1))*100}%`;
     route.querySelectorAll('.route-step').forEach((button,j)=>button.setAttribute('aria-pressed',String(j===(['query','chunks','ready','gap'].includes(step.phase)?0:['prompt','send'].includes(step.phase)?1:step.phase==='llm'?2:3))));
     library.querySelectorAll('[data-page]').forEach(chunk=>chunk.classList.toggle('chunk-match',chunk.dataset.page===(step.pass===1?'1':'7')));
@@ -115,7 +120,7 @@
     get('.route-store .route-cargo b').textContent=step.pass===2?'p. 7':'p. 1';
     get('.result-count').textContent=`${step.found} of 3 found`;
     get('.feedback-title').textContent=step.title;get('.feedback-copy').textContent=step.copy;
-    if(!playing)get('.extract-status').textContent=`Pass ${step.pass}. ${step.title}`;
+    if(!playing||step.phase==='done'||step.phase==='gap')get('.extract-status').textContent=`Pass ${step.pass}. ${step.title}`;
     updateControls();
   }
   function schedule() {
@@ -138,7 +143,7 @@
     const button=event.target.closest('.evidence-link');if(!button)return;
     stop();
     const field=fields[Number(button.dataset.field)];
-    figure.classList.add('inspecting-evidence');
+    figure.classList.add('inspecting-evidence');selectView('source');
     host.querySelectorAll('.extract-results dl > div').forEach((row,j)=>row.classList.toggle('field-selected',j===Number(button.dataset.field)));
     get('.paper-page').textContent=`p. ${field.page}`;
     get('.paper-section').textContent=`Source for ${field.name}`;

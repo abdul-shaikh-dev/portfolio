@@ -35,6 +35,9 @@ const header = document.querySelector('.site-header');
 const mainLinks = [...document.querySelectorAll('.header-inner nav a')];
 const sections = [...document.querySelectorAll('main > section[id]')];
 let scrollPending = false;
+let selectedNavigation = null;
+mainLinks.forEach(link=>link.addEventListener('click',()=>{selectedNavigation=link.hash.slice(1);markCurrent(mainLinks,selectedNavigation);}));
+for(const event of ['wheel','touchstart','keydown'])window.addEventListener(event,()=>{selectedNavigation=null;},{passive:true});
 function sectionAtReadingPosition(elements, offset) {
   let active = null;
   for (const element of elements) {
@@ -50,8 +53,9 @@ function markCurrent(links, id) {
 }
 function updateNavigation() {
   scrollPending = false;
-  const offset = header.getBoundingClientRect().bottom + 40;
-  const section = sectionAtReadingPosition(sections, offset);
+  const offset = header.getBoundingClientRect().bottom + 100;
+  const atBottom = Math.ceil(scrollY + innerHeight) >= document.documentElement.scrollHeight - 3;
+  const section = selectedNavigation || (atBottom ? 'cta' : sectionAtReadingPosition(sections, offset));
   markCurrent(mainLinks, section === 'work-index' ? 'impact' : section);
 }
 function scheduleNavigation() {
@@ -91,3 +95,18 @@ function revealProjectLink() {
 }
 window.addEventListener('hashchange', revealProjectLink);
 revealProjectLink();
+
+// The same disclosure remains keyboard-operable from either end of a project.
+document.querySelectorAll('.close-project').forEach(button=>{
+  button.hidden=false;
+  button.addEventListener('click',()=>{
+    const project=button.closest('.project-disclosure');project.open=false;
+    project.querySelector('summary').focus({preventScroll:true});
+    project.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});
+  });
+});
+window.addEventListener('hashchange',()=>{
+  const target=location.hash.slice(1);
+  selectedNavigation=mainLinks.some(link=>link.hash===location.hash)?target:null;
+  scheduleNavigation();
+});
