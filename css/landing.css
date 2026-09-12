@@ -101,3 +101,35 @@
 .hero-specimen .specimen-stage { min-height:340px; }
 .hero-specimen .specimen-quote { font-size:20px; }
 .project-disclosure { scroll-margin-top:0; }
+
+/* An inspectable extraction example: stages, candidate passages, and provenance. */
+.walkthrough { background:#1d302f; }
+.walkthrough .extract-paper { box-shadow:none; border-radius:3px; min-height:355px; }
+.extract-progress { height:2px; background:#49605e; margin:0 0 20px; overflow:hidden; }
+.extract-progress > span { display:block; height:100%; background:#c5e6d6; transition:width .4s ease-out; }
+.route-step { display:flex; align-items:center; gap:10px; width:100%; min-height:52px; border:0; border-radius:3px; padding:6px; text-align:left; color:#edf5f3; }
+.route-step:hover,.route-step[aria-pressed="true"] { background:#314b47; }
+.route-step:focus-visible,.evidence-link:focus-visible,.extract-reset:focus-visible { outline:2px solid #c5e6d6; outline-offset:3px; }
+.route-step[aria-pressed="true"] strong { color:#ffcf94; }
+.chunk-library { display:none; padding-top:14px; }
+.library-label { display:block; font-size:11px; color:#52627a; margin-bottom:12px; }
+.chunk-library > div { display:flex; gap:14px; align-items:center; padding:12px 10px; border-top:1px solid #d1d7e2; transition:background .4s,opacity .4s; }
+.chunk-library > div > span { font-family:Georgia,serif; font-size:22px; color:#52627a; }
+.chunk-library p { font-size:13px; line-height:1.5; }
+.chunk-library small { display:block; font-size:10px; color:#52627a; margin-top:3px; }
+:is([data-extraction-state="ready"],[data-extraction-state="query"],[data-extraction-state="gap"]) .chunk-library { display:block; }
+:is([data-extraction-state="ready"],[data-extraction-state="query"],[data-extraction-state="gap"]) :is(.paper-quote,.paper-lines,.paper-note) { display:none; }
+[data-extraction-state="query"] .extract-paper::after { display:none; }
+[data-extraction-state="query"] .chunk-library > div:not(.chunk-match) { opacity:.45; }
+[data-extraction-state="query"] .chunk-match { background:#dfeee4; animation:passage-select 1.9s ease-out both; }
+.evidence-link { border:0; border-bottom:1px solid #789f93; color:#c5e6d6; padding:3px 0; font-size:11px; min-height:28px; }
+.evidence-link:hover { color:#fff; border-color:#fff; }
+.extract-results .field-selected { background:#314b47; padding-inline:12px; }
+.extract-reset { border:0; border-bottom:1px solid #789f93; font-size:11px; min-height:44px; padding:8px 3px; }
+.inspecting-evidence .extract-paper :is(.prompt-bundle,.chunk-library) { display:none; }
+.inspecting-evidence .extract-paper :is(.paper-quote,.paper-note) { display:block; }
+.inspecting-evidence .route-cargo { display:none; }
+.extraction-paused .chunk-match { animation-play-state:paused; }
+@keyframes passage-select { from { transform:translateX(-5px); background:transparent; } to { transform:translateX(0); background:#dfeee4; } }
+@media(max-width:700px) { .extract-controls { flex-wrap:wrap; }.extract-feedback { align-items:flex-start; }.route-step { padding:4px; }.walkthrough .extract-paper { min-height:345px; } }
+@media(prefers-reduced-motion:reduce) { .chunk-library > div,.extract-progress > span { transition:none; }.chunk-match { animation:none !important; } }

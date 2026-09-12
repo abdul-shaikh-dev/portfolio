@@ -61,10 +61,22 @@
   if('ResizeObserver' in window)new ResizeObserver(positionPackets).observe(route);
   const bundle=document.createElement('div');bundle.className='prompt-bundle';bundle.innerHTML='<span>Instructions <b>Use supplied evidence</b></span><span>Field schema <b class="bundle-schema"></b></span><span>Source chunks <b class="bundle-source"></b></span>';
   get('.extract-paper').append(bundle);
+  const library=document.createElement('div');library.className='chunk-library';
+  library.innerHTML='<span class="library-label">Indexed passages</span><div data-page="1"><span>01</span><p>Agreement details<small>Agreement ID · start date</small></p></div><div data-page="4"><span>04</span><p>Payment terms<small>Invoicing · settlement</small></p></div><div data-page="7"><span>07</span><p>Termination<small>Notice · written communication</small></p></div>';
+  get('.extract-paper').append(library);
+  const progress=document.createElement('div');progress.className='extract-progress';progress.setAttribute('aria-hidden','true');progress.innerHTML='<span></span>';route.before(progress);
+  route.querySelectorAll('li').forEach((li,j)=>{
+    const control=document.createElement('button');control.type='button';control.className='route-step';
+    [...li.childNodes].filter(n=>!n.classList?.contains('route-cargo')).forEach(n=>control.append(n));li.prepend(control);
+    control.title='Jump to this stage';
+    control.addEventListener('click',()=>{autoStarted=true;stop();render(([1,3,5,7])[j]+(stages[index].pass===2?8:0));});
+  });
   const controls=document.createElement('div');controls.className='extract-controls';
   action.before(controls);controls.append(action);
   const next=document.createElement('button');next.type='button';next.className='extract-next';next.textContent='Next step →';controls.append(next);
-  let index=0, timer=null, playing=false;
+  const reset=document.createElement('button');reset.type='button';reset.className='extract-reset';reset.textContent='Reset';controls.append(reset);
+  reset.addEventListener('click',()=>{autoStarted=true;stop();render(0);});
+  let index=0, timer=null, playing=false, autoStarted=false;
   function stop() { clearTimeout(timer);timer=null;playing=false;figure.classList.add('extraction-paused');updateControls(); }
   function updateControls() {
     action.textContent=playing?'Pause':index===stages.length-1?'Replay example ↶':index===0?'Watch extraction ▶':'Continue ▶';
@@ -73,6 +85,10 @@
   }
   function render(i) {
     const previous=stages[index];index=i;const step=stages[i];
+    figure.classList.remove('inspecting-evidence');
+    progress.firstElementChild.style.width=`${(i/(stages.length-1))*100}%`;
+    route.querySelectorAll('.route-step').forEach((button,j)=>button.setAttribute('aria-pressed',String(j===(['query','chunks','ready','gap'].includes(step.phase)?0:['prompt','send'].includes(step.phase)?1:step.phase==='llm'?2:3))));
+    library.querySelectorAll('[data-page]').forEach(chunk=>chunk.classList.toggle('chunk-match',chunk.dataset.page===(step.pass===1?'1':'7')));
     figure.dataset.extractionState=step.phase;figure.dataset.extractionPass=String(step.pass);
     get('.query-count').textContent=step.found===3?'All fields resolved':`Pass ${step.pass} · ${step.pass===1?3:1} ${step.pass===1?'fields':'field'}`;
     host.querySelectorAll('.query-fields > span').forEach((chip,j)=>{
@@ -82,10 +98,10 @@
     });
     host.querySelectorAll('.extract-results dl > div').forEach((row,j)=>{
       const found=j<step.found;
-      row.querySelector('dd').innerHTML=found?`${fields[j].value} <small>Demo agreement · p. ${fields[j].page}</small>`:`<span>Awaiting evidence</span><small>${step.found && j===2?'Unresolved':''}</small>`;
+      row.querySelector('dd').innerHTML=found?`${fields[j].value} <button type="button" class="evidence-link" data-field="${j}" aria-label="Show source for ${fields[j].name}">Page ${fields[j].page} ↗</button>`:`<span>Awaiting evidence</span><small>${step.found && j===2?'Unresolved':''}</small>`;
       row.querySelector('.field-context').textContent=found?fields[j].quote:'';
       row.classList.toggle('field-found',found);
-      row.classList.remove('field-arriving');
+      row.classList.remove('field-arriving','field-selected');
       if(found && j>=previous.found) { void row.offsetWidth;row.classList.add('field-arriving'); }
     });
     const second=step.pass===2 && !['gap','query'].includes(step.phase);
@@ -99,22 +115,47 @@
     get('.route-store .route-cargo b').textContent=step.pass===2?'p. 7':'p. 1';
     get('.result-count').textContent=`${step.found} of 3 found`;
     get('.feedback-title').textContent=step.title;get('.feedback-copy').textContent=step.copy;
-    get('.extract-status').textContent=`Pass ${step.pass}. ${step.title}`;
+    if(!playing)get('.extract-status').textContent=`Pass ${step.pass}. ${step.title}`;
     updateControls();
   }
   function schedule() {
     if(!playing)return;
     timer=setTimeout(()=>{ if(index<stages.length-1)render(index+1);if(index===stages.length-1)stop();else schedule(); },stages[index].duration);
   }
+  function start() {
+    if(playing)return;
+    playing=true;figure.classList.remove('extraction-paused');updateControls();schedule();
+  }
   action.addEventListener('click',()=>{
+    autoStarted=true;
     if(playing){stop();return;}
     if(index===stages.length-1)render(0);
+    else render(index);
     if(reduced.matches){render(Math.min(index+1,stages.length-1));return;}
-    playing=true;figure.classList.remove('extraction-paused');updateControls();schedule();
+    start();
   });
-  next.addEventListener('click',()=>{stop();render(Math.min(index+1,stages.length-1));});
+  host.addEventListener('click',event=>{
+    const button=event.target.closest('.evidence-link');if(!button)return;
+    stop();
+    const field=fields[Number(button.dataset.field)];
+    figure.classList.add('inspecting-evidence');
+    host.querySelectorAll('.extract-results dl > div').forEach((row,j)=>row.classList.toggle('field-selected',j===Number(button.dataset.field)));
+    get('.paper-page').textContent=`p. ${field.page}`;
+    get('.paper-section').textContent=`Source for ${field.name}`;
+    get('.paper-quote').innerHTML=field.page==='7'?'Either party may terminate with <mark>30 days’ written notice</mark>.':'Agreement <mark>DEMO-001</mark> begins on <mark>1 January 2026</mark>.';
+    get('.paper-note').textContent=`Demo agreement · page ${field.page} · illustrative source`;
+    get('.feedback-title').textContent=`${field.name}: evidence behind the answer.`;
+    get('.feedback-copy').textContent='The extracted value stays linked to its source passage. Continue to return to the extraction loop.';
+    get('.extract-status').textContent=`Showing source for ${field.name}, page ${field.page}.`;
+    if(innerWidth<701)get('.extract-paper').scrollIntoView({behavior:reduced.matches?'instant':'smooth',block:'center'});
+  });
+  next.addEventListener('click',()=>{autoStarted=true;stop();render(Math.min(index+1,stages.length-1));});
   document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});
   reduced.addEventListener('change',()=>{if(reduced.matches)stop();});
-  if('IntersectionObserver' in window)new IntersectionObserver(entries=>{if(!entries[0].isIntersecting)stop();},{threshold:.1}).observe(figure);
+  if('IntersectionObserver' in window)new IntersectionObserver(entries=>{
+    const visible=entries[0].isIntersecting;
+    if(visible&&!autoStarted&&!reduced.matches&&!document.hidden){autoStarted=true;start();}
+  },{threshold:.5}).observe(route);
+  if('IntersectionObserver' in window)new IntersectionObserver(entries=>{if(!entries[0].isIntersecting)stop();},{threshold:0}).observe(figure);
   render(0);host.hidden=false;positionPackets();figure.querySelector('.walkthrough-fallback').hidden=true;
 })();
