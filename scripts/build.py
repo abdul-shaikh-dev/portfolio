@@ -55,8 +55,8 @@ project_summaries = {
     'modernisation': ('Infrastructure dashboard', 'Leading the move from a coupled Python and React implementation to maintainable services.'),
     'engineering-support': ('AI clause extraction', 'Restructured the application and resolved the runtime and deployment issues blocking production.'),
 }
-project_summaries['delivery'] = ('Application modernisation & production delivery', 'Architecture guidance, hands-on backend engineering, and Kubernetes delivery across applications.')
-project_outcomes = {'mcp':'A shared foundation for enterprise knowledge', 'delivery':'From service upgrades to production AI'}
+project_summaries['delivery'] = ('Application modernisation', 'Service upgrades, backend APIs, and AI applications carried through to production.')
+project_outcomes = {'mcp':'A shared foundation for enterprise knowledge', 'delivery':'Architecture, implementation & production delivery'}
 figures['delivery'] = ''
 for key in data['featuredWork']:
     p = by_id[key]
@@ -66,14 +66,18 @@ for key in data['featuredWork']:
     recognition = f'<p class="recognition">{e(p["recognition"])}</p>' if p.get('recognition') else ''
     result = f'<p class="story-result"><strong>Result</strong> {e(p["outcome"])}</p>'
     examples = ''
+    explore_label = 'Explore deliveries' if key == 'delivery' else 'Explore project'
+    close_label = 'Close deliveries' if key == 'delivery' else 'Close project'
     if key == 'delivery':
+        context = ''
+        result = ''
         examples = '<div class="delivery-examples"><h4>Selected deliveries</h4>'
         for example_id in ['service-modernisation', 'modernisation', 'engineering-support']:
             example = by_id[example_id]
             evidence = '<p class="recognition">' + e(example['recognition']) + '</p>' if example.get('recognition') else ''
-            examples += f'<details class="delivery-example" id="project-{example_id}"><summary><h5>{e(example["shortTitle"])}</h5><span aria-hidden="true">+</span></summary><div><p>{e(example["summary"])}</p>{figures.get(example_id, "")}{evidence}{tags(example["tags"])}{technical_notes(example)}</div></details>'
-        examples += '<p class="delivery-links">Further examples: <a href="#project-dotnet-api">.NET business-data API ↗</a> · <a href="#project-api">Python financial-data API ↗</a> · <a href="#project-api-performance">API memory optimisation ↗</a></p></div>'
-    stories += f'''<details class="project-disclosure" id="project-{key}"><summary><div class="project-overview-title"><h3>{title}</h3><span class="project-outcome">{e(project_outcomes[key])}</span></div><p>{overview}</p><span class="project-toggle"><span class="when-closed">Explore project</span><span class="when-open">Close project</span><span aria-hidden="true"> +</span></span></summary><article class="work-story story-{key}"><div class="story-layout"><div class="story-copy">{context}<p>{e(p['summary'])}</p>{result}{recognition}{tags(p['tags'])}</div>{examples}{figures[key]}<div class="lead-details">{capabilities}{technical_notes(p)}</div></div><button type="button" class="close-project" hidden>Close project and return to overview ↑</button></article></details>'''
+            examples += f'<details class="delivery-example" id="project-{example_id}"><summary><div><h5>{e(example["shortTitle"])}</h5><p class="delivery-preview">{e(example["previewOutcome"])}</p></div><span aria-hidden="true">+</span></summary><div><p>{e(example.get("context") or example["summary"])}</p>{figures.get(example_id, "")}{evidence}{tags(example["tags"])}{technical_notes(example)}</div></details>'
+        examples += '<p class="delivery-links">Related backend work: <a href="#project-dotnet-api">.NET business-data API ↗</a> · <a href="#project-api">Python financial-data API ↗</a> · <a href="#project-api-performance">API memory optimisation ↗</a></p></div>'
+    stories += f'''<details class="project-disclosure" id="project-{key}"><summary><div class="project-overview-title"><h3>{title}</h3><span class="project-outcome">{e(project_outcomes[key])}</span></div><p>{overview}</p><span class="project-toggle"><span class="when-closed">{explore_label}</span><span class="when-open">{close_label}</span><span aria-hidden="true"> +</span></span></summary><article class="work-story story-{key}"><div class="story-layout"><div class="story-copy">{context}<p>{e(p['summary'])}</p>{result}{recognition}{tags(p['tags'])}</div>{examples}{figures[key]}<div class="lead-details">{capabilities}{technical_notes(p)}</div></div><button type="button" class="close-project" hidden>{close_label} and return to overview ↑</button></article></details>'''
 
 supporting = ''
 supporting_groups = [
@@ -86,7 +90,8 @@ for label, keys in supporting_groups:
     for key in keys:
         p = by_id[key]
         badge = '<span class="prototype-badge">Prototype</span>' if p.get('status') == 'prototype' else ''
-        supporting += f'<article class="supporting-project" id="project-{key}"><div class="supporting-title"><h4>{e(p["shortTitle"])}</h4>{badge}</div><p>{e(p["summary"])}</p>{tags(p["tags"])}{technical_notes(p)}</article>'
+        return_link = '<a class="return-to-deliveries" href="#project-delivery">Back to application modernisation ↑</a>' if key in ['dotnet-api', 'api', 'api-performance'] else ''
+        supporting += f'<article class="supporting-project" id="project-{key}"><div class="supporting-title"><h4>{e(p["shortTitle"])}</h4>{badge}</div><p>{e(p["summary"])}</p>{tags(p["tags"])}{technical_notes(p)}{return_link}</article>'
     supporting += '</div></div>'
 
 current = data['timeline'][0]
@@ -129,9 +134,9 @@ html = f'''<!doctype html>
 <header class="site-header"><div class="header-inner wrap"><a class="wordmark" href="#hero" aria-label="Abdul Gaffar Shaikh, home">ags<span>/</span></a><nav aria-label="Main navigation"><a href="#impact">Work</a><a href="#timeline">Experience</a><a href="#skills">Expertise</a><a href="#cta">Contact</a></nav><button id="theme-toggle" class="icon-button" aria-label="Switch to dark mode" title="Change color theme" hidden><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor"/></svg></button></div></header>
 <main id="main-content">
 <section class="hero" id="hero"><div class="hero-inner wrap"><div class="hero-identity"><p class="intro">Lead Software Engineer</p><h1>Abdul Gaffar<br><em>Shaikh.</em></h1><p class="hero-stack">.NET · Python · Kubernetes</p><p class="hero-location">Capgemini · Mumbai, India</p></div><div class="hero-positioning"><p class="hero-statement">{e(data['hero']['tagline'])}</p><p class="hero-bio">7.5+ years in financial services, combining hands-on engineering with architecture guidance and team mentoring.</p><div class="hero-links"><a class="button" href="{asset('output/pdf/resume-revised.pdf')}" target="_blank" rel="noopener">Resume PDF <span aria-hidden="true">↗</span></a><a href="#impact">Selected work ↓</a>{external(linkedin,'LinkedIn')}</div></div><ul class="hero-evidence" aria-label="Delivery highlights"><li><strong>Enterprise knowledge</strong><span>Built the knowledge-management foundation adopted across the client account.</span></li><li><strong>Application modernisation</strong><span>Moved .NET services from Windows hosting to Kubernetes and delivered production AI applications.</span></li></ul></div></section>
-<section class="work-section wrap" id="impact"><div class="work-header"><h2>Selected work<span>.</span></h2><p>The systems, decisions, and delivery behind the experience.</p></div><div class="work-overview">{stories}</div></section>
+<section class="work-section wrap" id="impact"><div class="work-header"><h2>Selected work<span>.</span></h2></div><div class="work-overview">{stories}</div></section>
 <section class="supporting-section" id="work-index"><div class="wrap"><details class="supporting-disclosure"><summary><h2>More engineering work.</h2><span>Backend APIs, performance, runtime integration &amp; tooling <span aria-hidden="true">+</span></span></summary><div class="supporting-content">{supporting}</div></details></div></section>
-<section class="experience-section wrap" id="timeline"><div class="section-heading"><h2>Experience.</h2><p>Increasing ownership across backend architecture, enterprise AI, and platform modernisation.</p></div><div class="experience-layout"><div class="experience-intro"><p>Hands-on engineering, with growing responsibility for architecture and delivery.</p>{external(linkedin,'View career on LinkedIn')}</div><div class="career-list">{career}</div></div></section>
+<section class="experience-section wrap" id="timeline"><div class="section-heading"><h2>Experience.</h2></div><div class="experience-layout"><div class="experience-intro"><p>Hands-on engineering, with growing responsibility for architecture and delivery.</p>{external(linkedin,'View career on LinkedIn')}</div><div class="career-list">{career}</div></div></section>
 <section class="expertise-section" id="skills"><div class="wrap"><div class="section-heading"><h2>What I work with.</h2><p>Backend depth, with the cloud and AI experience to connect the wider system.</p></div><div class="skill-grid">{skills}</div><details class="credentials"><summary><span>Certifications <small>Azure · AI · Security · Duck Creek</small></span><span aria-hidden="true">+</span></summary><div class="cert-list">{certs}</div></details></div></section>
 <section class="contact-section wrap" id="cta"><div><p>Let’s compare notes.</p><h2>Good work starts<br>with a conversation<span>.</span></h2></div><div><p>Building something complex, exploring an idea, or just want to talk engineering? I’d like to hear about it.</p><a class="button" href="mailto:{email}">Email me <span aria-hidden="true">↗</span></a><div class="email-row"><a href="mailto:{email}">{email}</a><button id="copy-email" class="icon-button" data-email="{email}" aria-label="Copy email address" title="Copy email address" hidden>⧉</button></div><span id="copy-status" role="status"></span></div></section>
 </main>

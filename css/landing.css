@@ -255,3 +255,11 @@
   .hero .hero-links { gap:12px; font-size:12px; }
   .hero .hero-links .button { padding:10px 12px; gap:10px; font-size:12px; }
 }
+
+/* Delivery outcomes remain visible before opening their supporting detail. */
+.delivery-example > summary { align-items:flex-start; }
+.delivery-example > summary > div { min-width:0; }
+.delivery-example > summary > span { flex-shrink:0; }
+.delivery-example .delivery-preview { margin:8px 0 0; color:var(--muted); font-size:14px; line-height:1.75; max-width:70ch; }
+.return-to-deliveries { display:inline-block; color:var(--landing-accent); font-size:13px; margin-top:18px; padding-block:10px; text-decoration:underline; text-underline-offset:4px; }
+.hero-links > a:not(.button) { display:inline-flex; align-items:center; min-height:44px; }

@@ -182,8 +182,8 @@
           "period": "April 2026 — Present",
           "bullets": [
             "Guide <strong>teammates delivering modernisation work</strong>, review architectural decisions, and support adoption of established CI and deployment practices.",
-            "Leading the <strong>phased modernisation of a Python and React infrastructure dashboard</strong>. Both applications are deployed on Rancher; the data-pipeline and storage improvements remain ongoing.",
             "Built and deployed a <strong>.NET business-data API</strong>, making previously inaccessible data available to other teams.",
+            "Leading the <strong>phased modernisation of a Python and React infrastructure dashboard</strong>. Both applications are deployed on Rancher; the data-pipeline and storage improvements remain ongoing.",
             "Built a <strong>Python financial-data API</strong> and established a maintainable reference implementation for continued development.",
             "Reduced <strong>financial API memory usage</strong> through LINQ query optimisation and related code changes.",
             "Built supporting automation for <strong>Rancher onboarding</strong> and <strong>Informatica-to-Python/Prefect migration</strong>, including code generation and persistent progress tracking.",
@@ -481,7 +481,8 @@
       ],
       "group": "platform",
       "intro": "Building the service, improving the codebase, and carrying the work through deployment.",
-      "outcome": "The dashboard has a better-structured codebase, with its React application and Python API deployed on Rancher. The Prefect and SQL data pipeline remains planned."
+      "outcome": "The dashboard has a better-structured codebase, with its React application and Python API deployed on Rancher. The Prefect and SQL data pipeline remains planned.",
+      "previewOutcome": "Restructured the Python backend and deployed it alongside React. Data-pipeline and storage improvements remain ongoing."
     },
     {
       "id": "engineering-support",
@@ -499,7 +500,8 @@
       "group": "platform",
       "intro": "Improving an existing clause-extraction application and carrying it through a successful production release.",
       "outcome": "Successfully deployed on Rancher and running reliably in production for about a year.",
-      "recognition": "Recognised in the CIO newsletter for contributions to the clause-extraction application’s production delivery."
+      "recognition": "Recognised in the CIO newsletter for contributions to the clause-extraction application’s production delivery.",
+      "previewOutcome": "Resolved application and runtime issues and brought clause extraction into reliable production use."
     },
     {
       "id": "onboarding",
@@ -624,14 +626,15 @@
         "GitLab CI",
         "Helm",
         "Flux"
-      ]
+      ],
+      "previewOutcome": "Moved .NET services from Windows hosting to Kubernetes, with framework upgrades and repeatable delivery."
     },
     {
       "id": "delivery",
-      "shortTitle": "Application modernisation & production delivery",
+      "shortTitle": "Application modernisation",
       "category": "Technical leadership & hands-on engineering",
       "context": "Existing services and promising applications needed maintainable code, repeatable builds, and a clear path to Kubernetes.",
-      "summary": "I combine architecture reviews and hands-on implementation with guidance for engineers delivering modernisation work. This spans backend services, React applications, and AI use cases.",
+      "summary": "I review codebases, set phased delivery plans, and guide engineers through implementation and deployment, while building services and resolving production blockers myself.",
       "outcome": "Modernised services, exposed business data through APIs, and resolved the blockers to production.",
       "tags": [
         ".NET",
