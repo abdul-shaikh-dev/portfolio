@@ -33,9 +33,7 @@ copyButton.addEventListener('click', async () => {
 // Use the section at the reading position, not a section entering the bottom of the screen.
 const header = document.querySelector('.site-header');
 const mainLinks = [...document.querySelectorAll('.header-inner nav a')];
-const workLinks = [...document.querySelectorAll('.work-navigation nav a')];
 const sections = [...document.querySelectorAll('main > section[id]')];
-const stories = [...document.querySelectorAll('.work-story'), document.getElementById('work-index')];
 let scrollPending = false;
 function sectionAtReadingPosition(elements, offset) {
   let active = null;
@@ -55,7 +53,6 @@ function updateNavigation() {
   const offset = header.getBoundingClientRect().bottom + 40;
   const section = sectionAtReadingPosition(sections, offset);
   markCurrent(mainLinks, section === 'work-index' ? 'impact' : section);
-  markCurrent(workLinks, sectionAtReadingPosition(stories, offset));
 }
 function scheduleNavigation() {
   if (scrollPending) return;
@@ -79,3 +76,18 @@ function followLegacyLink() {
 }
 window.addEventListener('hashchange', followLegacyLink);
 followLegacyLink();
+
+// Open the enclosing disclosures when following a saved project link.
+function revealProjectLink() {
+  const id = location.hash.slice(1);
+  const target = document.getElementById(id);
+  if (!target || !id.startsWith('project-')) return;
+  let parent = target;
+  while (parent) {
+    if (parent instanceof HTMLDetailsElement) parent.open = true;
+    parent = parent.parentElement;
+  }
+  requestAnimationFrame(() => target.scrollIntoView({ behavior: 'instant', block: 'start' }));
+}
+window.addEventListener('hashchange', revealProjectLink);
+revealProjectLink();

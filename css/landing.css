@@ -41,3 +41,63 @@
 @media(max-width:800px) { .hero-inner { grid-template-columns:1fr; padding-block:40px; }.hero-identity { max-width:580px; }.hero h1 { font-size:clamp(3.7rem,11vw,5.5rem); }.hero-specimen { max-width:560px; width:100%; justify-self:center; }.specimen-stage { min-height:330px; }.hero-chapters { grid-template-columns:1fr; gap:0; padding-block:10px; }.hero-chapters a,.hero-chapters a + a { border-left:0; border-bottom:1px solid var(--line); padding:15px 0; }.hero-chapters a:last-child { border-bottom:0; }.hero-chapters strong { font-size:14px; }.hero-chapters small { font-size:11px; }.lead-details .project-capabilities { grid-template-columns:1fr; }.work-header { align-items:start; flex-direction:column; gap:8px; margin-bottom:30px; } }
 @media(max-width:420px) { .hero-specimen { padding:18px; }.specimen-stage { padding-right:4px; min-height:350px; }.specimen-document { padding:18px; width:95%; }.specimen-answer { width:65%; }.specimen-bottom p { font-size:25px; }.specimen-bottom > span { max-width:14ch; }.hero .intro { font-size:10px; }.hero .intro span { margin-inline:6px; } }
 @media(prefers-reduced-motion:reduce) { .hero-specimen *,.hero-chapters a > span:last-child { transition:none; }.hero-specimen:hover .specimen-document { transform:rotate(-5deg); }.hero-specimen:hover .specimen-answer { transform:rotate(4deg); } }
+
+/* Overview first; project depth is revealed intentionally. */
+.hero-inner { grid-template-columns:1.25fr .75fr; gap:80px; padding-block:58px; }
+.hero-specimen { background:transparent; padding:10px 0; pointer-events:none; max-width:390px; justify-self:end; }
+.specimen-caption,.specimen-bottom { display:none; }
+.specimen-stage { margin:0; min-height:300px; padding-right:16px; }
+.specimen-document { transform:rotate(-3deg); box-shadow:none; border:1px solid var(--line); }
+.specimen-answer { background:var(--landing-soft); color:var(--ink); transform:rotate(2deg); box-shadow:none; }
+.specimen-answer .specimen-meta,.specimen-answer small { color:var(--muted); }
+.specimen-answer .specimen-meta { border-color:var(--line); }
+.work-header { margin-bottom:20px; }
+.project-disclosure { border-top:1px solid var(--line); scroll-margin-top:110px; }
+.project-disclosure:last-child { border-bottom:1px solid var(--line); }
+.project-disclosure > summary { display:grid; grid-template-columns:1fr 1.25fr auto; gap:36px; align-items:center; padding:30px 0; }
+.project-disclosure > summary h3 { font-size:24px; font-weight:500; }
+.project-disclosure > summary p { font-size:14px; color:var(--muted); line-height:1.8; max-width:55ch; }
+.project-toggle { font-size:12px; white-space:nowrap; color:var(--landing-accent); }
+.project-toggle > span:last-child { display:inline-block; margin-left:12px; }
+.project-disclosure[open] > summary > span:last-child { transform:none; }
+.project-disclosure[open] .project-toggle > span:last-child { transform:rotate(45deg); }
+.when-open,.project-disclosure[open] .when-closed { display:none; }
+.project-disclosure[open] .when-open { display:inline; }
+.project-disclosure > summary:hover h3 { color:var(--landing-accent); }
+.project-disclosure .work-story { padding:25px 0 48px; margin:0; border:0; max-width:1050px; margin-inline:auto; }
+.project-disclosure .story-heading h4 { font-size:32px; font-weight:500; }
+.project-disclosure .story-layout { margin-top:24px; }
+.supporting-section { padding-block:0 48px; background:var(--bg); }
+.supporting-disclosure > summary { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:24px 0; }
+.supporting-disclosure > summary h2 { font-size:20px; }
+.supporting-disclosure > summary > span { font-size:12px; color:var(--muted); }
+.supporting-disclosure[open] > summary > span:last-child { transform:none; }
+.supporting-content { padding-top:24px; }
+.experience-section { padding-block:42px; }
+.expertise-section { padding-block:42px; }
+.section-heading { margin-bottom:28px; }
+.section-heading h2 { font-size:28px; }
+.skill-grid { gap:22px 32px; }
+.skill-item { padding-block:14px; }
+.skill-item h3 { font-size:16px; }
+.skill-item p { font-size:13px; }
+.contact-section { padding-block:48px; }
+.contact-section h2 { font-size:36px; }
+@media(max-width:900px) {
+  .hero-inner { gap:30px; grid-template-columns:1.2fr .8fr; }
+  .project-disclosure > summary { grid-template-columns:1fr 1.2fr; gap:14px 28px; }
+  .project-toggle { grid-column:2; }
+}
+@media(max-width:650px) {
+  .hero-inner { grid-template-columns:1fr; padding-block:36px; }
+  .hero-specimen { display:none; }
+  .project-disclosure > summary { grid-template-columns:1fr; gap:13px; padding:25px 0; }
+  .project-disclosure > summary h3 { font-size:23px; }
+  .project-toggle { grid-column:auto; }
+  .project-disclosure .story-heading h4 { font-size:27px; }
+  .supporting-disclosure > summary { align-items:start; flex-direction:column; gap:8px; }
+  .contact-section h2 { font-size:30px; }
+}
+.hero-specimen .specimen-stage { min-height:340px; }
+.hero-specimen .specimen-quote { font-size:20px; }
+.project-disclosure { scroll-margin-top:0; }
