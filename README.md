@@ -62,7 +62,7 @@ The second LaTeX pass resolves document references. Rebuilding the website refre
 
 ## Deployment
 
-`.github/workflows/pages.yml` generates the site and deploys a minimal static artifact to GitHub Pages whenever `main` changes. The deployment contains only `index.html`, `css/`, `js/`, and `output/`, plus `.nojekyll` so GitHub serves those files directly.
+`.github/workflows/pages.yml` generates the site and deploys a minimal static artifact to GitHub Pages whenever `main` changes. It also redeploys after a successful resume build so the generated PDF reaches the live site. The deployment contains only `index.html`, `css/`, `js/`, and `output/`, plus `.nojekyll` so GitHub serves those files directly.
 
 The published site is [abdul-shaikh-dev.github.io/portfolio](https://abdul-shaikh-dev.github.io/portfolio/). The workflow can also be started manually from the GitHub Actions page.
 
