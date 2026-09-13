@@ -232,8 +232,8 @@ p { text-wrap:pretty; }
 .career-timeline { position:relative; }
 .career-timeline::before { content:''; position:absolute; top:30px; bottom:42px; left:199px; width:1px; background:var(--line); }
 .career-timeline .employer-heading { position:relative; display:grid; grid-template-columns:190px minmax(0,1fr); gap:20px; align-items:start; }
-.career-timeline .employer-heading::before { content:''; position:absolute; left:195px; top:25px; width:9px; height:9px; border:1px solid var(--landing-accent); border-radius:2px; transform:rotate(45deg); background:var(--bg); }
-.career-timeline .current-employer .employer-heading::before { background:var(--landing-accent); box-shadow:0 0 0 5px color-mix(in srgb,var(--landing-accent) 11%,transparent); }
+.career-timeline .employer-heading::before { content:''; position:absolute; left:194px; top:29px; width:11px; height:2px; background:var(--landing-accent); }
+.career-timeline .current-employer .employer-heading::before { left:192px; width:15px; }
 .career-timeline .employer-heading > .role-date { margin:8px 0 0; }
 .career-timeline .employer-heading > div { min-width:0; padding-right:78px; }
 .career-timeline .current-label { position:absolute; top:8px; right:0; }
@@ -244,8 +244,8 @@ p { text-wrap:pretty; }
 .role-progression { position:relative; display:grid; gap:20px; margin:20px 0 8px; }
 .progression-role { position:relative; display:grid; grid-template-columns:190px 1fr; gap:4px 20px; padding-block:16px 38px; border-bottom:1px solid var(--line); }
 .progression-role:last-child { border-bottom:0; }
-.progression-role::before { content:''; position:absolute; left:195px; top:22px; width:9px; height:9px; border:2px solid var(--landing-accent); border-radius:50%; background:var(--bg); }
-.progression-role:first-child::before { background:var(--landing-accent); box-shadow:0 0 0 6px color-mix(in srgb,var(--landing-accent) 14%,transparent); }
+.progression-role::before { content:''; position:absolute; left:194px; top:27px; width:11px; height:2px; background:var(--landing-accent); }
+.progression-role:first-child::before { left:192px; width:15px; }
 .progression-role .role-date { grid-row:1 / 3; }
 .progression-role h4 { font-family:'DM Serif Display',Georgia,serif; font-size:29px; font-weight:400; }
 .progression-contributions { grid-column:2; min-width:0; }
@@ -254,8 +254,8 @@ p { text-wrap:pretty; }
 .earlier-employer { margin-top:18px!important; padding-top:34px!important; }
 .earlier-progression { margin-top:16px; }
 .earlier-role { position:relative; display:grid; grid-template-columns:190px 1fr; gap:20px; padding-block:20px; border-bottom:1px solid var(--line); }
-.earlier-role::before { content:''; position:absolute; z-index:2; left:195px; top:25px; width:9px; height:9px; border:2px solid var(--landing-accent); border-radius:50%; background:var(--bg); }
-.earlier-role:last-child::before { background:var(--landing-accent); box-shadow:0 0 0 5px color-mix(in srgb,var(--landing-accent) 12%,transparent); }
+.earlier-role::before { content:''; position:absolute; z-index:2; left:194px; top:30px; width:11px; height:2px; background:var(--landing-accent); }
+.earlier-role:last-child::before { left:192px; width:15px; height:3px; }
 .earlier-role:last-child::after { content:''; position:absolute; z-index:1; top:31px; bottom:0; left:199px; width:1px; background:var(--bg); }
 .earlier-role .role-date { margin:3px 0 0; }
 .earlier-role h4 { font-family:'DM Serif Display',Georgia,serif; font-size:22px; font-weight:400; line-height:1.3; }
