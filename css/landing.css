@@ -159,7 +159,7 @@ p { text-wrap:pretty; }
 #project-api-performance .delivery-proof { font-family:'DM Serif Display',Georgia,serif; font-size:clamp(1.7rem,3vw,2.8rem)!important; font-weight:400; letter-spacing:0; line-height:1.1; }
 .engineering-delivery .delivery-project > p:not(.delivery-proof),.engineering-delivery .tags li,.engineering-delivery .technical-notes p { color:color-mix(in srgb,var(--bg) 74%,transparent); }
 .engineering-delivery .delivery-project > p { max-width:62ch; margin-top:13px; font-size:14px; line-height:1.8; }
-.engineering-delivery .recognition { color:var(--inverse-accent)!important; }
+.engineering-delivery .recognition { border-left:2px solid var(--inverse-accent); border-radius:0; background:color-mix(in srgb,var(--bg) 8%,transparent); color:var(--inverse-accent)!important; }
 .engineering-delivery .tags { margin-top:16px; }
 .engineering-delivery .tags li { padding:0; border:0; background:transparent; }
 .engineering-delivery .technical-notes,.engineering-delivery .technical-notes summary { border-color:color-mix(in srgb,var(--bg) 25%,transparent); }

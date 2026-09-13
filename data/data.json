@@ -9,7 +9,7 @@
     "name": "ABDUL GAFFAR",
     "accent": "SHAIKH",
     "eyebrow": "Lead Software Engineer · 7.5+ Years",
-    "tagline": "I lead application modernisation and build backend and AI systems for production.",
+    "tagline": "Application modernisation, backend engineering, and AI systems built for production.",
     "phone": "+91 88986 71746",
     "email": {
       "user": "abdul219428",
@@ -337,7 +337,7 @@
       "id": "mcp",
       "title": "A modular foundation for knowledge and document extraction.",
       "category": "Enterprise knowledge & AI",
-      "summary": "I built a modular platform with a React interface for multisource ingestion, RAG queries, and adaptive extraction, plus secured API and MCP access for applications and coding agents.",
+      "summary": "A modular platform combines a React interface for multisource ingestion, RAG queries, and adaptive extraction with secured API and MCP access for applications and coding agents.",
       "detail": "Adaptive extraction uses LangGraph and LangChain to build schema-driven retrieval queries for each requested field. It retrieves relevant chunks from ChromaDB, reranks them by similarity, and constructs an LLM prompt with source material. Results include the field value, supporting context, page number, and model-reported confidence. Subsequent retrieval passes target only unresolved fields, keeping repeated context and unnecessary model input down.",
       "tags": [
         "Python / React",
@@ -369,8 +369,8 @@
       "title": "Taking applications from implementation to production.",
       "category": "Application modernisation",
       "context": "The dashboard gives stakeholders an application-level view of ServiceNow CMDB data across virtual machines, services, and container platforms.",
-      "summary": "I reviewed the Python and React codebase and defined a phased modernisation plan. The restructured backend and React application are now deployed on Rancher. Work continues on a scheduled data pipeline and database-backed storage.",
-      "detail": "After reviewing the codebase with its developer, I broke the work into phases: separate frontend and backend responsibilities, restructure the Python code, remove spreadsheet dependencies, and replace direct consumption of generated JSON files with REST endpoints. The planned next stage uses Prefect flows to collect data into SQL, with the Python API serving it to React.",
+      "summary": "Led a phased modernisation of the Python and React codebase. The restructured backend and React application are now deployed on Rancher, with scheduled data ingestion and database-backed storage forming the next stage.",
+      "detail": "The plan separates frontend and backend responsibilities, restructures the Python code, removes spreadsheet dependencies, and replaces direct consumption of generated JSON files with REST endpoints. The next stage uses Prefect flows to collect data into SQL, with the Python API serving it to React.",
       "tags": [
         "Architecture review",
         "Python / React",
@@ -388,8 +388,8 @@
       "title": "Taking PDF clause extraction into production.",
       "category": "AI adoption & production delivery",
       "context": "The existing Python and React application could extract clauses from legal PDFs, but code, model-delivery, and Linux runtime constraints blocked release.",
-      "summary": "I modernised the codebase, resolved deployment issues, and established a repeatable build and release process. This included adapting document processing and model delivery to the firm’s environment. The application was successfully deployed on Rancher and has run reliably in production for about a year.",
-      "detail": "The Python RAG service uses Tesseract OCR and FAISS. I adapted OCR for Linux and moved the application onto GitLab CI. Because Hugging Face was blocked, I packaged the embedding model from Nexus into the application container. These changes addressed application and environment issues that were preventing production deployment.",
+      "summary": "Modernised the codebase, resolved deployment issues, and established a repeatable release process suited to the firm’s document-processing and model-delivery constraints. The application has run reliably on Rancher in production for about a year.",
+      "detail": "The Python RAG service uses Tesseract OCR and FAISS. OCR was adapted for Linux and the application moved onto GitLab CI. With Hugging Face unavailable, the embedding model was packaged from Nexus into the application container, resolving the application and environment issues that blocked production deployment.",
       "tags": [
         "Python / React",
         "RAG",
@@ -458,7 +458,7 @@
       "title": "Unblocking browser automation on Rancher.",
       "category": "Platform enablement",
       "summary": "Unblocked regulatory scraping when the standard Chromium runtime could not be deployed on Rancher. Delivered a Playwright-based remote browser service and connected Crawl4AI to it in Kubernetes.",
-      "detail": "The application could not get Chromium running on Rancher because of vulnerability-related deployment constraints. I used the official Playwright container image, prepared a Helm release in the Flux tenant, and adjusted browser launch arguments and the Chrome DevTools Protocol (CDP) connection so Crawl4AI could use the remote browser in Kubernetes.",
+      "detail": "The application could not run Chromium on Rancher because of vulnerability-related deployment constraints. An official Playwright container, a Helm release in the Flux tenant, and revised browser launch and Chrome DevTools Protocol settings gave Crawl4AI a working remote browser in Kubernetes.",
       "tags": [
         "Playwright",
         "Rancher"
@@ -474,7 +474,7 @@
       "title": "A prototype hub for organising our tools.",
       "category": "Internal tooling prototype",
       "summary": "Prototyped a configurable Vite shell for independently deployed skills, MCP integrations, and modernisation reporting. Built the initial ServiceNow reporting module, which other developers later extended.",
-      "detail": "Used Vite module federation to keep the tools independently modular within a configurable shell. The hub brings together GitLab-hosted skills, MCP integrations, and modernisation reporting. I built the initial reporting module using ServiceNow data; other developers have since extended it.",
+      "detail": "Vite module federation keeps the tools independently modular within a configurable shell. The hub brings together GitLab-hosted skills, MCP integrations, and modernisation reporting. The initial ServiceNow reporting module established a base that other developers have since extended.",
       "tags": [
         "Vite",
         "Module federation",
@@ -493,7 +493,7 @@
       "title": "Making business data accessible through an API.",
       "category": "Backend engineering",
       "summary": "Built and deployed a .NET and EF Core API over legal data held in existing SQL Server views, giving other teams a supported way to access it.",
-      "detail": "Built a .NET and Entity Framework Core API over existing SQL Server tables and views, making business data accessible to other teams. I prepared its Helm and Flux configuration using the onboarding skill and deployed it to Rancher.",
+      "detail": "A .NET and Entity Framework Core API over existing SQL Server tables and views made the business data accessible to other teams. Helm and Flux configuration produced through the onboarding workflow carried the service through to Rancher deployment.",
       "tags": [
         ".NET",
         "EF Core",
@@ -508,7 +508,7 @@
       "shortTitle": "Financial API performance optimisation",
       "title": "Reducing memory usage and response time in financial-data APIs.",
       "category": "Application performance",
-      "summary": "Financial-services APIs processing large datasets were consuming 6–7 GB per pod and taking about five minutes to return some responses. I reshaped the LINQ queries and processing flow, reducing memory to about 1 GB and response time to 40 seconds.",
+      "summary": "Financial-services APIs processing large datasets were consuming 6–7 GB per pod and taking about five minutes for some responses. Reshaped LINQ queries and processing reduced memory to about 1 GB and response time to 40 seconds.",
       "detail": "The original query and processing paths materialised and retained more data than the endpoints needed. Restructuring that flow reduced memory pressure and removed the multi-minute response bottleneck.",
       "tags": [
         "C#",
@@ -523,7 +523,7 @@
       "shortTitle": "Service modernisation & Kubernetes onboarding",
       "group": "platform",
       "category": "Platform modernisation",
-      "summary": "The large estate spanned .NET services, React microfrontends, and NestJS APIs. As the client moved away from Windows server management, I handled framework upgrades, CI adoption, and build and deployment issues across the migration path.",
+      "summary": "A large estate of .NET services, React microfrontends, and NestJS APIs needed a path away from Windows hosting. The work covered framework upgrades, CI adoption, build remediation, and deployment across the migration path.",
       "detail": "Upgraded .NET Core 3.1 services to .NET 6 or .NET 8 and adopted the in-house GitLab CI templates. Resolved issues in builds, SonarQube and Nexus IQ checks, and container creation, then prepared Helm charts and Flux tenant configuration for Rancher deployment. The work spanned backend services and frontend applications.",
       "tags": [
         ".NET",
@@ -539,7 +539,7 @@
       "shortTitle": "Application modernisation",
       "category": "Technical leadership & hands-on engineering",
       "context": "Existing services and promising applications needed maintainable code, repeatable builds, and a clear path to Kubernetes.",
-      "summary": "I review codebases, define phased delivery plans, guide engineers through implementation, and stay hands-on with services and production blockers.",
+      "summary": "Codebase reviews become phased delivery plans, supported by implementation guidance and hands-on resolution of service and production blockers.",
       "outcome": "Modernised services, exposed business data through APIs, and resolved the blockers to production.",
       "tags": [
         ".NET",
