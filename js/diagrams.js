@@ -164,31 +164,3 @@
   if('IntersectionObserver' in window)new IntersectionObserver(entries=>{if(!entries[0].isIntersecting)stop();},{threshold:0}).observe(figure);
   render(0);host.hidden=false;positionPackets();figure.querySelector('.walkthrough-fallback').hidden=true;
 })();
-
-/* A compact map of how the same delivery practice adapts to different constraints. */
-(() => {
-  const figure = document.querySelector('[data-delivery-map]');
-  if (!figure) return;
-  const scenarios = [...figure.querySelectorAll('.delivery-path')];
-  const readout = figure.querySelector('.delivery-readout');
-  let selected = scenarios[0];
-  function activate(button) {
-    const active = button.dataset.phases.split(',');
-    scenarios.forEach(item => item.classList.toggle('is-active', item === button));
-    scenarios.forEach(item => item.querySelectorAll('[data-phase]').forEach(phase => {
-      phase.classList.toggle('is-active', item === button && active.includes(phase.dataset.phase));
-      phase.classList.toggle('is-skipped', item === button && !active.includes(phase.dataset.phase));
-    }));
-    readout.textContent = button.dataset.note;
-  }
-  scenarios.forEach(button => {
-    button.addEventListener('mouseenter', () => activate(button));
-    button.addEventListener('focus', () => activate(button));
-    button.addEventListener('click', () => { selected = button; activate(button); });
-  });
-  figure.addEventListener('mouseleave', () => activate(selected));
-  figure.addEventListener('focusout', event => {
-    if (!figure.contains(event.relatedTarget)) activate(selected);
-  });
-  activate(selected);
-})();

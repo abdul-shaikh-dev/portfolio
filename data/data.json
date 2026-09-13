@@ -24,76 +24,6 @@
       "label": "github.com/abdul219428"
     }
   },
-  "chips": [
-    {
-      "label": ".NET Core / C#",
-      "hot": false
-    },
-    {
-      "label": "Python",
-      "hot": false
-    },
-    {
-      "label": "Kubernetes",
-      "hot": false
-    },
-    {
-      "label": "Rancher",
-      "hot": false
-    },
-    {
-      "label": "FastAPI",
-      "hot": false
-    },
-    {
-      "label": "RAG / LangChain",
-      "hot": true
-    },
-    {
-      "label": "Model Context Protocol (MCP)",
-      "hot": true
-    },
-    {
-      "label": "Agentic Workflows",
-      "hot": true
-    },
-    {
-      "label": "Azure",
-      "hot": false
-    },
-    {
-      "label": "Solace Messaging",
-      "hot": false
-    },
-    {
-      "label": "Helm",
-      "hot": false
-    },
-    {
-      "label": "Docker",
-      "hot": false
-    },
-    {
-      "label": "AWS / EKS",
-      "hot": false
-    },
-    {
-      "label": "OCR / pytesseract",
-      "hot": false
-    },
-    {
-      "label": "CI/CD",
-      "hot": false
-    },
-    {
-      "label": "REST APIs",
-      "hot": false
-    },
-    {
-      "label": "Distributed Systems",
-      "hot": false
-    }
-  ],
   "timeline": [
     {
       "period": "May 2023 —",
@@ -323,58 +253,42 @@
       "currentBadge": false
     }
   ],
-  "impact": [
-    {
-      "icon": "📰",
-      "title": "Corporate CIO Newsletter Feature",
-      "body": "Recognised in the CIO newsletter for the engineering work that brought an existing PDF clause-extraction application into production."
-    },
-    {
-      "icon": "☸️",
-      "title": "Zero-Defect K8s Migration",
-      "body": "7 messaging services migrated to Kubernetes with zero business disruption. The migration pattern established during this work became the standard approach for subsequent service migrations across the account."
-    },
-    {
-      "icon": "🧠",
-      "title": "Enterprise RAG Template — Account Standard",
-      "body": "What started as a single use case grew into the account-wide standard — teams now build on the same RAG template for contract extraction, knowledge search across 4,000+ documents, and termsheet comparison."
-    },
-    {
-      "icon": "",
-      "title": "Knowledge Management Template Recognition",
-      "body": "Recognised in the CIO newsletter in 2026 for the template, adopted for contract-field extraction."
-    }
-  ],
   "skills": [
     {
       "name": "Application Modernisation",
       "badge": "",
-      "desc": "Codebase reviews, service boundaries, and phased delivery plans."
+      "desc": "Codebase reviews, service boundaries, and phased delivery.",
+      "href": "#project-delivery"
     },
     {
       "name": "Enterprise AI & Knowledge Systems",
       "badge": "",
-      "desc": "Document extraction, retrieval, OCR, and controlled access for coding agents."
+      "desc": "RAG, OCR, adaptive extraction, and controlled agent access.",
+      "href": "#project-mcp"
     },
     {
       "name": "Backend Engineering & Performance",
       "badge": "",
-      "desc": "REST APIs in .NET and Python, with query and memory optimisation."
+      "desc": ".NET and Python APIs, data access, and performance.",
+      "href": "#supporting-backend"
     },
     {
       "name": "Cloud & Production Delivery",
       "badge": "",
-      "desc": "Container builds, deployment automation, and resolving runtime constraints."
+      "desc": "CI, containers, Rancher, and runtime constraints.",
+      "href": "#supporting-runtime"
     },
     {
       "name": "Engineering Automation",
       "badge": "",
-      "desc": "Reusable onboarding skills and stateful migration plugins."
+      "desc": "Onboarding skills and stateful migration tooling.",
+      "href": "#supporting-tooling"
     },
     {
       "name": "Technical Ownership & Collaboration",
       "badge": "",
-      "desc": "Architecture guidance, teammate mentoring, and hands-on incident recovery."
+      "desc": "Architecture guidance, mentoring, and incident recovery.",
+      "href": "#timeline"
     }
   ],
   "certs": [
@@ -413,10 +327,6 @@
       "year": "2019"
     }
   ],
-  "cta": {
-    "heading": "Let's build something <span class=\"accent\">meaningful</span> together.",
-    "body": "Whether you're looking for a lead software engineer to lead backend modernisation, build AI-powered systems, or strengthen your team's technical foundations — I'd love to connect."
-  },
   "footer": {
     "name": "Abdul Gaffar Shaikh",
     "meta": "Lead Software Engineer · Mumbai, Maharashtra",
@@ -427,7 +337,7 @@
       "id": "mcp",
       "title": "A modular foundation for knowledge and document extraction.",
       "category": "Enterprise knowledge & AI",
-      "summary": "I built a modular enterprise knowledge platform with a React conversational interface for ingestion, RAG queries, and adaptive extraction. Its API and secured MCP extend the same knowledge capabilities to applications and coding agents.",
+      "summary": "I built a modular platform with a React interface for multisource ingestion, RAG queries, and adaptive extraction, plus secured API and MCP access for applications and coding agents.",
       "detail": "Adaptive extraction uses LangGraph and LangChain to build schema-driven retrieval queries for each requested field. It retrieves relevant chunks from ChromaDB, reranks them by similarity, and constructs an LLM prompt with source material. Results include the field value, supporting context, page number, and model-reported confidence. Subsequent retrieval passes target only unresolved fields, keeping repeated context and unnecessary model input down.",
       "tags": [
         "Python / React",
@@ -439,7 +349,7 @@
       "shortTitle": "Knowledge management template",
       "group": "ai",
       "intro": "A shared platform for ingesting, querying, and extracting enterprise knowledge, extended securely to coding agents.",
-      "context": "Teams needed one governed foundation to ingest and query enterprise knowledge, extract structured data, and support AI-assisted workflows.",
+      "context": "Teams needed one governed foundation for enterprise knowledge, document extraction, and AI-assisted workflows.",
       "notes": "The platform follows a vertical slice architecture: query, adaptive extraction, Jira, Confluence, and other modules can be switched off through feature flags or removed independently. New ingestion sources can be added without reshaping the rest of the system. The API supports Kerberos authentication, while the MCP provides group-authorised access through time-limited JWT API keys for Claude Code and Copilot CLI.",
       "recognition": "Recognised in the CIO newsletter in 2026 for the template’s adoption in contract-field extraction.",
       "capabilities": [
@@ -495,7 +405,7 @@
       "id": "onboarding",
       "title": "Encoding deployment conventions into onboarding.",
       "category": "Engineering automation",
-      "summary": "Built a guided skill that turns service requirements into validated application, infrastructure, and Flux configuration, then creates and publishes the required repositories.",
+      "summary": "Replaced manual cloning and placeholder edits across application, infrastructure, and Flux repositories with a guided workflow that validates and publishes the required configuration.",
       "detail": "The skill turns service requirements into application charts, infrastructure charts, and Flux configuration. It creates the required repositories and branches, validates the setup with Helm and Kubernetes tooling, and publishes it using the firm’s deployment conventions.",
       "tags": [
         "Agent skills",
@@ -505,7 +415,8 @@
       "outcome": "Service onboarding and subsequent additions follow the same configuration, repository and validation workflow.",
       "shortTitle": "Rancher onboarding automation",
       "group": "platform",
-      "intro": "Replacing repeated template editing with a guided workflow that follows the firm’s deployment conventions."
+      "intro": "Replacing repeated template editing with a guided workflow that follows the firm’s deployment conventions.",
+      "proof": "Manual repository setup → one validated workflow"
     },
     {
       "id": "informatica",
@@ -514,7 +425,6 @@
       "summary": "Built a stateful plugin that assesses Informatica workflows at application scale, produces executive reporting, and generates equivalent Python/Prefect implementations. It retains progress across runs and follows internal scheduling and deployment conventions.",
       "detail": "The plugin separates discovery, assessment and code generation into focused skills. Discovery accepts manual evidence or Informatica XML exports and records missing behaviour and unresolved references. Assessment examines complexity and commonality across workflows. Generated code follows the firm’s Python project structure and AutoSys, Rancher and Prefect conventions. Each skill’s progress is tracked in JSON so the process can continue across runs.",
       "notes": "The discovery step keeps extracted metadata, assumptions and missing runtime details explicit. Parameter files, scheduler details, production run history and SME notes provide additional context when available for downstream assessment and code generation.",
-      "maturity": "Not yet confirmed",
       "tags": [
         "Informatica",
         "Python / Prefect",
@@ -523,13 +433,15 @@
       "outcome": "A connected migration process with workflow findings, executive reporting, generated implementations, and retained progress.",
       "shortTitle": "Informatica to Python/Prefect",
       "group": "ai",
-      "intro": "Taking legacy workflows through discovery and migration planning to equivalent Python/Prefect code."
+      "statusLabel": "Internal plugin",
+      "intro": "Taking legacy workflows through discovery and migration planning to equivalent Python/Prefect code.",
+      "proof": "Stateful assessment → generated Python/Prefect"
     },
     {
       "id": "api",
       "title": "An API for financial data.",
       "category": "Backend engineering & enablement",
-      "summary": "Built a maintainable FastAPI service for financial data and established a reference structure the team could extend.",
+      "summary": "Built a maintainable FastAPI service that gives teams a supported way to consume financial data held in Oracle, with a reference structure they can extend.",
       "detail": "Separated request handling, business logic, and data access to make the service easier to maintain and extend. The implementation uses FastAPI and SQLAlchemy with Oracle.",
       "tags": [
         "Python / FastAPI",
@@ -538,7 +450,8 @@
       "outcome": "A financial data API and a shared reference for continued development.",
       "shortTitle": "Financial data API",
       "group": "backend",
-      "intro": "Making financial data available through an API, with a working implementation and clear conventions for the team."
+      "intro": "Making financial data available through an API, with a working implementation and clear conventions for the team.",
+      "proof": "Supported API access · extensible reference"
     },
     {
       "id": "browser",
@@ -553,7 +466,8 @@
       "outcome": "The team had a working browser runtime for its scraping application.",
       "shortTitle": "Browser automation on Rancher",
       "group": "platform",
-      "intro": "Removing a browser-runtime blocker from a team’s regulatory scraping workflow."
+      "intro": "Removing a browser-runtime blocker from a team’s regulatory scraping workflow.",
+      "proof": "Blocked browser runtime → working Kubernetes service"
     },
     {
       "id": "platform",
@@ -570,7 +484,8 @@
       "status": "prototype",
       "shortTitle": "Internal tools hub",
       "group": "prototype",
-      "intro": "A prototype to bring scattered engineering resources into one place."
+      "intro": "A prototype to bring scattered engineering resources into one place.",
+      "proof": "Configurable shell · prototype"
     },
     {
       "id": "dotnet-api",
@@ -585,7 +500,8 @@
         "SQL Server",
         "Rancher"
       ],
-      "group": "backend"
+      "group": "backend",
+      "proof": "Existing legal data → supported team API"
     },
     {
       "id": "api-performance",
@@ -599,7 +515,8 @@
         "LINQ",
         "API performance"
       ],
-      "group": "backend"
+      "group": "backend",
+      "proof": "6–7 GB → ~1 GB · 5 min → 40 sec"
     },
     {
       "id": "service-modernisation",

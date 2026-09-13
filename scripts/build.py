@@ -16,6 +16,7 @@ projects.append({
     'detail': 'Because AutoSys was not available in Rancher, a .NET bridge remained on Windows to receive command arguments from AutoSys jobs, construct messages, and publish them to Solace queues. Each former console process became a long-running Kubernetes subscriber using the in-house library built on the official Solace .NET packages. The migration covered application restructuring, message handling, AutoSys batch changes, end-to-end testing, and production release.',
     'outcome': 'Seven service migrations with zero post-deployment defects and zero business disruption.',
     'tags': ['.NET', 'AutoSys', 'Solace', 'Kubernetes'],
+    'proof': 'Three migrations led · zero post-deployment defects',
 })
 by_id = {item['id']: item for item in projects}
 email = data['hero']['email']['user'] + '@' + data['hero']['email']['domain']
@@ -29,7 +30,8 @@ def external(url, label):
     return f'<a href="{e(url)}" target="_blank" rel="noopener noreferrer">{label} <span aria-hidden="true">↗</span></a>'
 
 def technical_notes(p):
-    if not p.get('detail'):
+    detail_ids = {'mcp', 'modernisation', 'engineering-support', 'onboarding', 'browser', 'migrations', 'informatica'}
+    if not p.get('detail') or p.get('id') not in detail_ids:
         return ''
     extra = f'<p>{e(p["notes"])}</p>' if p.get('notes') else ''
     return f'<details class="technical-notes"><summary>Implementation notes <span aria-hidden="true">+</span></summary><div><p>{e(p["detail"])}</p>{extra}</div></details>'
@@ -44,20 +46,13 @@ figures = {
 
 }
 
-figures['delivery'] = '''<figure class="delivery-system" data-delivery-map><figcaption><span>Delivery paths</span><strong>Different constraints. One production standard.</strong><small>Select a path to trace the work behind the outcome.</small></figcaption><div class="delivery-map"><div class="delivery-axis" aria-hidden="true"><span>Review</span><span>Reshape</span><span>Automate</span><span>Produce</span></div><div class="delivery-paths"><button type="button" class="delivery-path" data-phases="review,reshape,automate,produce" data-note="Framework upgrades, CI adoption, container delivery, and Kubernetes onboarding."><span class="path-label"><small>Service estate</small><strong>Windows → Kubernetes</strong></span><span class="path-track" aria-hidden="true"><i data-phase="review"></i><i data-phase="reshape"></i><i data-phase="automate"></i><i data-phase="produce"></i></span></button><button type="button" class="delivery-path" data-phases="review,reshape,produce" data-note="A coupled dashboard separated into maintainable React and Python services, with the data layer continuing to evolve."><span class="path-label"><small>Dashboard</small><strong>Coupled → maintainable</strong></span><span class="path-track" aria-hidden="true"><i data-phase="review"></i><i data-phase="reshape"></i><i data-phase="automate"></i><i data-phase="produce"></i></span></button><button type="button" class="delivery-path" data-phases="review,reshape,automate,produce" data-note="Application, model, OCR, pipeline, and runtime blockers resolved for a reliable production deployment."><span class="path-label"><small>AI application</small><strong>Prototype → production</strong></span><span class="path-track" aria-hidden="true"><i data-phase="review"></i><i data-phase="reshape"></i><i data-phase="automate"></i><i data-phase="produce"></i></span></button></div></div><p class="delivery-readout" aria-live="polite"></p></figure>'''
+figures['delivery'] = ''
 
-headings = {
-    'mcp': 'A shared foundation<br>for enterprise knowledge.',
-    'modernisation': 'Modernising an<br>infrastructure dashboard.',
-    'engineering-support': 'AI adoption and<br>production delivery.'
-}
 stories = ''
 project_summaries = {
     'mcp': ('Knowledge-management template', 'Multisource ingestion, RAG, adaptive extraction, and secured agent access.'),
-    'modernisation': ('Infrastructure dashboard', 'Leading the move from a coupled Python and React implementation to maintainable services.'),
-    'engineering-support': ('AI clause extraction', 'Restructured the application and resolved the runtime and deployment issues blocking production.'),
+    'delivery': ('Application modernisation', 'Service upgrades, backend APIs, and AI applications carried through to production.'),
 }
-project_summaries['delivery'] = ('Application modernisation', 'Service upgrades, backend APIs, and AI applications carried through to production.')
 project_outcomes = {'mcp':'A shared foundation for enterprise knowledge', 'delivery':'Architecture, implementation & production delivery'}
 for key in data['featuredWork']:
     p = by_id[key]
@@ -70,7 +65,7 @@ for key in data['featuredWork']:
     if key == 'delivery':
         context = ''
         result = ''
-        examples = '<div class="delivery-examples"><h4>Selected deliveries</h4>'
+        examples = '<div class="delivery-examples" aria-label="Application modernisation examples">'
         for example_id in ['service-modernisation', 'modernisation', 'engineering-support']:
             example = by_id[example_id]
             evidence = '<p class="recognition">' + e(example['recognition']) + '</p>' if example.get('recognition') else ''
@@ -80,16 +75,18 @@ for key in data['featuredWork']:
 
 supporting = ''
 supporting_groups = [
-    ('Backend services & performance', ['dotnet-api', 'api', 'api-performance']),
-    ('Deployment & runtime engineering', ['onboarding', 'browser', 'migrations']),
-    ('Migration tooling & prototypes', ['informatica', 'platform']),
+    ('supporting-backend', 'Backend services & performance', ['dotnet-api', 'api', 'api-performance']),
+    ('supporting-runtime', 'Deployment & runtime engineering', ['onboarding', 'browser', 'migrations']),
+    ('supporting-tooling', 'Migration tooling & prototypes', ['informatica', 'platform']),
 ]
-for label, keys in supporting_groups:
-    supporting += f'<div class="supporting-group"><h3 class="supporting-group-heading">{e(label)}</h3><div class="supporting-grid">'
+for group_id, label, keys in supporting_groups:
+    supporting += f'<div class="supporting-group" id="{group_id}"><h3 class="supporting-group-heading">{e(label)}</h3><div class="supporting-grid">'
     for key in keys:
         p = by_id[key]
-        badge = '<span class="prototype-badge">Prototype</span>' if p.get('status') == 'prototype' else ''
-        supporting += f'<article class="supporting-project" id="project-{key}"><div class="supporting-title"><h4>{e(p["shortTitle"])}</h4>{badge}</div><p>{e(p["summary"])}</p>{tags(p["tags"])}{technical_notes(p)}</article>'
+        badge_text = p.get('statusLabel') or ('Prototype' if p.get('status') == 'prototype' else '')
+        badge = f'<span class="prototype-badge">{e(badge_text)}</span>' if badge_text else ''
+        proof = f'<p class="supporting-proof">{e(p["proof"])}</p>' if p.get('proof') else ''
+        supporting += f'<article class="supporting-project" id="project-{key}"><div class="supporting-title"><h4>{e(p["shortTitle"])}</h4>{badge}</div>{proof}<p>{e(p["summary"])}</p>{tags(p["tags"])}{technical_notes(p)}</article>'
     supporting += '</div></div>'
 
 current = data['timeline'][0]
@@ -104,7 +101,7 @@ for role in data['timeline'][1:-1]:
     earlier += f'<div class="earlier-role"><h4>{e(role["title"])}</h4><p class="role-date">{e(role["period"])}</p><ul>'+''.join('<li>'+b+'</li>' for b in role['bullets'])+'</ul></div>'
 career = f'''<article class="employer current-employer"><div class="employer-heading"><div><p class="role-date">May 2023 — Present</p><h3>Capgemini</h3><p>Mumbai, India · Global investment bank</p></div><span class="current-label">Current</span></div>{role_progression}</article><article class="employer"><div class="employer-heading"><div><p class="role-date">October 2018 — May 2023</p><h3>Associate to Senior Software Engineer</h3><p>Accenture · Mumbai</p></div></div><p class="role-summary">Progressed through three engineering roles in financial services, working on insurance platforms, API modernisation, Azure integrations, and document automation.</p><details class="career-details"><summary>Earlier roles & contributions <span aria-hidden="true">+</span></summary>{earlier}</details></article><div class="education"><span>Education</span><div><strong>{e(data['timeline'][-1]['title'])}</strong><p>{e(data['timeline'][-1]['org'])} · 2015–2018</p></div></div>'''
 
-skills = ''.join(f'<article class="skill-item"><h3>{e(x["name"])}</h3><p>{e(x["desc"])}</p></article>' for x in data['skills'])
+skills = ''.join(f'<article class="skill-item"><h3><a href="{e(x["href"])}">{e(x["name"])} <span aria-hidden="true">↗</span></a></h3><p>{e(x["desc"])}</p></article>' for x in data['skills'])
 certs = ''
 for c in data['certs']:
     content = f'<span class="cert-code">{e(c["badge"])}</span><span>{e(c["name"].replace("Microsoft Certified: ",""))}</span><span class="cert-year">{e(c["year"])}</span>'
@@ -130,12 +127,13 @@ html = f'''<!doctype html>
 <a class="skip-link" href="#main-content">Skip to content</a>
 <header class="site-header"><div class="header-inner wrap"><a class="wordmark" href="#hero" aria-label="Abdul Gaffar Shaikh, home">ags<span>/</span></a><nav aria-label="Main navigation"><a href="#impact">Work</a><a href="#timeline">Experience</a><a href="#skills">Expertise</a><a href="#cta">Contact</a></nav><button id="theme-toggle" class="icon-button" aria-label="Switch to dark mode" title="Change color theme" hidden><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor"/></svg></button></div></header>
 <main id="main-content">
-<section class="hero" id="hero"><div class="hero-orbit" aria-hidden="true"><span class="orbit-ring"></span><span class="orbit-node orbit-node-a">systems</span><span class="orbit-node orbit-node-b">teams</span><span class="orbit-node orbit-node-c">production</span><i></i></div><div class="hero-inner wrap"><div class="hero-identity"><p class="intro">Lead Software Engineer</p><h1>Abdul Gaffar<br><em>Shaikh.</em></h1><p class="hero-stack">.NET · Python · Kubernetes</p><p class="hero-location">Capgemini · Mumbai, India</p></div><div class="hero-positioning"><p class="hero-statement">I lead application modernisation and build <em>backend and AI systems</em> for production.</p><p class="hero-bio">7.5+ years in financial services, combining hands-on engineering with architecture guidance and team mentoring.</p><div class="hero-links"><a class="button" href="{asset('output/pdf/resume-revised.pdf')}" target="_blank" rel="noopener">Resume PDF <span aria-hidden="true">↗</span></a><a href="#impact">Work ↓</a>{external(linkedin,'LinkedIn')}</div></div><ul class="hero-evidence" aria-label="Delivery highlights"><li><strong>Enterprise knowledge</strong><span>Account foundation · CIO recognition</span></li><li><strong>Application delivery</strong><span>Windows → Kubernetes · production AI</span></li></ul></div></section>
-<section class="work-section wrap" id="impact"><div class="work-header"><h2>Work <span>/ 01—02</span></h2></div><div class="work-overview">{stories}</div></section>
+<section class="hero" id="hero"><div class="hero-orbit" aria-hidden="true"><span class="orbit-ring"></span><span class="orbit-node orbit-node-a">systems</span><span class="orbit-node orbit-node-b">teams</span><span class="orbit-node orbit-node-c">production</span><i></i></div><div class="hero-inner wrap"><div class="hero-identity"><p class="intro">Lead Software Engineer</p><h1>Abdul Gaffar<br><em>Shaikh.</em></h1><p class="hero-stack">.NET · Python · Kubernetes</p><p class="hero-location">Capgemini · Mumbai, India</p></div><div class="hero-positioning"><p class="hero-statement">I lead application modernisation and build <em>backend and AI systems</em> for production.</p><p class="hero-bio">7.5+ years in financial services, combining hands-on engineering with architecture guidance and team mentoring.</p><div class="hero-links"><a class="button" href="{asset('output/pdf/resume-revised.pdf')}" target="_blank" rel="noopener">Resume PDF <span aria-hidden="true">↗</span></a><a href="#impact">Work ↓</a>{external(linkedin,'LinkedIn')}</div></div></div></section>
+<nav class="work-directory wrap" aria-label="Work directory"><a href="#project-mcp"><span>Knowledge</span><small>RAG & extraction</small></a><a href="#project-delivery"><span>Modernisation</span><small>Architecture to production</small></a><a href="#supporting-backend"><span>APIs</span><small>Delivery & performance</small></a><a href="#supporting-runtime"><span>Runtime & migration</span><small>Kubernetes delivery</small></a><a href="#timeline"><span>Experience</span><small>Role progression</small></a></nav>
+<section class="work-section wrap" id="impact" aria-label="Selected systems"><div class="work-overview">{stories}</div></section>
 <section class="supporting-section" id="work-index"><div class="wrap"><header class="supporting-heading"><h2>More engineering work.</h2><span>Backend APIs / performance / runtimes / tooling</span></header><div class="supporting-content">{supporting}</div></div></section>
 <section class="experience-section wrap" id="timeline"><div class="section-heading"><h2>Experience.</h2></div><div class="experience-layout"><div class="experience-intro"><p>Hands-on engineering, with growing responsibility for architecture and delivery.</p>{external(linkedin,'View career on LinkedIn')}</div><div class="career-list">{career}</div></div></section>
 <section class="expertise-section" id="skills"><div class="wrap"><div class="section-heading"><h2>What I work with.</h2><p>Backend depth, with the cloud and AI experience to connect the wider system.</p></div><div class="skill-grid">{skills}</div><details class="credentials"><summary><span>Certifications <small>Azure · AI · Security · Duck Creek</small></span><span aria-hidden="true">+</span></summary><div class="cert-list">{certs}</div></details></div></section>
-<section class="contact-section wrap" id="cta"><div class="contact-question"><p>Engineering roles &amp; collaboration.</p><h2>What are you trying<br>to make work<span>?</span></h2></div><div class="contact-brief"><p>Hiring for a lead engineering role or tackling a modernisation challenge? I’d be glad to compare notes.</p><ol class="contact-prompts" aria-label="A useful engineering brief"><li><span>Context</span><small>What exists today</small></li><li><span>Constraint</span><small>What is getting in the way</small></li><li><span>Outcome</span><small>What good looks like</small></li></ol><div class="contact-actions"><a class="button" href="mailto:{email}">Start a conversation <span aria-hidden="true">↗</span></a><div class="email-row"><a href="mailto:{email}">{email}</a><button id="copy-email" class="icon-button" data-email="{email}" aria-label="Copy email address" title="Copy email address" hidden>⧉</button></div></div><span id="copy-status" role="status"></span></div></section>
+<section class="contact-section wrap" id="cta"><div class="contact-question"><p>Engineering roles &amp; collaboration.</p><h2>What are you trying<br>to make work<span>?</span></h2></div><div class="contact-brief"><p>Hiring for a lead engineering role or tackling a modernisation challenge? I’d be glad to compare notes.</p><div class="contact-actions"><a class="button" href="mailto:{email}">Start a conversation <span aria-hidden="true">↗</span></a><div class="email-row"><a href="mailto:{email}">{email}</a><button id="copy-email" class="icon-button" data-email="{email}" aria-label="Copy email address" title="Copy email address" hidden>⧉</button></div></div><span id="copy-status" role="status"></span></div></section>
 </main>
 <footer><div class="wrap footer-inner"><a class="footer-name" href="#hero">Abdul Gaffar Shaikh<span>Lead Software Engineer · Mumbai, India</span></a><div>{external(github,'GitHub')}{external(linkedin,'LinkedIn')}<a href="tel:{data['hero']['phone'].replace(' ','')}">Phone ↗</a></div><span>© {data['footer']['year']}</span></div></footer>
 </body></html>'''
