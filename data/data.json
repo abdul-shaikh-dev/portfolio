@@ -427,10 +427,10 @@
       "id": "mcp",
       "title": "A modular foundation for knowledge and document extraction.",
       "category": "Enterprise knowledge & AI",
-      "summary": "I designed a modular template with scanned-document OCR, adaptive extraction, and controlled access for coding agents.",
+      "summary": "I built a modular enterprise knowledge platform with a React conversational interface for ingestion, RAG queries, and adaptive extraction. Its API and secured MCP extend the same knowledge capabilities to applications and coding agents.",
       "detail": "Adaptive extraction uses LangGraph and LangChain to build schema-driven retrieval queries for each requested field. It retrieves relevant chunks from ChromaDB, reranks them by similarity, and constructs an LLM prompt with source material. Results include the field value, supporting context, page number, and model-reported confidence. Subsequent retrieval passes target only unresolved fields, keeping repeated context and unnecessary model input down.",
       "tags": [
-        "Python",
+        "Python / React",
         "RAG",
         "LangGraph",
         "MCP"
@@ -438,18 +438,18 @@
       "outcome": "Adopted as the standard knowledge-management foundation across the client account.",
       "shortTitle": "Knowledge management template",
       "group": "ai",
-      "intro": "A shared foundation for enterprise knowledge use cases, extended to coding agents with controlled access.",
-      "context": "Teams needed a reusable foundation for searching enterprise knowledge and extracting information from documents.",
-      "notes": "Vertical slice architecture keeps ingestion modules independently removable; environment variables can disable modules such as Jira ingestion. The template supports enterprise authentication through Kerberos and JWT-based API keys. Its MCP integration makes knowledge available in Claude Code and Copilot CLI, with group-based authorisation and time-limited credentials.",
+      "intro": "A shared platform for ingesting, querying, and extracting enterprise knowledge, extended securely to coding agents.",
+      "context": "Teams needed one governed foundation to ingest and query enterprise knowledge, extract structured data, and support AI-assisted workflows.",
+      "notes": "The platform follows a vertical slice architecture: query, adaptive extraction, Jira, Confluence, and other modules can be switched off through feature flags or removed independently. New ingestion sources can be added without reshaping the rest of the system. The API supports Kerberos authentication, while the MCP provides group-authorised access through time-limited JWT API keys for Claude Code and Copilot CLI.",
       "recognition": "Recognised in the CIO newsletter in 2026 for the template’s adoption in contract-field extraction.",
       "capabilities": [
         {
-          "title": "Reusable presets or on-demand schemas",
-          "body": "Teams can extend predefined presets or define fields, data types, validation rules, and examples on demand."
+          "title": "From source to useful answer",
+          "body": "The React interface supports Jira, Confluence, PDF, Word, text, and image ingestion, then exposes RAG queries and schema-driven extraction through one API."
         },
         {
-          "title": "Modules teams can tailor",
-          "body": "Ingestion modules can be disabled or removed independently. Scanned-document OCR and authentication are built in."
+          "title": "Composable for each team",
+          "body": "Query, extraction, and ingestion modules can be enabled independently, while new sources can be added through the same modular structure."
         }
       ]
     },
@@ -458,7 +458,7 @@
       "shortTitle": "Infrastructure dashboard modernisation",
       "title": "Taking applications from implementation to production.",
       "category": "Application modernisation",
-      "context": "An infrastructure dashboard gave stakeholders valuable visibility into their applications, but its underlying design was difficult to maintain and prepare for production.",
+      "context": "The dashboard gives stakeholders an application-level view of ServiceNow CMDB data across virtual machines, services, and container platforms.",
       "summary": "I reviewed the Python and React codebase and defined a phased modernisation plan. The restructured backend and React application are now deployed on Rancher. Work continues on a scheduled data pipeline and database-backed storage.",
       "detail": "After reviewing the codebase with its developer, I broke the work into phases: separate frontend and backend responsibilities, restructure the Python code, remove spreadsheet dependencies, and replace direct consumption of generated JSON files with REST endpoints. The planned next stage uses Prefect flows to collect data into SQL, with the Python API serving it to React.",
       "tags": [
@@ -470,14 +470,14 @@
       "group": "platform",
       "intro": "Building the service, improving the codebase, and carrying the work through deployment.",
       "outcome": "The dashboard has a better-structured codebase, with its React application and Python API deployed on Rancher. The Prefect and SQL data pipeline remains planned.",
-      "previewOutcome": "Restructured the Python backend and deployed it alongside React. Data-pipeline and storage improvements remain ongoing."
+      "previewOutcome": "Leading its transition from a coupled prototype to separately deployed React and Python services; database-backed ingestion remains in progress."
     },
     {
       "id": "engineering-support",
       "shortTitle": "AI clause extraction in production",
       "title": "Taking PDF clause extraction into production.",
       "category": "AI adoption & production delivery",
-      "context": "An existing PDF clause-extraction application combined a Python RAG backend with React, but code and deployment constraints blocked release.",
+      "context": "The existing Python and React application could extract clauses from legal PDFs, but code, model-delivery, and Linux runtime constraints blocked release.",
       "summary": "I modernised the codebase, resolved deployment issues, and established a repeatable build and release process. This included adapting document processing and model delivery to the firm’s environment. The application was successfully deployed on Rancher and has run reliably in production for about a year.",
       "detail": "The Python RAG service uses Tesseract OCR and FAISS. I adapted OCR for Linux and moved the application onto GitLab CI. Because Hugging Face was blocked, I packaged the embedding model from Nexus into the application container. These changes addressed application and environment issues that were preventing production deployment.",
       "tags": [
@@ -489,13 +489,13 @@
       "intro": "Improving an existing clause-extraction application and carrying it through a successful production release.",
       "outcome": "Successfully deployed on Rancher and running reliably in production for about a year.",
       "recognition": "Recognised in the CIO newsletter for contributions to the clause-extraction application’s production delivery.",
-      "previewOutcome": "Modernised an existing RAG application and established a repeatable release path."
+      "previewOutcome": "Legal-document OCR and RAG application modernised and running reliably in production."
     },
     {
       "id": "onboarding",
       "title": "Encoding deployment conventions into onboarding.",
       "category": "Engineering automation",
-      "summary": "Replaced manual deployment-template setup with a guided onboarding skill. It prepares and validates the configuration needed to deploy services to Rancher, and supports later service additions.",
+      "summary": "Built a guided skill that turns service requirements into validated application, infrastructure, and Flux configuration, then creates and publishes the required repositories.",
       "detail": "The skill turns service requirements into application charts, infrastructure charts, and Flux configuration. It creates the required repositories and branches, validates the setup with Helm and Kubernetes tooling, and publishes it using the firm’s deployment conventions.",
       "tags": [
         "Agent skills",
@@ -511,7 +511,7 @@
       "id": "informatica",
       "title": "From Informatica workflows to Python and Prefect.",
       "category": "Informatica migration plugin",
-      "summary": "Built a migration plugin that takes Informatica workflows from discovery and assessment to equivalent Python/Prefect code. It supports application-wide planning and retains progress across runs.",
+      "summary": "Built a stateful plugin that assesses Informatica workflows at application scale, produces executive reporting, and generates equivalent Python/Prefect implementations. It retains progress across runs and follows internal scheduling and deployment conventions.",
       "detail": "The plugin separates discovery, assessment and code generation into focused skills. Discovery accepts manual evidence or Informatica XML exports and records missing behaviour and unresolved references. Assessment examines complexity and commonality across workflows. Generated code follows the firm’s Python project structure and AutoSys, Rancher and Prefect conventions. Each skill’s progress is tracked in JSON so the process can continue across runs.",
       "notes": "The discovery step keeps extracted metadata, assumptions and missing runtime details explicit. Parameter files, scheduler details, production run history and SME notes provide additional context when available for downstream assessment and code generation.",
       "maturity": "Not yet confirmed",
@@ -529,7 +529,7 @@
       "id": "api",
       "title": "An API for financial data.",
       "category": "Backend engineering & enablement",
-      "summary": "Built a maintainable Python API for financial data and established conventions the team could continue.",
+      "summary": "Built a maintainable FastAPI service for financial data and established a reference structure the team could extend.",
       "detail": "Separated request handling, business logic, and data access to make the service easier to maintain and extend. The implementation uses FastAPI and SQLAlchemy with Oracle.",
       "tags": [
         "Python / FastAPI",
@@ -544,7 +544,7 @@
       "id": "browser",
       "title": "Unblocking browser automation on Rancher.",
       "category": "Platform enablement",
-      "summary": "Unblocked a regulatory web-scraping application by deploying a Playwright browser runtime on Rancher and connecting it to Crawl4AI.",
+      "summary": "Unblocked regulatory scraping when the standard Chromium runtime could not be deployed on Rancher. Delivered a Playwright-based remote browser service and connected Crawl4AI to it in Kubernetes.",
       "detail": "The application could not get Chromium running on Rancher because of vulnerability-related deployment constraints. I used the official Playwright container image, prepared a Helm release in the Flux tenant, and adjusted browser launch arguments and the Chrome DevTools Protocol (CDP) connection so Crawl4AI could use the remote browser in Kubernetes.",
       "tags": [
         "Playwright",
@@ -559,7 +559,7 @@
       "id": "platform",
       "title": "A prototype hub for organising our tools.",
       "category": "Internal tooling prototype",
-      "summary": "Prototyped a shared home for custom skills, MCP integrations, and modernisation reporting while keeping each tool independently deployable.",
+      "summary": "Prototyped a configurable Vite shell for independently deployed skills, MCP integrations, and modernisation reporting. Built the initial ServiceNow reporting module, which other developers later extended.",
       "detail": "Used Vite module federation to keep the tools independently modular within a configurable shell. The hub brings together GitLab-hosted skills, MCP integrations, and modernisation reporting. I built the initial reporting module using ServiceNow data; other developers have since extended it.",
       "tags": [
         "Vite",
@@ -577,7 +577,7 @@
       "shortTitle": "Business data API",
       "title": "Making business data accessible through an API.",
       "category": "Backend engineering",
-      "summary": "Built and deployed a .NET API that made previously inaccessible business data available to other teams.",
+      "summary": "Built and deployed a .NET and EF Core API over legal data held in existing SQL Server views, giving other teams a supported way to access it.",
       "detail": "Built a .NET and Entity Framework Core API over existing SQL Server tables and views, making business data accessible to other teams. I prepared its Helm and Flux configuration using the onboarding skill and deployed it to Rancher.",
       "tags": [
         ".NET",
@@ -592,7 +592,7 @@
       "shortTitle": "Financial API memory optimisation",
       "title": "Reducing memory usage in financial-data APIs.",
       "category": "Application performance",
-      "summary": "Reduced the memory footprint of existing financial-data APIs through LINQ query optimisation and related implementation changes.",
+      "summary": "Reduced memory usage in financial APIs by optimising LINQ query shape and related data-processing paths.",
       "detail": "",
       "tags": [
         "C#",
@@ -606,7 +606,7 @@
       "shortTitle": "Service modernisation & Kubernetes onboarding",
       "group": "platform",
       "category": "Platform modernisation",
-      "summary": "The estate spanned .NET services, React microfrontends, and NestJS APIs; I handled framework, build, and deployment issues across these application types.",
+      "summary": "The large estate spanned .NET services, React microfrontends, and NestJS APIs. As the client moved away from Windows server management, I handled framework upgrades, CI adoption, and build and deployment issues across the migration path.",
       "detail": "Upgraded .NET Core 3.1 services to .NET 6 or .NET 8 and adopted the in-house GitLab CI templates. Resolved issues in builds, SonarQube and Nexus IQ checks, and container creation, then prepared Helm charts and Flux tenant configuration for Rancher deployment. The work spanned backend services and frontend applications.",
       "tags": [
         ".NET",
@@ -615,7 +615,7 @@
         "Helm",
         "Flux"
       ],
-      "previewOutcome": "Moved .NET services from Windows hosting to Kubernetes, with framework upgrades and automated build and deployment pipelines."
+      "previewOutcome": "A large Windows-hosted service estate modernised for Kubernetes."
     },
     {
       "id": "delivery",

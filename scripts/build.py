@@ -11,11 +11,11 @@ projects = [dict(item) for item in data['recentWork']]
 projects.append({
     'id': 'migrations', 'shortTitle': 'Messaging service migrations',
     'group': 'platform', 'category': 'Production modernisation',
-    'intro': 'Seven Solace services migrated to Kubernetes, with zero post-deployment defects.',
-    'summary': 'Migrated seven Solace messaging services to Kubernetes, independently leading three migrations. Resolved messaging reliability and deployment issues.',
-    'detail': 'The work involved moving existing messaging services into the Kubernetes environment while maintaining business continuity. The migration pattern established during this work became the approach for subsequent service migrations across the account.',
+    'intro': 'AutoSys-triggered .NET workloads moved from Windows hosting to Kubernetes through Solace messaging.',
+        'summary': 'Converted scheduled .NET console processes into long-running Solace subscribers, enabling AutoSys-triggered workloads to move from Windows servers to Kubernetes. I led three of seven migrations through production with no post-deployment defects.',
+    'detail': 'Because AutoSys was not available in Rancher, a .NET bridge remained on Windows to receive command arguments from AutoSys jobs, construct messages, and publish them to Solace queues. Each former console process became a long-running Kubernetes subscriber using the in-house library built on the official Solace .NET packages. The migration covered application restructuring, message handling, AutoSys batch changes, end-to-end testing, and production release.',
     'outcome': 'Seven service migrations with zero post-deployment defects and zero business disruption.',
-    'tags': ['Solace', 'Kubernetes', 'Rancher'],
+    'tags': ['.NET', 'AutoSys', 'Solace', 'Kubernetes'],
 })
 by_id = {item['id']: item for item in projects}
 email = data['hero']['email']['user'] + '@' + data['hero']['email']['domain']
@@ -53,7 +53,7 @@ headings = {
 }
 stories = ''
 project_summaries = {
-    'mcp': ('Knowledge-management template', 'Reusable knowledge infrastructure for search, document extraction, and coding agents.'),
+    'mcp': ('Knowledge-management template', 'Multisource ingestion, RAG, adaptive extraction, and secured agent access.'),
     'modernisation': ('Infrastructure dashboard', 'Leading the move from a coupled Python and React implementation to maintainable services.'),
     'engineering-support': ('AI clause extraction', 'Restructured the application and resolved the runtime and deployment issues blocking production.'),
 }

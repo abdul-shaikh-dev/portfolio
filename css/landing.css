@@ -383,6 +383,7 @@ html { scroll-padding-top:76px; }
 .supporting-group-heading { font-family:'DM Serif Display',Georgia,serif; font-size:22px; font-weight:400; color:var(--inverse-accent); }
 .supporting-section .supporting-project { border-color:color-mix(in srgb,var(--bg) 25%,transparent); }
 .supporting-section .supporting-project > p,.supporting-section .tags li,.supporting-section .technical-notes p { color:color-mix(in srgb,var(--bg) 72%,transparent); }
+.supporting-section .tags li { background:transparent; border:1px solid color-mix(in srgb,var(--bg) 28%,transparent); }
 .supporting-section .technical-notes,.supporting-section .technical-notes summary { border-color:color-mix(in srgb,var(--bg) 25%,transparent); }
 .supporting-section :is(.return-to-deliveries,.technical-notes summary span) { color:var(--inverse-accent); }
 
