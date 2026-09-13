@@ -105,130 +105,97 @@
 
 \begin{document}
 
-%----------HEADING----------
-% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
-%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
-% \end{tabular*}
-
 \begin{center}
-    \textbf{\Huge \scshape Abdul Gaffar Shaikh} \\ \vspace{1pt}
-    \small \href{tel:+91 8898671746}{\underline{+91 8898671746}} $|$ \href{mailto:abdul219428@gmail.com}{\underline{abdul219428@gmail.com}} $|$ 
-    \href{https://www.linkedin.com/in/abdul-gaffar-shaikh21/}{\underline{linkedin.com/in/abdul-gaffar-shaikh21/}} $|$
-    \href{https://github.com/abdul219428}{\underline{github.com/abdul219428}}
+    \textbf{\Huge Abdul Gaffar Shaikh} \\ \vspace{4pt}
+    \small Lead Software Engineer $|$ Mumbai, India \\
+    \href{tel:+918898671746}{+91 88986 71746} $|$
+    \href{mailto:abdul219428@gmail.com}{abdul219428@gmail.com} \\
+    \href{https://www.linkedin.com/in/abdul-gaffar-shaikh21/}{linkedin.com/in/abdul-gaffar-shaikh21} $|$
+    \href{https://github.com/abdul-shaikh-dev}{github.com/abdul-shaikh-dev}
 \end{center}
-\setlength{\footskip}{4.08003pt}
+\setlength{\footskip}{12pt}
 
+\section{Profile}
+\small{Lead software engineer with 7.5+ years in financial services, building backend systems, modernising applications, and delivering enterprise AI capabilities. Hands-on implementation alongside architecture reviews, performance optimisation, and guidance for teammates delivering modernisation work across teams.}
 
+\section{Experience}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Capgemini}{May 2023 -- Present}
+    {Financial services engineering}{Mumbai, India}
+  \resumeSubSubheading{\textbf{Lead Software Engineer}}{April 2026 -- Present}
+  \resumeItemListStart
+    \resumeItem{Leading the \textbf{phased modernisation of a Python and React infrastructure dashboard}. Reviewed the codebase, defined architectural changes, and guided implementation of a structured backend and REST APIs. Both applications are deployed on Rancher; data-pipeline and storage improvements remain ongoing.}
+    \resumeItem{Built and deployed a \textbf{.NET API over legal business data}, making previously inaccessible data available to other teams. Established its deployment configuration and brought the service onto Rancher.}
+    \resumeItem{Built a \textbf{Python financial-data API} and established a maintainable reference implementation for continued development.}
+    \resumeItem{Resolved a \textbf{production performance bottleneck in financial-data APIs} by restructuring LINQ queries and processing paths, reducing pod memory from 6--7 GB to about 1 GB and endpoint response time from roughly five minutes to 40 seconds.}
+    \resumeItem{Guide \textbf{teammates delivering modernisation work}, reviewing architectural decisions and supporting adoption of established CI and deployment practices.}
+    \resumeItem{Built supporting tools for \textbf{Rancher onboarding} and \textbf{Informatica-to-Python/Prefect migration}, including code generation and persistent progress tracking.}
+    \resumeItem{Unblocked a \textbf{regulatory web-scraping application} by deploying a Playwright browser runtime on Rancher. Addressed Chromium deployment constraints, configured Helm/Flux deployment, and established the remote browser connection for Crawl4AI.}
+  \resumeItemListEnd
+  \resumeSubSubheading{\textbf{Senior Software Engineer}}{May 2023 -- March 2026}
+  \resumeItemListStart
+    \resumeItem{Designed a \textbf{modular knowledge-management and RAG template} with scanned-document support, configurable ingestion, and built-in authentication. Adopted as the account standard and used for contract-field extraction; recognised in the CIO newsletter in 2026.}
+    \resumeItem{Built \textbf{adaptive extraction within the template} using LangGraph and vector retrieval. Returns fields with supporting evidence and focuses subsequent passes on missing fields. Supports reusable presets and on-demand schemas.}
+    \resumeItem{Extended enterprise knowledge to \textbf{Claude Code and Copilot CLI through MCP}, with group-based authorisation and time-limited credentials.}
+    \resumeItem{Brought an existing \textbf{PDF clause-extraction application into production} through codebase modernisation, environment integration, and automated deployment. Adapted OCR and model delivery to the firm's constraints. Running reliably on Rancher for about a year; recognised in the CIO newsletter.}
+    \resumeItem{Modernised \textbf{.NET services and onboarded React microfrontends and NestJS APIs to Rancher}, supporting the move from Windows hosting to Kubernetes. Upgraded .NET Core 3.1 services to .NET 6/8, adopted established GitLab CI templates, and resolved build and deployment issues with Helm and Flux.}
+    \resumeItem{Migrated Solace messaging workloads to Kubernetes and resolved reliability and deployment issues. Contributed to critical incident recovery as part of a global engineering team.}
+  \resumeItemListEnd
+\resumeSubHeadingListEnd
 
-%-----------EXPERIENCE-----------
-\section{Experience} %increase font size
-\vspace{1pt}
-  \resumeSubHeadingListStart
+% Keep the recent role together; earlier experience and credentials follow.
+\newpage
+\section{Earlier Experience}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Senior Software Engineer}{December 2021 -- May 2023}
+    {Accenture Solutions Pvt. Ltd}{Mumbai, India}
+  \resumeItemListStart
+    \resumeItem{Led API design for moving legacy C\# class-library features to ASP.NET Core, defining error handling and service structure while retaining compatibility with Duck Creek's insurance configuration model.}
+    \resumeItem{Built an email-trigger application connecting a shared mailbox to the claims workflow using Azure Logic Apps, Blob Storage, and REST APIs. Established API documentation and automated quality checks for delivery.}
+    \resumeItem{Configured Duck Creek Claims capabilities for property and casualty insurance workflows.}
+  \resumeItemListEnd
+  \resumeSubheading
+    {Software Engineer}{December 2020 -- December 2021}
+    {Accenture Solutions Pvt. Ltd}{Mumbai, India}
+  \resumeItemListStart
+    \resumeItem{Converted C\# class-library features into REST APIs and integrated them with Azure API Management using JWT bearer authentication. Built HTTP-triggered Azure Functions and APIs to transfer documents between policy and claims applications.}
+    \resumeItem{Developed a decompiler-based analysis tool to inspect application code and produce method and class metrics for development effort estimation.}
+  \resumeItemListEnd
+  \resumeSubheading
+    {Associate Software Engineer}{October 2018 -- December 2020}
+    {Accenture Solutions Pvt. Ltd}{Mumbai, India}
+  \resumeItemListStart
+    \resumeItem{Maintained and enhanced an insurance claims application through regular releases and upgraded ASP.NET applications. Built document extraction, migration, and verification tools for claims data and third-party storage integration.}
+  \resumeItemListEnd
+\resumeSubHeadingListEnd
 
-    \resumeSubheading
-      {Senior Software Engineer}{December 2021 -- Present} %indtroduce a break line between role and comapany
-      {Accenture Solutions Pvt. Ltd}{Mumbai, Maharashtra}
-      \resumeItemListStart
-      
- \resumeItem {Designed and implemented an email trigger based application that exported 100+ emails per day from a shared mailbox to the claims application using Azure Logic Apps,Azure Blob Storage and APIs.
- }
- 
- \resumeItem{Developed RESTful APIs based on ASP.NET Core 3.1 and documented using the OpenAPI specification and swagger tools for accelerating development and consumption.}
- \resumeItem {Configured 3 Property and Casualty lines of business with reserves, payments, lines, coverages, and assignment setup on Duck Creek
-Claims V12 to support diverse insurance needs.}
-
- \resumeItem  {Managed version control with GitHub, performed code quality analysis with Sonar Analyzer, and used Azure DevOps and Jenkins for continuous integration and continuous delivery of web applications.}
-
-     
-      \resumeItemListEnd
-      
-% -----------Multiple Positions Heading-----------
-%    \resumeSubSubheading
-%     {Software Engineer I}{Oct 2014 - Sep 2016}
-%     \resumeItemListStart
-%        \resumeItem{Apache Beam}
-%          {Apache Beam is a unified model for defining both batch and streaming data-parallel processing pipelines}
-%     \resumeItemListEnd
-%    \resumeSubHeadingListEnd
-%-------------------------------------------
-\vspace{1pt}
-    \resumeSubheading
-      {Software Engineer}{December 2020 -- December 2021}
-      {Accenture Solutions Pvt. Ltd}{Mumbai, Maharashtra}
-      \resumeItemListStart
-      
-\resumeItem {Collaborated with stakeholders, developers and business analysts during agile sprints using the Azure Boards on the scrum framework for effective communication and organization.}
-\resumeItem {Implemented HTTP trigger-based Azure Functions and 3 APIs to efficiently retrieve documents from the policy application and store in the claims application.}
- \resumeItem {Transformed 11 features in the form of C\# class library projects into RESTful APIs based on ASP.NET Core 3.1,integrated with Azure API Management using JWT bearer token authentication for secure access.}
-\resumeItem {Coded Windows-based analyser tool to decompile an insurance application with over 40 projects in the solution.
-The tool generates metrics such as classes with override, virtual, and base methods for development effort estimation.}
-
-    \resumeItemListEnd
-\vspace{1pt}
-    \resumeSubheading
-       {Associate Software Engineer}{October 2018 -- December 2020}
-       {Accenture Solutions Pvt. Ltd}{Mumbai, Maharashtra}
-      \resumeItemListStart
-      
-\resumeItem {Enhanced and maintained an insurance claims application for 10 monthly releases, consistently providing clients with support and meeting requirements.}
-\resumeItem {Designed Windows-based application for extracting and migrating 4 million claims related documents stored in SQL database to third-party systems.}
-\resumeItem {Built Windows-based application for automating the manual verification of documents with missing file extensions, resulting in significant time savings of 200 hours.}
-\resumeItem {Upgraded ASP.NET Framework of 3 web applications from version 4.0 to version 4.6.2, ensuring that the applications remained up-to-date and functional.}
-      \resumeItemListEnd
-
-  \resumeSubHeadingListEnd
-
-%
-%-----------PROGRAMMING SKILLS-----------
 \section{Technical Skills}
- \begin{itemize}[leftmargin=0.15in, label={}]
-    \small{\item{
-     \textbf{Languages}{: C\#,SQL,JavaScript,HTML,CSS} \\
-     \vspace{1pt}
-     \textbf{Frameworks}{: ASP.NET Core,ASP.NET,ADO.NET,Dapper,MSTest,Moq,DuckCreek Claims V12,Scrum} \\
-     \vspace{1pt}
-     \textbf{Database}{: MS SQL Server 2019} \\
-     \vspace{1pt}
-     \textbf{Developer Tools}{:Visual Studio,Visual Studio Code,SQL Server Management Studio,Swagger,Azure DevOps,Azure
-Boards,GitHub,Git Extensions,Jira,Postman,Application Insights} \\
-     
-    }}
- \end{itemize}
+\begin{itemize}[leftmargin=0.15in, label={}]
+  \small{\item{
+    \textbf{Backend:} C\#, .NET, Entity Framework Core, LINQ, Python, FastAPI, SQLAlchemy, REST APIs \\
+    \textbf{Data \& AI:} SQL Server, Oracle, RAG, LangGraph, LangChain, ChromaDB, Tesseract OCR, MCP \\
+    \textbf{Cloud \& Delivery:} Kubernetes, Rancher, Helm, Flux, Docker, GitLab CI, Azure, Solace \\
+    \textbf{Quality \& Tooling:} xUnit, pytest, SonarQube, Nexus IQ, Git, OpenAPI, Playwright \\
+    \textbf{Application Architecture:} API design, service decomposition, codebase reviews, performance optimisation
+  }}
+\end{itemize}
 
+\section{Certifications}
+\begin{itemize}[leftmargin=0.15in, label={}, itemsep=2pt]
+  \small
+  \item Microsoft Certified: Azure AI Fundamentals (2023)
+  \item Microsoft Certified: Azure Developer Associate (2020); Azure Fundamentals (2019)
+  \item Microsoft Certified: Security, Compliance, and Identity Fundamentals (2021)
+  \item Duck Creek Claims Configurator (2022); Claims Basic Configuration (2019)
+\end{itemize}
 
- 
-
- 
-%-----------CERTIFICATIONS-----------
- 
- \section{Certifications}
-    \resumeSubHeadingListStart
-      \resumeProjectHeading
-          {Duck Creek Claims Configurator} {October 2022}
-      \resumeProjectHeading
-          {Microsoft Certified: Security, Compliance, and Identity Fundamentals} {September 2021}
-      \resumeProjectHeading 
-          {Microsoft Certified: Azure Developer Associate} {July 2020}
-      \resumeProjectHeading
-          {Microsoft Certified: Azure Fundamentals}{December 2019}
-       \resumeProjectHeading
-          {Duck Creek Claims Basic Configuration} {October 2019}
-         
-          
-    \resumeSubHeadingListEnd
-
- %-----------EDUCATION-----------
 \section{Education}
-  \resumeSubHeadingListStart
-    \resumeSubheading
-      {B.E in Electronics and Telecommunication } {September 2015 -- July 2018}
-      {Vivekanand Education Society's Institute of Technology}{Mumbai, Maharashtra}
-  \resumeSubHeadingListEnd
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {B.E. in Electronics and Telecommunication}{September 2015 -- July 2018}
+    {Vivekanand Education Society's Institute of Technology}{Mumbai, India}
+\resumeSubHeadingListEnd
 
-  
- 
- %
-
-%-------------------------------------------
 \end{document}
