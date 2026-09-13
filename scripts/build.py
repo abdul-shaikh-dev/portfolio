@@ -116,7 +116,11 @@ for c in data['certs']:
     certs += external(c['url'],content) if c.get('url') else '<div>'+content+'</div>'
 
 def asset(path):
-    version = sha256((ROOT / path).read_bytes()).hexdigest()[:10]
+    resource = ROOT / path
+    content = resource.read_bytes()
+    if resource.suffix in {'.css', '.js'}:
+        content = content.replace(b'\r\n', b'\n')
+    version = sha256(content).hexdigest()[:10]
     return f'{path}?v={version}'
 
 html = f'''<!doctype html>

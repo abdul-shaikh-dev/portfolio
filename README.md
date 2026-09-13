@@ -60,6 +60,12 @@ python scripts/build.py
 
 The second LaTeX pass resolves document references. Rebuilding the website refreshes the cache-busting hash on the resume link.
 
+## Deployment
+
+`.github/workflows/pages.yml` generates the site and deploys a minimal static artifact to GitHub Pages whenever `main` changes. The deployment contains only `index.html`, `css/`, `js/`, and `output/`, plus `.nojekyll` so GitHub serves those files directly.
+
+The published site is [abdul-shaikh-dev.github.io/portfolio](https://abdul-shaikh-dev.github.io/portfolio/). The workflow can also be started manually from the GitHub Actions page.
+
 ## Resume CI
 
 `.github/workflows/resume.yml` runs when resume data, its generator, or its template changes. It can also be started manually from the GitHub Actions page.
