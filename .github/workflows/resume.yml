@@ -1,0 +1,104 @@
+name: Build resume
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - data/resume.json
+      - docs/resume-template.tex
+      - docs/resume.tex
+      - scripts/build_resume.py
+      - .github/workflows/resume.yml
+  pull_request:
+    paths:
+      - data/resume.json
+      - docs/resume-template.tex
+      - docs/resume.tex
+      - scripts/build_resume.py
+      - .github/workflows/resume.yml
+  workflow_dispatch:
+
+concurrency:
+  group: resume-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate LaTeX from resume data
+        run: python scripts/build_resume.py
+
+      - name: Verify committed LaTeX is current
+        if: github.event_name == 'pull_request'
+        run: git diff --exit-code -- docs/resume.tex
+
+      - name: Compile resume PDF
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: resume.tex
+          working_directory: docs
+          args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode
+
+      - name: Stage canonical PDF
+        run: |
+          mkdir -p output/pdf
+          cp docs/resume.pdf output/pdf/resume.pdf
+
+      - name: Upload compiled resume
+        uses: actions/upload-artifact@v4
+        with:
+          name: Abdul-Gaffar-Shaikh-resume
+          path: output/pdf/resume.pdf
+          if-no-files-found: error
+          retention-days: 30
+
+  publish:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate LaTeX from resume data
+        run: python scripts/build_resume.py
+
+      - name: Download compiled resume
+        uses: actions/download-artifact@v4
+        with:
+          name: Abdul-Gaffar-Shaikh-resume
+          path: output/pdf
+
+      - name: Refresh website resume link
+        run: python scripts/build.py
+
+      - name: Commit generated resume
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/resume.tex output/pdf/resume.pdf index.html
+          if git diff --cached --quiet; then
+            echo "Generated files are already current."
+          else
+            git commit -m "chore: refresh generated resume [skip ci]"
+            git push
+          fi
