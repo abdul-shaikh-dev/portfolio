@@ -181,13 +181,9 @@
           "title": "Lead Software Engineer",
           "period": "April 2026 — Present",
           "bullets": [
-            "Guide <strong>teammates delivering modernisation work</strong>, review architectural decisions, and support adoption of established CI and deployment practices.",
-            "Built and deployed a <strong>.NET business-data API</strong>, making previously inaccessible data available to other teams.",
-            "Leading the <strong>phased modernisation of a Python and React infrastructure dashboard</strong>. Both applications are deployed on Rancher; the data-pipeline and storage improvements remain ongoing.",
-            "Built a <strong>Python financial-data API</strong> and established a maintainable reference implementation for continued development.",
-            "Reduced <strong>financial API memory usage</strong> through LINQ query optimisation and related code changes.",
-            "Built supporting automation for <strong>Rancher onboarding</strong> and <strong>Informatica-to-Python/Prefect migration</strong>, including code generation and persistent progress tracking.",
-            "Unblocked a <strong>regulatory web-scraping application</strong> by deploying a Playwright browser runtime on Rancher. Addressed Chromium deployment constraints and configured the remote browser connection for Crawl4AI, enabling the application to use the browser in Kubernetes."
+            "Lead <strong>architecture reviews and phased modernisation</strong> across Python, React, and .NET applications.",
+            "Guide teammates through implementation and the adoption of established <strong>CI, container, and Rancher practices</strong>.",
+            "Remain hands-on with <strong>backend delivery, performance work, engineering automation, and production blockers</strong>."
           ]
         },
         {
@@ -195,14 +191,10 @@
           "title": "Senior Software Engineer",
           "period": "May 2023 — March 2026",
           "bullets": [
-            "Designed a <strong>modular knowledge-management template</strong> for document extraction and enterprise search, adopted as the account standard and used for contract-field extraction.",
-            "Built <strong>adaptive extraction within the template</strong>, combining schema-driven retrieval, source-backed results, and retries focused on missing fields. Supports reusable presets and on-demand schemas; recognised in the CIO newsletter in 2026.",
-            "Extended enterprise knowledge to <strong>coding agents through MCP</strong>, with built-in authentication and controlled access.",
-            "Brought a <strong>PDF clause-extraction application into production</strong> through codebase modernisation, environment integration, and repeatable deployment. Running reliably for about a year; recognised in the CIO newsletter for this delivery.",
-            "Modernised <strong>.NET services and onboarded React microfrontends and NestJS APIs to Rancher</strong>, supporting the move from Windows-hosted services to Kubernetes. Upgraded .NET Core 3.1 services to .NET 6/8, adopted established GitLab CI templates, and resolved build, quality-check, and deployment issues.",
-            "Migrated <strong>Solace messaging services to Kubernetes</strong>, addressing reliability and deployment issues.",
-            "Contributed to <strong>critical incident recovery</strong> as part of a global engineering team during a quarter-end data centre outage.",
-            "Prototyped a <strong>modular internal tools hub</strong> for skills, MCP integrations, and modernisation reporting."
+            "Built enterprise <strong>knowledge and document-extraction capabilities</strong> that became a shared account foundation.",
+            "Delivered a production <strong>RAG clause-extraction application</strong> and extended controlled knowledge access to coding agents.",
+            "Modernised .NET services and moved <strong>backend and frontend applications from Windows hosting to Kubernetes</strong>.",
+            "Led messaging migrations and contributed to <strong>critical incident recovery</strong>."
           ]
         }
       ]
@@ -452,16 +444,12 @@
       "recognition": "Recognised in the CIO newsletter in 2026 for the template’s adoption in contract-field extraction.",
       "capabilities": [
         {
-          "title": "Extraction that follows the missing fields",
-          "body": "Retrieves and reranks source chunks for the requested schema, then returns field values with context, page references, and confidence. Further passes focus on fields still missing."
-        },
-        {
           "title": "Reusable presets or on-demand schemas",
-          "body": "Teams can extend predefined extraction presets or define field names, data types, validation rules, and examples on the fly to try a new document use case."
+          "body": "Teams can extend predefined presets or define fields, data types, validation rules, and examples on demand."
         },
         {
           "title": "Modules teams can tailor",
-          "body": "Teams can disable or remove ingestion modules without carrying unnecessary functionality. The modular design includes OCR for scanned documents and built-in authentication."
+          "body": "Ingestion modules can be disabled or removed independently. Scanned-document OCR and authentication are built in."
         }
       ]
     },
@@ -489,7 +477,7 @@
       "shortTitle": "AI clause extraction in production",
       "title": "Taking PDF clause extraction into production.",
       "category": "AI adoption & production delivery",
-      "context": "An existing PDF clause-extraction application had a Python RAG backend and React interface, but needed substantial code and deployment improvements before it could run reliably in production.",
+      "context": "An existing PDF clause-extraction application combined a Python RAG backend with React, but code and deployment constraints blocked release.",
       "summary": "I modernised the codebase, resolved deployment issues, and established a repeatable build and release process. This included adapting document processing and model delivery to the firm’s environment. The application was successfully deployed on Rancher and has run reliably in production for about a year.",
       "detail": "The Python RAG service uses Tesseract OCR and FAISS. I adapted OCR for Linux and moved the application onto GitLab CI. Because Hugging Face was blocked, I packaged the embedding model from Nexus into the application container. These changes addressed application and environment issues that were preventing production deployment.",
       "tags": [
@@ -501,7 +489,7 @@
       "intro": "Improving an existing clause-extraction application and carrying it through a successful production release.",
       "outcome": "Successfully deployed on Rancher and running reliably in production for about a year.",
       "recognition": "Recognised in the CIO newsletter for contributions to the clause-extraction application’s production delivery.",
-      "previewOutcome": "Resolved application and runtime issues and brought clause extraction into reliable production use."
+      "previewOutcome": "Modernised an existing RAG application and established a repeatable release path."
     },
     {
       "id": "onboarding",
@@ -541,7 +529,7 @@
       "id": "api",
       "title": "An API for financial data.",
       "category": "Backend engineering & enablement",
-      "summary": "Built a Python API exposing financial data, with a structured implementation the team could extend. Explained the architecture and development conventions during handover.",
+      "summary": "Built a maintainable Python API for financial data and established conventions the team could continue.",
       "detail": "Separated request handling, business logic, and data access to make the service easier to maintain and extend. The implementation uses FastAPI and SQLAlchemy with Oracle.",
       "tags": [
         "Python / FastAPI",
@@ -571,7 +559,7 @@
       "id": "platform",
       "title": "A prototype hub for organising our tools.",
       "category": "Internal tooling prototype",
-      "summary": "Prototyped a shared home for custom skills, MCP integrations, and modernisation reporting. The aim is to make these resources easier to find while keeping each tool as a separate application.",
+      "summary": "Prototyped a shared home for custom skills, MCP integrations, and modernisation reporting while keeping each tool independently deployable.",
       "detail": "Used Vite module federation to keep the tools independently modular within a configurable shell. The hub brings together GitLab-hosted skills, MCP integrations, and modernisation reporting. I built the initial reporting module using ServiceNow data; other developers have since extended it.",
       "tags": [
         "Vite",
@@ -589,7 +577,7 @@
       "shortTitle": "Business data API",
       "title": "Making business data accessible through an API.",
       "category": "Backend engineering",
-      "summary": "Built a .NET API over existing business data that other teams previously had no API to access. Carried the service from implementation through deployment on Rancher.",
+      "summary": "Built and deployed a .NET API that made previously inaccessible business data available to other teams.",
       "detail": "Built a .NET and Entity Framework Core API over existing SQL Server tables and views, making business data accessible to other teams. I prepared its Helm and Flux configuration using the onboarding skill and deployed it to Rancher.",
       "tags": [
         ".NET",
@@ -618,7 +606,7 @@
       "shortTitle": "Service modernisation & Kubernetes onboarding",
       "group": "platform",
       "category": "Platform modernisation",
-      "summary": "Modernised .NET services and onboarded React microfrontends and NestJS APIs to Rancher, supporting the move away from Windows-hosted services and reducing reliance on Windows server management.",
+      "summary": "The estate spanned .NET services, React microfrontends, and NestJS APIs; I handled framework, build, and deployment issues across these application types.",
       "detail": "Upgraded .NET Core 3.1 services to .NET 6 or .NET 8 and adopted the in-house GitLab CI templates. Resolved issues in builds, SonarQube and Nexus IQ checks, and container creation, then prepared Helm charts and Flux tenant configuration for Rancher deployment. The work spanned backend services and frontend applications.",
       "tags": [
         ".NET",
@@ -634,7 +622,7 @@
       "shortTitle": "Application modernisation",
       "category": "Technical leadership & hands-on engineering",
       "context": "Existing services and promising applications needed maintainable code, repeatable builds, and a clear path to Kubernetes.",
-      "summary": "I review codebases, set phased delivery plans, and guide engineers through implementation and deployment, while building services and resolving production blockers myself.",
+      "summary": "I review codebases, define phased delivery plans, guide engineers through implementation, and stay hands-on with services and production blockers.",
       "outcome": "Modernised services, exposed business data through APIs, and resolved the blockers to production.",
       "tags": [
         ".NET",
