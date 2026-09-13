@@ -190,7 +190,7 @@ p { text-wrap:pretty; }
 @keyframes field-arrive { from { background:#385e51; transform:translateY(7px); } to { background:transparent; transform:none; } }
 
 /* Engineering work reads as a transformation ledger: constraint, intervention, and production state. */
-.engineering-delivery { position:relative; padding-block:72px 58px; overflow:hidden; background:var(--ink); color:var(--bg); scroll-margin-top:76px; }
+.engineering-delivery { position:relative; padding-block:72px 58px; overflow:clip; background:var(--ink); color:var(--bg); scroll-margin-top:76px; }
 .anchor-alias { position:absolute; width:1px; height:1px; pointer-events:none; }
 .delivery-heading { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr); gap:64px; align-items:end; padding-bottom:46px; }
 .delivery-heading .eyebrow { margin-bottom:16px; color:var(--inverse-accent); font-size:11px; letter-spacing:.14em; text-transform:uppercase; }
@@ -198,7 +198,7 @@ p { text-wrap:pretty; }
 .delivery-heading > p { max-width:51ch; color:color-mix(in srgb,var(--bg) 72%,transparent); font-size:15px; line-height:1.8; }
 .delivery-content { border-top:1px solid color-mix(in srgb,var(--bg) 30%,transparent); }
 .ledger-columns,.delivery-project { display:grid; grid-template-columns:minmax(190px,.82fr) repeat(3,minmax(0,1fr)); }
-.ledger-columns { min-height:52px; align-items:center; color:color-mix(in srgb,var(--bg) 48%,transparent); font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+.ledger-columns { position:sticky; z-index:4; top:80px; min-height:58px; align-items:center; border-bottom:1px solid color-mix(in srgb,var(--bg) 28%,transparent); background:color-mix(in srgb,var(--bg) 4%,var(--ink)); box-shadow:0 10px 22px color-mix(in srgb,#000 18%,transparent); color:color-mix(in srgb,var(--bg) 72%,transparent); font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
 .ledger-columns span { padding-inline:20px; }
 .ledger-columns span:first-child { padding-left:0; }
 .delivery-ledger { counter-reset:delivery; }
