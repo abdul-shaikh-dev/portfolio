@@ -627,7 +627,7 @@
         "Helm",
         "Flux"
       ],
-      "previewOutcome": "Moved .NET services from Windows hosting to Kubernetes, with framework upgrades and repeatable delivery."
+      "previewOutcome": "Moved .NET services from Windows hosting to Kubernetes, with framework upgrades and automated build and deployment pipelines."
     },
     {
       "id": "delivery",

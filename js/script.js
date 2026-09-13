@@ -96,15 +96,6 @@ function revealProjectLink() {
 window.addEventListener('hashchange', revealProjectLink);
 revealProjectLink();
 
-// The same disclosure remains keyboard-operable from either end of a project.
-document.querySelectorAll('.close-project').forEach(button=>{
-  button.hidden=false;
-  button.addEventListener('click',()=>{
-    const project=button.closest('.project-disclosure');project.open=false;
-    project.querySelector('summary').focus({preventScroll:true});
-    project.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});
-  });
-});
 window.addEventListener('hashchange',()=>{
   const target=location.hash.slice(1);
   selectedNavigation=mainLinks.some(link=>link.hash===location.hash)?target:null;
