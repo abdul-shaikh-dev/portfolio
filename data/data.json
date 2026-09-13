@@ -512,7 +512,7 @@
         "API performance"
       ],
       "group": "backend",
-      "proof": "6–7 GB → ~1 GB · 5 min → 40 sec"
+      "proof": "Lower memory pressure · faster responses"
     },
     {
       "id": "service-modernisation",

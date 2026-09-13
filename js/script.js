@@ -33,6 +33,8 @@ copyButton.addEventListener('click', async () => {
 // Use the section at the reading position, not a section entering the bottom of the screen.
 const header = document.querySelector('.site-header');
 const mainLinks = [...document.querySelectorAll('.header-inner nav a')];
+const mapLinks = [...document.querySelectorAll('.work-directory a')];
+const mapTargets = mapLinks.map(link => document.querySelector(link.hash)).filter(Boolean);
 const sections = [...document.querySelectorAll('main > section[id]')];
 let scrollPending = false;
 let selectedNavigation = null;
@@ -57,6 +59,8 @@ function updateNavigation() {
   const atBottom = Math.ceil(scrollY + innerHeight) >= document.documentElement.scrollHeight - 3;
   const section = selectedNavigation || (atBottom ? 'cta' : sectionAtReadingPosition(sections, offset));
   markCurrent(mainLinks, section === 'work-index' ? 'impact' : section);
+  const mapSection = sectionAtReadingPosition(mapTargets, offset) || mapTargets[0]?.id;
+  markCurrent(mapLinks, mapSection);
 }
 function scheduleNavigation() {
   if (scrollPending) return;
