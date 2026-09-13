@@ -68,7 +68,7 @@ for key in data['featuredWork']:
     capabilities = '<div class="project-capabilities">' + ''.join(f'<div><h4>{e(c["title"])}</h4><p>{e(c["body"])}</p></div>' for c in p.get('capabilities', [])) + '</div>' if p.get('capabilities') else ''
     recognition = f'<p class="recognition">{e(p["recognition"])}</p>' if p.get('recognition') else ''
     result = f'<p class="story-result"><strong>Result</strong> {e(p["outcome"])}</p>'
-    stories += f'''<section class="project-disclosure" id="project-{key}"><header class="project-summary"><div class="project-overview-title"><h3>{e(feature['displayTitle'])}</h3><span class="project-outcome">{e(feature['headlineOutcome'])}</span></div><p>{e(feature['overview'])}</p></header><article class="work-story story-{key}"><div class="story-layout"><div class="story-copy">{context}<p>{e(p['summary'])}</p>{result}{recognition}{tags(p['tags'])}</div>{project_figure(p)}<div class="lead-details">{capabilities}{technical_notes(p)}</div></div></article></section>'''
+    stories += f'''<section class="project-disclosure" id="project-{key}"><header class="project-summary"><div class="project-overview-title"><h3>{e(feature['displayTitle'])}</h3><span class="project-outcome">{e(feature['headlineOutcome'])}</span></div><p>{e(feature['overview'])}</p></header><article class="work-story story-{key}"><div class="story-layout">{project_figure(p)}<div class="story-copy">{context}<p>{e(p['summary'])}</p>{result}{recognition}{tags(p['tags'])}</div><div class="lead-details">{capabilities}{technical_notes(p)}</div></div></article></section>'''
 
 delivery = data['engineeringDelivery']
 delivery_columns = ''.join(f'<span>{e(label)}</span>' for label in delivery['columns'])
