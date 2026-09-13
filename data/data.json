@@ -505,7 +505,7 @@
       "title": "Reducing memory usage and response time in financial-data APIs.",
       "category": "Application performance",
       "summary": "Financial-services APIs processing large datasets were consuming 6–7 GB per pod and taking about five minutes for some responses. Reshaped LINQ queries and processing reduced memory to about 1 GB and response time to 40 seconds.",
-      "detail": "The original query and processing paths materialised and retained more data than the endpoints needed. Restructuring that flow reduced memory pressure and removed the multi-minute response bottleneck.",
+      "detail": "The APIs were loading large result sets and performing filtering and distinct operations in memory. The LINQ and processing flow was redesigned so SQL Server handled that work before returning results, large intermediate lists were avoided, and related data was loaded only when an endpoint needed it. This reduced memory pressure and removed the multi-minute response bottleneck.",
       "tags": [
         "C#",
         "LINQ",

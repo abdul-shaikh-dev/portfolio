@@ -30,7 +30,7 @@ def external(url, label):
     return f'<a href="{e(url)}" target="_blank" rel="noopener noreferrer">{label} <span aria-hidden="true">↗</span></a>'
 
 def technical_notes(p):
-    detail_ids = {'mcp', 'modernisation', 'engineering-support', 'service-estate', 'browser', 'migrations', 'informatica'}
+    detail_ids = {'mcp', 'modernisation', 'engineering-support', 'service-estate', 'api-performance', 'browser', 'migrations', 'informatica'}
     if not p.get('detail') or p.get('id') not in detail_ids:
         return ''
     extra = f'<p>{e(p["notes"])}</p>' if p.get('notes') else ''
@@ -79,23 +79,72 @@ delivery_groups = [
     ('delivery-production', 'Production enablement & migration', [by_id['migrations'], by_id['browser'], by_id['informatica']]),
     ('delivery-tooling', 'Internal tooling & prototypes', [by_id['platform']]),
 ]
+delivery_transformations = {
+    'service-estate': (
+        'Windows-hosted .NET services and a mixed frontend estate.',
+        'Framework upgrades, GitLab CI remediation, and Helm and Flux onboarding.',
+        'Repeatable Rancher delivery across the service estate.',
+    ),
+    'modernisation': (
+        'A useful infrastructure dashboard built as a coupled Python and React prototype.',
+        'Separated frontend and backend, restructured Python, introduced REST APIs, and removed spreadsheet dependencies.',
+        'React and Python API running on Rancher, with the data pipeline being modernised.',
+    ),
+    'engineering-support': (
+        'A clause-extraction prototype blocked by code, Linux, model, and release constraints.',
+        'Restructured Python, adapted OCR for Linux, packaged the model internally, and established GitLab CI.',
+        'A production RAG application running reliably on Rancher.',
+    ),
+    'backend-apis': (
+        'Legal and financial data without supported access for other teams.',
+        'Built .NET and EF Core access for SQL Server, and a structured FastAPI service for Oracle.',
+        'Maintained APIs that teams can consume and extend.',
+    ),
+    'api-performance': (
+        'Financial APIs under high memory pressure with multi-minute responses.',
+        'Moved filtering and distinct work into SQL Server, avoided large intermediate lists, and loaded only the related data each endpoint needed.',
+        'Lower memory usage and materially faster endpoint responses.',
+    ),
+    'migrations': (
+        'AutoSys-scheduled .NET console processes tied to Windows servers.',
+        'Introduced a Solace bridge, long-running subscribers, AutoSys batch changes, and end-to-end testing.',
+        'Kubernetes production migrations with no post-deployment defects.',
+    ),
+    'browser': (
+        'Regulatory scraping blocked by Chromium constraints on Rancher.',
+        'Deployed a Playwright browser service through Helm and Flux and resolved CDP connectivity.',
+        'Crawl4AI working against a browser runtime in Kubernetes.',
+    ),
+    'informatica': (
+        'Legacy Informatica workflows requiring manual discovery and migration analysis.',
+        'Built stateful discovery, assessment, reporting, and Python and Prefect code generation.',
+        'A repeatable application-scale migration path.',
+    ),
+    'platform': (
+        'Skills, MCP integrations, and modernisation reporting spread across separate tools.',
+        'Composed independently deployed modules through a configurable Vite shell.',
+        'A modular internal-tools prototype that other developers can extend.',
+    ),
+}
 legacy_aliases = {
     'service-estate': ['project-delivery', 'project-service-modernisation', 'project-onboarding'],
     'backend-apis': ['supporting-backend', 'project-dotnet-api', 'project-api'],
     'migrations': ['supporting-runtime'], 'platform': ['supporting-tooling'],
 }
-engineering_delivery = ''
+engineering_delivery = '<div class="ledger-columns" aria-hidden="true"><span>Work</span><span>Inherited</span><span>Reshaped</span><span>Running</span></div><div class="delivery-ledger" role="list">'
+delivery_index = 0
 for group_id, label, items in delivery_groups:
-    engineering_delivery += f'<section class="delivery-group" id="{group_id}"><h3>{e(label)}</h3><div class="delivery-grid">'
-    for p in items:
+    for item_index, p in enumerate(items):
+        delivery_index += 1
         key = p['id']
+        inherited, reshaped, running = delivery_transformations[key]
+        group_anchor = f'<span class="anchor-alias" id="{group_id}" aria-hidden="true"></span>' if item_index == 0 else ''
         aliases = ''.join(f'<span class="anchor-alias" id="{alias}" aria-hidden="true"></span>' for alias in legacy_aliases.get(key, []))
         badge_text = p.get('statusLabel') or ('Prototype' if p.get('status') == 'prototype' else '')
         badge = f'<span class="prototype-badge">{e(badge_text)}</span>' if badge_text else ''
-        proof = f'<p class="delivery-proof">{e(p["proof"])}</p>' if p.get('proof') else ''
-        evidence = f'<p class="recognition">{e(p["recognition"])}</p>' if p.get('recognition') else ''
-        engineering_delivery += f'<article class="delivery-project" id="project-{key}">{aliases}<div class="delivery-title"><h4>{e(p["shortTitle"])}</h4>{badge}</div>{proof}<p>{e(p["summary"])}</p>{figures.get(key, "")}{evidence}{technical_notes(p)}</article>'
-    engineering_delivery += '</div></section>'
+        evidence = f'<p class="ledger-recognition">{e(p["recognition"])}</p>' if p.get('recognition') else ''
+        engineering_delivery += f'''<article class="delivery-project" id="project-{key}" role="listitem">{group_anchor}{aliases}<div class="ledger-identity"><span class="ledger-number">{delivery_index:02}</span><p>{e(label)}</p><div class="delivery-title"><h3>{e(p["shortTitle"])}</h3>{badge}</div></div><div class="ledger-cell ledger-inherited"><span>Inherited</span><p>{e(inherited)}</p></div><div class="ledger-cell ledger-reshaped"><span>Reshaped</span><p>{e(reshaped)}</p></div><div class="ledger-cell ledger-running"><span>Running</span><p>{e(running)}</p></div>{evidence}{technical_notes(p)}</article>'''
+engineering_delivery += '</div>'
 
 current = data['timeline'][0]
 role_progression = '<div class="role-progression">'
@@ -142,7 +191,7 @@ html = f'''<!doctype html>
 <section class="hero" id="hero"><div class="hero-inner wrap"><div class="hero-identity"><p class="intro">Lead Software Engineer</p><h1>Abdul Gaffar<br><em>Shaikh.</em></h1><p class="hero-stack">.NET · Python · Kubernetes</p><p class="hero-location">Capgemini · Mumbai, India</p></div><div class="hero-positioning"><p class="hero-statement">Modernising applications and building <em>backend and AI systems</em> for production.</p><p class="hero-bio">7.5+ years in financial services, combining hands-on engineering with architecture guidance and team mentoring.</p><div class="hero-links"><a class="button" href="{asset('output/pdf/resume.pdf')}" target="_blank" rel="noopener">Resume PDF <span aria-hidden="true">↗</span></a><a href="#impact">Work ↓</a>{external(linkedin,'LinkedIn')}</div></div></div></section>
 <nav class="work-directory wrap" aria-label="Portfolio map"><a href="#project-mcp"><i aria-hidden="true">01</i><span>Knowledge & AI</span><small>Account knowledge foundation</small></a><a href="#engineering-delivery"><i aria-hidden="true">02</i><span>Engineering delivery</span><small>Modernisation through production</small></a><a href="#timeline"><i aria-hidden="true">03</i><span>Career progression</span><small>2018 engineer → 2026 lead</small></a></nav>
 <section class="work-section wrap" id="impact" aria-label="Selected systems"><div class="work-overview">{stories}</div></section>
-<section class="engineering-delivery" id="engineering-delivery"><span class="anchor-alias" id="work-index" aria-hidden="true"></span><div class="wrap"><header class="delivery-heading"><div><p class="eyebrow">Engineering practice</p><h2>Engineering delivery.</h2></div><p>Applications, APIs, and platforms carried from technical decisions through implementation and production.</p></header><p class="delivery-intro">Codebase reviews become practical delivery plans, with engineers guided through implementation and hands-on support focused on the changes and production blockers that decide whether a system succeeds.</p><div class="delivery-content">{engineering_delivery}</div></div></section>
+<section class="engineering-delivery" id="engineering-delivery"><span class="anchor-alias" id="work-index" aria-hidden="true"></span><div class="wrap"><header class="delivery-heading"><div><p class="eyebrow">Engineering practice</p><h2>From inherited systems<br>to production.</h2></div><p>The systems vary. The work follows a clear pattern: understand the constraint, reshape the implementation, and make it run in the target environment.</p></header><div class="delivery-content">{engineering_delivery}</div></div></section>
 <section class="experience-section wrap" id="timeline"><div class="section-heading"><h2>Experience.</h2></div><div class="experience-layout"><div class="experience-intro"><p>Hands-on engineering, with growing responsibility for architecture and delivery.</p>{external(linkedin,'View career on LinkedIn')}</div><div class="career-list">{career}</div></div></section>
 <section class="expertise-section" id="skills"><div class="wrap"><div class="section-heading"><h2>Engineering range.</h2><p>Backend depth, with the cloud and AI experience to connect the wider system.</p></div><div class="skill-grid">{skills}</div><details class="credentials"><summary><span>Certifications <small>Azure · AI · Security · Duck Creek</small></span><span aria-hidden="true">+</span></summary><div class="cert-list">{certs}</div></details></div></section>
 <section class="contact-section wrap" id="cta"><div class="contact-question"><p>Engineering roles &amp; collaboration.</p><h2>What are you trying<br>to make work<span>?</span></h2></div><div class="contact-brief"><p>Hiring for a lead engineering role or tackling a modernisation challenge? I’d be glad to compare notes.</p><div class="contact-actions"><a class="button" href="mailto:{email}">Start a conversation <span aria-hidden="true">↗</span></a><div class="email-row"><a href="mailto:{email}">{email}</a><button id="copy-email" class="icon-button" data-email="{email}" aria-label="Copy email address" title="Copy email address" hidden>⧉</button></div></div><span id="copy-status" role="status"></span></div></section>
