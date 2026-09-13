@@ -17,12 +17,14 @@ Open [http://127.0.0.1:4173](http://127.0.0.1:4173).
 
 ## Content sources
 
-- `data/data.json` contains portfolio copy, work history, expertise, links, and credentials.
+- `data/data.json` is the website content model. It contains the hero and section copy, portfolio navigation, project records, featured-work presentation, engineering-delivery grouping, career history, expertise, links, and credentials.
 - `data/resume.json` contains the resume profile, experience, skills, certifications, and education.
 - `scripts/build.py` generates `index.html` from the portfolio data.
 - `scripts/build_resume.py` generates `docs/resume.tex` from the resume data.
 
 `index.html` and `docs/resume.tex` are generated files. Edit their JSON sources or templates rather than changing them directly.
+
+Each portfolio project is defined once in `recentWork`. A featured project carries its own `feature` presentation, and engineering projects carry their `transformation` narrative. The `featuredWork` and `engineeringDelivery.groups` fields control selection, order, and grouping without adding project copy to `scripts/build.py`.
 
 ## Resume generation
 
