@@ -258,7 +258,7 @@
       "name": "Application Modernisation",
       "badge": "",
       "desc": "Codebase reviews, service boundaries, and phased delivery.",
-      "href": "#project-delivery"
+      "href": "#engineering-delivery"
     },
     {
       "name": "Enterprise AI & Knowledge Systems",
@@ -270,19 +270,19 @@
       "name": "Backend Engineering & Performance",
       "badge": "",
       "desc": ".NET and Python APIs, data access, and performance.",
-      "href": "#supporting-backend"
+      "href": "#delivery-backend"
     },
     {
       "name": "Cloud & Production Delivery",
       "badge": "",
       "desc": "CI, containers, Rancher, and runtime constraints.",
-      "href": "#supporting-runtime"
+      "href": "#delivery-production"
     },
     {
       "name": "Engineering Automation",
       "badge": "",
       "desc": "Onboarding skills and stateful migration tooling.",
-      "href": "#supporting-tooling"
+      "href": "#delivery-tooling"
     },
     {
       "name": "Technical Ownership & Collaboration",
@@ -551,7 +551,6 @@
     }
   ],
   "featuredWork": [
-    "mcp",
-    "delivery"
+    "mcp"
   ]
 }
