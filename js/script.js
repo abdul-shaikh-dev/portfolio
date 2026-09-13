@@ -31,9 +31,9 @@ copyButton.addEventListener('click', async () => {
 });
 
 // Use the section at the reading position, not a section entering the bottom of the screen.
-const header = document.querySelector('.site-header');
+const header = document.querySelector('.chapter-nav');
 const mainLinks = [...document.querySelectorAll('.header-inner nav a')];
-const mapLinks = [...document.querySelectorAll('.work-directory a')];
+const mapLinks = [...document.querySelectorAll('.chapter-nav a')];
 const mapTargets = mapLinks.map(link => document.querySelector(link.hash)).filter(Boolean);
 const sections = [...document.querySelectorAll('main > section[id]')];
 let scrollPending = false;

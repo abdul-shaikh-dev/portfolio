@@ -384,8 +384,20 @@
     {
       "index": "03",
       "href": "#timeline",
-      "title": "Career progression",
+      "title": "Experience",
       "subtitle": "2018 engineer → 2026 lead"
+    },
+    {
+      "index": "04",
+      "href": "#skills",
+      "title": "Expertise",
+      "subtitle": "Engineering range"
+    },
+    {
+      "index": "05",
+      "href": "#cta",
+      "title": "Contact",
+      "subtitle": "Start a conversation"
     }
   ],
   "engineeringDelivery": {
