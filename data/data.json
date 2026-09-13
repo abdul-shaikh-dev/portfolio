@@ -6,10 +6,6 @@
     "ogDescription": "Abdul Gaffar Shaikh — Lead Software Engineer working on enterprise knowledge systems, application modernisation, AI adoption, and production delivery in financial services."
   },
   "hero": {
-    "name": "ABDUL GAFFAR",
-    "accent": "SHAIKH",
-    "eyebrow": "Lead Software Engineer · 7.5+ Years",
-    "tagline": "Application modernisation, backend engineering, and AI systems built for production.",
     "phone": "+91 88986 71746",
     "email": {
       "user": "abdul219428",
@@ -22,235 +18,22 @@
     "github": {
       "url": "https://github.com/abdul-shaikh-dev",
       "label": "github.com/abdul-shaikh-dev"
-    }
+    },
+    "role": "Lead Software Engineer",
+    "nameLine": "Abdul Gaffar",
+    "accentLine": "Shaikh.",
+    "stack": ".NET · Python · Kubernetes",
+    "location": "Capgemini · Mumbai, India",
+    "statement": {
+      "before": "Modernising applications and building",
+      "emphasis": "backend and AI systems",
+      "after": "for production."
+    },
+    "bio": "7.5+ years in financial services, combining hands-on engineering with architecture guidance and team mentoring.",
+    "resumeLabel": "Resume PDF",
+    "workLabel": "Work ↓",
+    "linkedinLabel": "LinkedIn"
   },
-  "timeline": [
-    {
-      "period": "May 2023 —",
-      "periodNow": true,
-      "title": "Lead Software Engineer",
-      "org": "Capgemini · Mumbai",
-      "currentBadge": true,
-      "client": "// Global Investment Bank",
-      "bullets": [
-        "Designed a <strong>modular knowledge-management template</strong> for document extraction and enterprise search, adopted as the account standard and used for contract-field extraction.",
-        "Built <strong>adaptive extraction within the template</strong>, combining schema-driven retrieval, source-backed results, and retries focused on missing fields. Supports reusable presets and on-demand schemas; recognised in the CIO newsletter in 2026.",
-        "Extended enterprise knowledge to <strong>coding agents through MCP</strong>, with built-in authentication and controlled access.",
-        "Brought a <strong>PDF clause-extraction application into production</strong> through codebase modernisation, environment integration, and repeatable deployment. Running reliably for about a year; recognised in the CIO newsletter for this delivery.",
-        "Leading the <strong>phased modernisation of a Python and React infrastructure dashboard</strong>. Both applications are deployed on Rancher; the data-pipeline and storage improvements remain ongoing.",
-        "Built and deployed a <strong>.NET business-data API</strong>, making previously inaccessible data available to other teams.",
-        "Built a <strong>Python financial-data API</strong> and established a maintainable reference implementation for continued development.",
-        "Resolved a <strong>production performance bottleneck in financial-data APIs</strong>, reducing pod memory from 6–7 GB to about 1 GB and endpoint response time from roughly five minutes to 40 seconds.",
-        "Guide <strong>teammates delivering modernisation work</strong>, review architectural decisions, and support adoption of established CI and deployment practices.",
-        "Built supporting automation for <strong>Rancher onboarding</strong> and <strong>Informatica-to-Python/Prefect migration</strong>, including code generation and persistent progress tracking.",
-        "Unblocked a <strong>regulatory web-scraping application</strong> by deploying a Playwright browser runtime on Rancher. Addressed Chromium deployment constraints and configured the remote browser connection for Crawl4AI, enabling the application to use the browser in Kubernetes.",
-        "Modernised <strong>.NET services and onboarded React microfrontends and NestJS APIs to Rancher</strong>, supporting the move from Windows-hosted services to Kubernetes. Upgraded .NET Core 3.1 services to .NET 6/8, adopted established GitLab CI templates, and resolved build, quality-check, and deployment issues.",
-        "Migrated <strong>Solace messaging services to Kubernetes</strong>, addressing reliability and deployment issues.",
-        "Contributed to <strong>critical incident recovery</strong> as part of a global engineering team during a quarter-end data centre outage.",
-        "Prototyped a <strong>modular internal tools hub</strong> for skills, MCP integrations, and modernisation reporting."
-      ],
-      "tags": [
-        {
-          "label": "Vite",
-          "color": "mint"
-        },
-        {
-          "label": "Module federation",
-          "color": "mint"
-        },
-        {
-          "label": "Helm / Flux",
-          "color": "mint"
-        },
-        {
-          "label": "Rancher",
-          "color": "mint"
-        },
-        {
-          "label": "Python / FastAPI",
-          "color": "mint"
-        },
-        {
-          "label": "Oracle / SQLAlchemy",
-          "color": "mint"
-        },
-        {
-          "label": "MCP",
-          "color": "mint"
-        },
-        {
-          "label": "JWT",
-          "color": "mint"
-        },
-        {
-          "label": "LangChain",
-          "color": "mint"
-        },
-        {
-          "label": "Playwright",
-          "color": "mint"
-        },
-        {
-          "label": ".NET Core",
-          "color": "mint"
-        },
-        {
-          "label": "Solace",
-          "color": "mint"
-        }
-      ],
-      "promotion": {
-        "date": "April 2026",
-        "previousTitle": "Senior Software Engineer"
-      },
-      "roles": [
-        {
-          "title": "Lead Software Engineer",
-          "period": "April 2026 — Present",
-          "bullets": [
-            "Lead the <strong>phased modernisation of a Python and React infrastructure dashboard</strong>, guiding its developer through clearer service boundaries, REST APIs, and production delivery on Rancher.",
-            "Built and deployed <strong>.NET and Python APIs for legal and financial data</strong>, giving other teams supported access to previously isolated business information.",
-            "Resolved a <strong>financial API performance bottleneck</strong> by moving filtering and distinct operations into SQL Server and reducing memory-heavy in-process data handling.",
-            "Built <strong>Informatica-to-Python/Prefect migration tooling and Rancher onboarding automation</strong>, including code generation, validation, and retained workflow progress.",
-            "Unblocked a <strong>regulatory web-scraping application</strong> by delivering a Playwright browser runtime on Rancher and connecting Crawl4AI to it in Kubernetes."
-          ]
-        },
-        {
-          "title": "Senior Software Engineer",
-          "period": "May 2023 — March 2026",
-          "bullets": [
-            "Designed a modular <strong>knowledge-management platform</strong> with multisource ingestion, RAG, adaptive extraction, and secured API and MCP access; it became the shared account foundation.",
-            "Brought a <strong>RAG clause-extraction application into production</strong> by modernising its Python codebase, adapting OCR and model delivery, and establishing a repeatable Rancher release path.",
-            "Modernised a large service estate across <strong>.NET services, React microfrontends, and NestJS APIs</strong>, covering framework upgrades, GitLab CI remediation, and Helm and Flux delivery to Rancher.",
-            "Migrated <strong>AutoSys-triggered .NET workloads to Kubernetes through Solace messaging</strong> and contributed to critical incident recovery as part of a global engineering team."
-          ]
-        }
-      ]
-    },
-    {
-      "period": "Dec 2021 — May 2023",
-      "periodNow": false,
-      "title": "Senior Software Engineer",
-      "org": "Accenture Solutions Pvt. Ltd · Mumbai",
-      "currentBadge": false,
-      "client": "// Financial Services",
-      "bullets": [
-        "Led <strong>API design for legacy application modernisation</strong>, defining service boundaries and error handling while preserving insurance-platform compatibility.",
-        "Built an <strong>email-driven claims integration</strong> using Azure services and REST APIs.",
-        "Documented APIs using <strong>OpenAPI specification and Swagger</strong>, making newly migrated services easier to onboard and consume across teams."
-      ],
-      "tags": [
-        {
-          "label": "ASP.NET Core 3.1",
-          "color": "mint"
-        },
-        {
-          "label": "Azure Logic Apps",
-          "color": "mint"
-        },
-        {
-          "label": "Azure Blob Storage",
-          "color": "mint"
-        },
-        {
-          "label": "Azure DevOps",
-          "color": "amber"
-        },
-        {
-          "label": "Jenkins",
-          "color": "amber"
-        },
-        {
-          "label": "Duck Creek V12",
-          "color": "mint"
-        },
-        {
-          "label": "Swagger / OpenAPI",
-          "color": "mint"
-        },
-        {
-          "label": "C#",
-          "color": "mint"
-        }
-      ]
-    },
-    {
-      "period": "Dec 2020 — Dec 2021",
-      "periodNow": false,
-      "title": "Software Engineer",
-      "org": "Accenture Solutions Pvt. Ltd · Mumbai",
-      "currentBadge": false,
-      "client": "// Financial Services",
-      "bullets": [
-        "Built <strong>Azure Functions and APIs</strong> to connect policy and claims document workflows.",
-        "Developed an <strong>application analysis tool</strong> to support development effort estimation."
-      ],
-      "tags": [
-        {
-          "label": "ASP.NET Core 3.1",
-          "color": "mint"
-        },
-        {
-          "label": "Azure Functions",
-          "color": "mint"
-        },
-        {
-          "label": "Azure API Management",
-          "color": "mint"
-        },
-        {
-          "label": "JWT Auth",
-          "color": "amber"
-        },
-        {
-          "label": "Azure Boards",
-          "color": "mint"
-        },
-        {
-          "label": "C#",
-          "color": "mint"
-        }
-      ]
-    },
-    {
-      "period": "Oct 2018 — Dec 2020",
-      "periodNow": false,
-      "title": "Associate Software Engineer",
-      "org": "Accenture Solutions Pvt. Ltd · Mumbai",
-      "currentBadge": false,
-      "client": "// Financial Services",
-      "bullets": [
-        "Maintained and enhanced insurance claims application across <strong>10 monthly releases</strong>, working directly with client stakeholders.",
-        "Designed document extraction and migration tool moving <strong>4 million claims documents</strong> from SQL Server to third-party storage systems.",
-        "Built automated document verification tool eliminating <strong>200+ hours of manual effort</strong> for file extension validation."
-      ],
-      "tags": [
-        {
-          "label": "C#",
-          "color": "mint"
-        },
-        {
-          "label": "SQL Server",
-          "color": "mint"
-        },
-        {
-          "label": "ASP.NET",
-          "color": "mint"
-        },
-        {
-          "label": "DuckCreek V12",
-          "color": "amber"
-        }
-      ]
-    },
-    {
-      "period": "Sep 2015 — Jul 2018",
-      "periodNow": false,
-      "title": "B.E. in Electronics & Telecommunication",
-      "org": "VESIT · Mumbai",
-      "currentBadge": false
-    }
-  ],
   "skills": [
     {
       "name": "Application Modernisation",
@@ -359,7 +142,18 @@
           "title": "Composable for each team",
           "body": "Query, extraction, and ingestion modules can be enabled independently, while new sources can be added through the same modular structure."
         }
-      ]
+      ],
+      "feature": {
+        "displayTitle": "Knowledge-management template",
+        "overview": "Multisource ingestion, RAG, adaptive extraction, and secured agent access.",
+        "headlineOutcome": "A shared foundation for enterprise knowledge",
+        "figure": {
+          "type": "walkthrough",
+          "key": "extraction",
+          "title": "From document to attributed fields.",
+          "description": "Ingestion and adaptive extraction inside the knowledge template · fictional example."
+        }
+      }
     },
     {
       "id": "modernisation",
@@ -378,7 +172,12 @@
       "group": "platform",
       "intro": "Building the service, improving the codebase, and carrying the work through deployment.",
       "outcome": "The dashboard has a better-structured codebase, with its React application and Python API deployed on Rancher. The Prefect and SQL data pipeline remains planned.",
-      "previewOutcome": "Leading its transition from a coupled prototype to separately deployed React and Python services; database-backed ingestion remains in progress."
+      "previewOutcome": "Leading its transition from a coupled prototype to separately deployed React and Python services; database-backed ingestion remains in progress.",
+      "transformation": {
+        "inherited": "A useful infrastructure dashboard built as a coupled Python and React prototype.",
+        "reshaped": "Separated frontend and backend, restructured Python, introduced REST APIs, and removed spreadsheet dependencies.",
+        "running": "React and Python API running on Rancher, with the data pipeline being modernised."
+      }
     },
     {
       "id": "engineering-support",
@@ -397,24 +196,12 @@
       "intro": "Improving an existing clause-extraction application and carrying it through a successful production release.",
       "outcome": "Successfully deployed on Rancher and running reliably in production for about a year.",
       "recognition": "Recognised in the CIO newsletter for contributions to the clause-extraction application’s production delivery.",
-      "previewOutcome": "Legal-document OCR and RAG application modernised and running reliably in production."
-    },
-    {
-      "id": "onboarding",
-      "title": "Encoding deployment conventions into onboarding.",
-      "category": "Engineering automation",
-      "summary": "Replaced manual cloning and placeholder edits across application, infrastructure, and Flux repositories with a guided workflow that validates and publishes the required configuration.",
-      "detail": "The skill turns service requirements into application charts, infrastructure charts, and Flux configuration. It creates the required repositories and branches, validates the setup with Helm and Kubernetes tooling, and publishes it using the firm’s deployment conventions.",
-      "tags": [
-        "Agent skills",
-        "Helm / Flux",
-        "Rancher"
-      ],
-      "outcome": "Service onboarding and subsequent additions follow the same configuration, repository and validation workflow.",
-      "shortTitle": "Rancher onboarding automation",
-      "group": "platform",
-      "intro": "Replacing repeated template editing with a guided workflow that follows the firm’s deployment conventions.",
-      "proof": "Manual repository setup → one validated workflow"
+      "previewOutcome": "Legal-document OCR and RAG application modernised and running reliably in production.",
+      "transformation": {
+        "inherited": "A clause-extraction prototype blocked by code, Linux, model, and release constraints.",
+        "reshaped": "Restructured Python, adapted OCR for Linux, packaged the model internally, and established GitLab CI.",
+        "running": "A production RAG application running reliably on Rancher."
+      }
     },
     {
       "id": "informatica",
@@ -433,23 +220,12 @@
       "group": "ai",
       "statusLabel": "Internal plugin",
       "intro": "Taking legacy workflows through discovery and migration planning to equivalent Python/Prefect code.",
-      "proof": "Stateful assessment → generated Python/Prefect"
-    },
-    {
-      "id": "api",
-      "title": "An API for financial data.",
-      "category": "Backend engineering & enablement",
-      "summary": "Built a maintainable FastAPI service that gives teams a supported way to consume financial data held in Oracle, with a reference structure they can extend.",
-      "detail": "Separated request handling, business logic, and data access to make the service easier to maintain and extend. The implementation uses FastAPI and SQLAlchemy with Oracle.",
-      "tags": [
-        "Python / FastAPI",
-        "Oracle"
-      ],
-      "outcome": "A financial data API and a shared reference for continued development.",
-      "shortTitle": "Financial data API",
-      "group": "backend",
-      "intro": "Making financial data available through an API, with a working implementation and clear conventions for the team.",
-      "proof": "Supported API access · extensible reference"
+      "proof": "Stateful assessment → generated Python/Prefect",
+      "transformation": {
+        "inherited": "Legacy Informatica workflows requiring manual discovery and migration analysis.",
+        "reshaped": "Built stateful discovery, assessment, reporting, and Python and Prefect code generation.",
+        "running": "A repeatable application-scale migration path."
+      }
     },
     {
       "id": "browser",
@@ -465,7 +241,12 @@
       "shortTitle": "Browser automation on Rancher",
       "group": "platform",
       "intro": "Removing a browser-runtime blocker from a team’s regulatory scraping workflow.",
-      "proof": "Blocked browser runtime → working Kubernetes service"
+      "proof": "Blocked browser runtime → working Kubernetes service",
+      "transformation": {
+        "inherited": "Regulatory scraping blocked by Chromium constraints on Rancher.",
+        "reshaped": "Deployed a Playwright browser service through Helm and Flux and resolved CDP connectivity.",
+        "running": "Crawl4AI working against a browser runtime in Kubernetes."
+      }
     },
     {
       "id": "platform",
@@ -483,23 +264,15 @@
       "shortTitle": "Internal tools hub",
       "group": "prototype",
       "intro": "A prototype to bring scattered engineering resources into one place.",
-      "proof": "Configurable shell · prototype"
-    },
-    {
-      "id": "dotnet-api",
-      "shortTitle": "Business data API",
-      "title": "Making business data accessible through an API.",
-      "category": "Backend engineering",
-      "summary": "Built and deployed a .NET and EF Core API over legal data held in existing SQL Server views, giving other teams a supported way to access it.",
-      "detail": "A .NET and Entity Framework Core API over existing SQL Server tables and views made the business data accessible to other teams. Helm and Flux configuration produced through the onboarding workflow carried the service through to Rancher deployment.",
-      "tags": [
-        ".NET",
-        "EF Core",
-        "SQL Server",
-        "Rancher"
-      ],
-      "group": "backend",
-      "proof": "Existing legal data → supported team API"
+      "proof": "Configurable shell · prototype",
+      "transformation": {
+        "inherited": "Skills, MCP integrations, and modernisation reporting spread across separate tools.",
+        "reshaped": "Composed independently deployed modules through a configurable Vite shell.",
+        "running": "A modular internal-tools prototype that other developers can extend."
+      },
+      "aliases": [
+        "supporting-tooling"
+      ]
     },
     {
       "id": "api-performance",
@@ -514,41 +287,261 @@
         "API performance"
       ],
       "group": "backend",
-      "proof": "Lower memory pressure · faster responses"
+      "proof": "Lower memory pressure · faster responses",
+      "transformation": {
+        "inherited": "Financial APIs under high memory pressure with multi-minute responses.",
+        "reshaped": "Moved filtering and distinct work into SQL Server, avoided large intermediate lists, and loaded only the related data each endpoint needed.",
+        "running": "Lower memory usage and materially faster endpoint responses."
+      }
     },
     {
-      "id": "service-modernisation",
-      "shortTitle": "Service modernisation & Kubernetes onboarding",
-      "group": "platform",
+      "id": "service-estate",
+      "shortTitle": "Service estate modernisation",
       "category": "Platform modernisation",
-      "summary": "A large estate of .NET services, React microfrontends, and NestJS APIs needed a path away from Windows hosting. The work covered framework upgrades, CI adoption, build remediation, and deployment across the migration path.",
-      "detail": "Upgraded .NET Core 3.1 services to .NET 6 or .NET 8 and adopted the in-house GitLab CI templates. Resolved issues in builds, SonarQube and Nexus IQ checks, and container creation, then prepared Helm charts and Flux tenant configuration for Rancher deployment. The work spanned backend services and frontend applications.",
+      "summary": "Modernised a large estate of .NET services, React microfrontends, and NestJS APIs for Kubernetes, covering framework upgrades, CI adoption, build remediation, and Rancher deployment.",
+      "detail": "Upgraded .NET Core 3.1 services to .NET 6 or .NET 8 and adopted the in-house GitLab CI templates. Resolved issues in builds, SonarQube and Nexus IQ checks, and container creation, then prepared Helm charts and Flux tenant configuration for Rancher deployment. The recurring application-chart, infrastructure-chart, and Flux setup also became a guided workflow that creates, validates, and publishes the required repositories using the firm’s conventions.",
       "tags": [
-        ".NET",
-        "Kubernetes",
+        ".NET / React / NestJS",
         "GitLab CI",
-        "Helm",
-        "Flux"
-      ],
-      "previewOutcome": "A large Windows-hosted service estate modernised for Kubernetes."
-    },
-    {
-      "id": "delivery",
-      "shortTitle": "Application modernisation",
-      "category": "Technical leadership & hands-on engineering",
-      "context": "Existing services and promising applications needed maintainable code, repeatable builds, and a clear path to Kubernetes.",
-      "summary": "Codebase reviews become phased delivery plans, supported by implementation guidance and hands-on resolution of service and production blockers.",
-      "outcome": "Modernised services, exposed business data through APIs, and resolved the blockers to production.",
-      "tags": [
-        ".NET",
-        "Python",
-        "React",
+        "Helm / Flux",
         "Kubernetes"
       ],
-      "capabilities": []
+      "proof": "Windows-hosted estate → repeatable Kubernetes delivery",
+      "aliases": [
+        "project-delivery",
+        "project-service-modernisation",
+        "project-onboarding"
+      ],
+      "transformation": {
+        "inherited": "Windows-hosted .NET services and a mixed frontend estate.",
+        "reshaped": "Framework upgrades, GitLab CI remediation, and Helm and Flux onboarding.",
+        "running": "Repeatable Rancher delivery across the service estate."
+      }
+    },
+    {
+      "id": "backend-apis",
+      "shortTitle": "Backend API delivery",
+      "category": "Backend engineering",
+      "summary": "Built supported access paths for previously isolated business data: a .NET and EF Core API over legal data in SQL Server, and a maintainable FastAPI service over financial data in Oracle.",
+      "detail": "The .NET and Entity Framework Core service exposed existing SQL Server tables and views through a supported API and was carried through Helm, Flux, and Rancher deployment. The Python service established a maintainable FastAPI structure for financial data held in Oracle, giving its team a reference implementation they could continue to extend.",
+      "tags": [
+        ".NET / EF Core",
+        "Python / FastAPI",
+        "SQL Server / Oracle"
+      ],
+      "proof": "Two data domains → maintained team APIs",
+      "aliases": [
+        "supporting-backend",
+        "project-dotnet-api",
+        "project-api"
+      ],
+      "transformation": {
+        "inherited": "Legal and financial data without supported access for other teams.",
+        "reshaped": "Built .NET and EF Core access for SQL Server, and a structured FastAPI service for Oracle.",
+        "running": "Maintained APIs that teams can consume and extend."
+      }
+    },
+    {
+      "id": "migrations",
+      "shortTitle": "Messaging service migrations",
+      "category": "Production modernisation",
+      "summary": "Converted scheduled .NET console processes into long-running Solace subscribers, enabling AutoSys-triggered workloads to move from Windows servers to Kubernetes. Led three of seven migrations through production with no post-deployment defects.",
+      "detail": "Because AutoSys was not available in Rancher, a .NET bridge remained on Windows to receive command arguments from AutoSys jobs, construct messages, and publish them to Solace queues. Each former console process became a long-running Kubernetes subscriber using the in-house library built on the official Solace .NET packages. The migration covered application restructuring, message handling, AutoSys batch changes, end-to-end testing, and production release.",
+      "outcome": "Seven service migrations with zero post-deployment defects and zero business disruption.",
+      "tags": [
+        ".NET",
+        "AutoSys",
+        "Solace",
+        "Kubernetes"
+      ],
+      "proof": "Three migrations led · zero post-deployment defects",
+      "aliases": [
+        "supporting-runtime"
+      ],
+      "transformation": {
+        "inherited": "AutoSys-scheduled .NET console processes tied to Windows servers.",
+        "reshaped": "Introduced a Solace bridge, long-running subscribers, AutoSys batch changes, and end-to-end testing.",
+        "running": "Kubernetes production migrations with no post-deployment defects."
+      }
     }
   ],
   "featuredWork": [
     "mcp"
-  ]
+  ],
+  "portfolioMap": [
+    {
+      "index": "01",
+      "href": "#project-mcp",
+      "title": "Knowledge & AI",
+      "subtitle": "Account knowledge foundation"
+    },
+    {
+      "index": "02",
+      "href": "#engineering-delivery",
+      "title": "Engineering delivery",
+      "subtitle": "Modernisation through production"
+    },
+    {
+      "index": "03",
+      "href": "#timeline",
+      "title": "Career progression",
+      "subtitle": "2018 engineer → 2026 lead"
+    }
+  ],
+  "engineeringDelivery": {
+    "eyebrow": "Engineering practice",
+    "title": "From inherited systems\nto production.",
+    "intro": "The systems vary. The work follows a clear pattern: understand the constraint, reshape the implementation, and make it run in the target environment.",
+    "columns": [
+      "Work",
+      "Inherited",
+      "Reshaped",
+      "Running"
+    ],
+    "groups": [
+      {
+        "id": "delivery-applications",
+        "label": "Applications & service modernisation",
+        "projectIds": [
+          "service-estate",
+          "modernisation",
+          "engineering-support"
+        ]
+      },
+      {
+        "id": "delivery-backend",
+        "label": "Backend systems & performance",
+        "projectIds": [
+          "backend-apis",
+          "api-performance"
+        ]
+      },
+      {
+        "id": "delivery-production",
+        "label": "Production enablement & migration",
+        "projectIds": [
+          "migrations",
+          "browser",
+          "informatica"
+        ]
+      },
+      {
+        "id": "delivery-tooling",
+        "label": "Internal tooling & prototypes",
+        "projectIds": [
+          "platform"
+        ]
+      }
+    ]
+  },
+  "navigation": [
+    {
+      "href": "#impact",
+      "label": "Work"
+    },
+    {
+      "href": "#timeline",
+      "label": "Experience"
+    },
+    {
+      "href": "#skills",
+      "label": "Expertise"
+    },
+    {
+      "href": "#cta",
+      "label": "Contact"
+    }
+  ],
+  "career": {
+    "title": "Experience.",
+    "intro": "Hands-on engineering, with growing responsibility for architecture and delivery.",
+    "linkLabel": "View career on LinkedIn",
+    "employers": [
+      {
+        "name": "Capgemini",
+        "period": "May 2023 — Present",
+        "location": "Mumbai, India",
+        "context": "Global investment bank client",
+        "currentLabel": "Current",
+        "roles": [
+          {
+            "title": "Lead Software Engineer",
+            "period": "April 2026 — Present",
+            "bullets": [
+              "Lead the <strong>phased modernisation of a Python and React infrastructure dashboard</strong>, guiding its developer through clearer service boundaries, REST APIs, and production delivery on Rancher.",
+              "Built and deployed <strong>.NET and Python APIs for legal and financial data</strong>, giving other teams supported access to previously isolated business information.",
+              "Resolved a <strong>financial API performance bottleneck</strong> by moving filtering and distinct operations into SQL Server and reducing memory-heavy in-process data handling.",
+              "Built <strong>Informatica-to-Python/Prefect migration tooling and Rancher onboarding automation</strong>, including code generation, validation, and retained workflow progress.",
+              "Unblocked a <strong>regulatory web-scraping application</strong> by delivering a Playwright browser runtime on Rancher and connecting Crawl4AI to it in Kubernetes."
+            ]
+          },
+          {
+            "title": "Senior Software Engineer",
+            "period": "May 2023 — March 2026",
+            "bullets": [
+              "Designed a modular <strong>knowledge-management platform</strong> with multisource ingestion, RAG, adaptive extraction, and secured API and MCP access; it became the shared account foundation.",
+              "Brought a <strong>RAG clause-extraction application into production</strong> by modernising its Python codebase, adapting OCR and model delivery, and establishing a repeatable Rancher release path.",
+              "Modernised a large service estate across <strong>.NET services, React microfrontends, and NestJS APIs</strong>, covering framework upgrades, GitLab CI remediation, and Helm and Flux delivery to Rancher.",
+              "Migrated <strong>AutoSys-triggered .NET workloads to Kubernetes through Solace messaging</strong> and contributed to critical incident recovery as part of a global engineering team."
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Accenture",
+        "period": "October 2018 — May 2023",
+        "location": "Mumbai, India",
+        "context": "Financial services",
+        "roles": [
+          {
+            "title": "Senior Software Engineer",
+            "period": "Dec 2021 — May 2023",
+            "bullets": [
+              "Led <strong>API design for legacy application modernisation</strong>, defining service boundaries and error handling while preserving insurance-platform compatibility.",
+              "Built an <strong>email-driven claims integration</strong> using Azure services and REST APIs.",
+              "Documented APIs using <strong>OpenAPI specification and Swagger</strong>, making newly migrated services easier to onboard and consume across teams."
+            ]
+          },
+          {
+            "title": "Software Engineer",
+            "period": "Dec 2020 — Dec 2021",
+            "bullets": [
+              "Built <strong>Azure Functions and APIs</strong> to connect policy and claims document workflows.",
+              "Developed an <strong>application analysis tool</strong> to support development effort estimation."
+            ]
+          },
+          {
+            "title": "Associate Software Engineer",
+            "period": "Oct 2018 — Dec 2020",
+            "bullets": [
+              "Maintained and enhanced insurance claims application across <strong>10 monthly releases</strong>, working directly with client stakeholders.",
+              "Designed document extraction and migration tool moving <strong>4 million claims documents</strong> from SQL Server to third-party storage systems.",
+              "Built automated document verification tool eliminating <strong>200+ hours of manual effort</strong> for file extension validation."
+            ]
+          }
+        ]
+      }
+    ],
+    "education": {
+      "label": "Education",
+      "title": "B.E. in Electronics & Telecommunication",
+      "organisation": "VESIT · Mumbai",
+      "period": "2015–2018"
+    }
+  },
+  "expertiseSection": {
+    "title": "Engineering range.",
+    "intro": "Backend depth, with the cloud and AI experience to connect the wider system.",
+    "credentialsLabel": "Certifications",
+    "credentialsSummary": "Azure · AI · Security · Duck Creek"
+  },
+  "contactSection": {
+    "eyebrow": "Engineering roles & collaboration.",
+    "title": [
+      "What are you trying",
+      "to make work"
+    ],
+    "body": "Hiring for a lead engineering role or tackling a modernisation challenge? I’d be glad to compare notes.",
+    "buttonLabel": "Start a conversation"
+  }
 }
