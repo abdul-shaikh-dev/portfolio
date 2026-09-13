@@ -20,8 +20,8 @@
       "label": "linkedin.com/in/abdul-gaffar-shaikh21"
     },
     "github": {
-      "url": "https://github.com/abdul219428",
-      "label": "github.com/abdul219428"
+      "url": "https://github.com/abdul-shaikh-dev",
+      "label": "github.com/abdul-shaikh-dev"
     }
   },
   "timeline": [
@@ -101,13 +101,10 @@
       ],
       "promotion": {
         "date": "April 2026",
-        "designation": "Manager",
-        "previousDesignation": "Senior Consultant",
         "previousTitle": "Senior Software Engineer"
       },
       "roles": [
         {
-          "designation": "Manager",
           "title": "Lead Software Engineer",
           "period": "April 2026 — Present",
           "bullets": [
@@ -117,7 +114,6 @@
           ]
         },
         {
-          "designation": "Senior Consultant",
           "title": "Senior Software Engineer",
           "period": "May 2023 — March 2026",
           "bullets": [

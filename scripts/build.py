@@ -40,7 +40,7 @@ def walkthrough(key, title, description):
     return f'<figure class="system-figure walkthrough" data-walkthrough="{key}"><figcaption>{e(title)}<span>{e(description)}</span></figcaption><div class="walkthrough-interactive" hidden></div><p class="walkthrough-fallback">{e(description)} Full architecture and implementation details are available in the accompanying notes.</p></figure>'
 
 figures = {
-    'mcp': walkthrough('extraction', 'Find what’s missing.', 'Adaptive extraction inside the knowledge template · fictional example.'),
+    'mcp': walkthrough('extraction', 'From document to attributed fields.', 'Ingestion and adaptive extraction inside the knowledge template · fictional example.'),
     'modernisation': '',
     'engineering-support': '<section class="delivery-changes" aria-labelledby="delivery-changes-title"><h4 id="delivery-changes-title">What changed</h4><dl><div><dt>Application engineering</dt><dd>Restructured the Python service and adapted document processing for Linux.</dd></div><div><dt>Internal model delivery</dt><dd>Delivered the embedding model through the internal artifact repository when external model hubs were unavailable.</dd></div><div><dt>Release path</dt><dd>Moved builds to GitLab CI and resolved the blockers to deployment on Rancher.</dd></div></dl></section>',
 
@@ -102,7 +102,7 @@ role_progression = '<div class="role-progression">'
 for role in current['roles']:
     bullets = role['bullets']
     contributions = '<ul class="role-contributions">' + ''.join('<li>'+b+'</li>' for b in bullets) + '</ul>'
-    role_progression += f'<article class="progression-role"><p class="role-date">{e(role["period"])}</p><h4>{e(role["title"])}</h4><p class="progression-title">{e(role["designation"])}</p><div class="progression-contributions">{contributions}</div></article>'
+    role_progression += f'<article class="progression-role"><p class="role-date">{e(role["period"])}</p><h4>{e(role["title"])}</h4><div class="progression-contributions">{contributions}</div></article>'
 role_progression += '</div>'
 earlier = ''
 for role in data['timeline'][1:-1]:

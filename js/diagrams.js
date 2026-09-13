@@ -4,6 +4,16 @@
   if (!figure) return;
   const host = figure.querySelector('.walkthrough-interactive');
   host.innerHTML = `
+    <section class="ingestion-prelude" aria-label="Document ingestion into the vector store">
+      <p><span>Knowledge preparation</span><strong>Before extraction, source material becomes searchable evidence.</strong></p>
+      <ol>
+        <li data-ingest="document"><span class="ingest-icon" aria-hidden="true">▧</span><div><strong>Source document</strong><small>PDF · Word · scanned page</small></div></li>
+        <li data-ingest="chunks"><span class="ingest-icon" aria-hidden="true">¶</span><div><strong>OCR &amp; chunking</strong><small>Read, clean, and split content</small></div></li>
+        <li data-ingest="embed"><span class="ingest-icon" aria-hidden="true">⠿</span><div><strong>Embeddings</strong><small>Represent each passage for search</small></div></li>
+        <li data-ingest="store"><svg viewBox="0 0 40 44" aria-hidden="true"><ellipse cx="20" cy="8" rx="16" ry="6"/><path d="M4 8v27c0 8 32 8 32 0V8M4 21c0 8 32 8 32 0"/></svg><div><strong>ChromaDB</strong><small>Store chunks with source metadata</small></div></li>
+      </ol>
+      <span class="ingestion-handoff">Indexed knowledge ready for retrieval <b aria-hidden="true">↓</b></span>
+    </section>
     <div class="extract-query"><span class="extract-label">Retrieval scope</span><div class="query-fields"><span class="query-resolved">Agreement ID ✓</span><span class="query-resolved">Start date ✓</span><span class="query-notice">Notice period</span></div><span class="query-count">3 fields</span></div>
     <ol class="extraction-route" aria-label="Extraction pipeline">
       <li class="route-store"><svg viewBox="0 0 40 44" aria-hidden="true"><ellipse cx="20" cy="8" rx="16" ry="6"/><path d="M4 8v27c0 8 32 8 32 0V8M4 21c0 8 32 8 32 0"/></svg><div><strong>ChromaDB</strong><small>Retrieve &amp; rerank chunks</small></div></li>
@@ -27,6 +37,10 @@
   ];
   // Two authored passes demonstrate the loop. This is not a live model call.
   const stages = [
+    {phase:'ingest-document', pass:1, found:0, title:'A source document enters the knowledge pipeline.', copy:'PDFs, Word files, and scanned pages can all provide source material.', duration:1500},
+    {phase:'ingest-chunks', pass:1, found:0, title:'Read the document and divide it into useful passages.', copy:'OCR recovers text from scanned pages before the content is cleaned and chunked.', duration:1800},
+    {phase:'ingest-embed', pass:1, found:0, title:'Create an embedding for each passage.', copy:'The embedding represents meaning so related evidence can be found beyond exact keyword matches.', duration:1800},
+    {phase:'ingest-store', pass:1, found:0, title:'Store the passages and their source metadata in ChromaDB.', copy:'The indexed knowledge is now ready for schema-driven retrieval.', duration:1800},
     {phase:'ready', pass:1, found:0, title:'A schema becomes a search.', copy:'Follow the complete extraction, including a second pass for missing evidence.', duration:900},
     {phase:'query', pass:1, found:0, title:'Search ChromaDB for all requested fields.', copy:'Schema-driven queries retrieve candidate document chunks.', duration:1900},
     {phase:'chunks', pass:1, found:0, title:'Select and rerank the retrieved chunks.', copy:'The agreement-details passage is relevant; unrelated text is left out.', duration:2000},
@@ -69,7 +83,7 @@
     const control=document.createElement('button');control.type='button';control.className='route-step';
     [...li.childNodes].filter(n=>!n.classList?.contains('route-cargo')).forEach(n=>control.append(n));li.prepend(control);
     control.title='Jump to this stage';
-    control.addEventListener('click',()=>{autoStarted=true;stop();render(([1,3,5,7])[j]+(stages[index].pass===2?8:0));});
+    control.addEventListener('click',()=>{autoStarted=true;stop();render(([5,7,9,11])[j]+(stages[index].pass===2?8:0));});
   });
   const controls=document.createElement('div');controls.className='extract-controls';
   action.before(controls);controls.append(action);
@@ -83,16 +97,25 @@
   let index=0, timer=null, playing=false, autoStarted=false;
   function stop() { clearTimeout(timer);timer=null;playing=false;figure.classList.add('extraction-paused');updateControls(); }
   function updateControls() {
-    action.textContent=playing?'Pause':index===stages.length-1?'Replay example ↶':index===0?'Watch extraction ▶':'Continue ▶';
+    action.textContent=playing?'Pause':index===stages.length-1?'Replay example ↶':index===0?'Watch the flow ▶':'Continue ▶';
     action.setAttribute('aria-pressed',String(playing));
     next.disabled=index===stages.length-1;
   }
   function render(i) {
     const previous=stages[index];index=i;const step=stages[i];
     figure.classList.remove('inspecting-evidence');
+    const ingesting=step.phase.startsWith('ingest-');
+    const ingestOrder=['document','chunks','embed','store'];
+    const ingestIndex=ingesting?ingestOrder.indexOf(step.phase.replace('ingest-','')):ingestOrder.length;
+    host.querySelectorAll('[data-ingest]').forEach((node,j)=>{
+      node.classList.toggle('is-active',ingesting&&j===ingestIndex);
+      node.classList.toggle('is-complete',j<ingestIndex||!ingesting);
+    });
+    get('.ingestion-handoff').classList.toggle('is-ready',!ingesting);
     selectView(['return','done'].includes(step.phase)?'results':'source');
     progress.firstElementChild.style.width=`${(i/(stages.length-1))*100}%`;
-    route.querySelectorAll('.route-step').forEach((button,j)=>button.setAttribute('aria-pressed',String(j===(['query','chunks','ready','gap'].includes(step.phase)?0:['prompt','send'].includes(step.phase)?1:step.phase==='llm'?2:3))));
+    const activeRoute=ingesting?-1:(['query','chunks','ready','gap'].includes(step.phase)?0:['prompt','send'].includes(step.phase)?1:step.phase==='llm'?2:3);
+    route.querySelectorAll('.route-step').forEach((button,j)=>button.setAttribute('aria-pressed',String(j===activeRoute)));
     library.querySelectorAll('[data-page]').forEach(chunk=>chunk.classList.toggle('chunk-match',chunk.dataset.page===(step.pass===1?'1':'7')));
     figure.dataset.extractionState=step.phase;figure.dataset.extractionPass=String(step.pass);
     get('.query-count').textContent=step.found===3?'All fields resolved':`Pass ${step.pass} · ${step.pass===1?3:1} ${step.pass===1?'fields':'field'}`;
@@ -110,11 +133,11 @@
       if(found && j>=previous.found) { void row.offsetWidth;row.classList.add('field-arriving'); }
     });
     const second=step.pass===2 && !['gap','query'].includes(step.phase);
-    const awaiting=['ready','query','gap'].includes(step.phase);
+    const awaiting=ingesting||['ready','query','gap'].includes(step.phase);
     get('.paper-page').textContent=awaiting?'':second?'p. 7':'p. 1';
-    get('.paper-section').textContent=awaiting?'Searching document chunks':second?'07 / Termination':'01 / Agreement details';
-    get('.paper-quote').innerHTML=awaiting?(step.pass===2?'Find the <mark>notice period</mark>.':'Find <mark>agreement ID</mark>, <mark>start date</mark>, and <mark>notice period</mark>.'):second?'Either party may terminate with <mark>30 days’ written notice</mark>.':'Agreement <mark>DEMO-001</mark> begins on <mark>1 January 2026</mark>.';
-    get('.paper-note').textContent=awaiting?'ChromaDB · indexed document chunks':`Retrieved evidence · Demo agreement, page ${second?'7':'1'}`;
+    get('.paper-section').textContent=ingesting?'Preparing indexed knowledge':awaiting?'Searching document chunks':second?'07 / Termination':'01 / Agreement details';
+    get('.paper-quote').innerHTML=ingesting?'The source document is being prepared for semantic retrieval.':awaiting?(step.pass===2?'Find the <mark>notice period</mark>.':'Find <mark>agreement ID</mark>, <mark>start date</mark>, and <mark>notice period</mark>.'):second?'Either party may terminate with <mark>30 days’ written notice</mark>.':'Agreement <mark>DEMO-001</mark> begins on <mark>1 January 2026</mark>.';
+    get('.paper-note').textContent=ingesting?'Document ingestion · illustrative flow':awaiting?'ChromaDB · indexed document chunks':`Retrieved evidence · Demo agreement, page ${second?'7':'1'}`;
     get('.bundle-schema').textContent=step.pass===1?'Agreement ID · Start date · Notice period':'Notice period only';
     get('.bundle-source').textContent=`Demo agreement · p. ${second?'7':'1'}`;
     get('.route-store .route-cargo b').textContent=step.pass===2?'p. 7':'p. 1';
