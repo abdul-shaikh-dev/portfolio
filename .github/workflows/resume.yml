@@ -30,10 +30,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.12"
 
@@ -57,7 +57,7 @@ jobs:
           cp docs/resume.pdf output/pdf/resume.pdf
 
       - name: Upload compiled resume
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: Abdul-Gaffar-Shaikh-resume
           path: output/pdf/resume.pdf
@@ -72,10 +72,10 @@ jobs:
       contents: write
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.12"
 
@@ -83,7 +83,7 @@ jobs:
         run: python scripts/build_resume.py
 
       - name: Download compiled resume
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: Abdul-Gaffar-Shaikh-resume
           path: output/pdf
