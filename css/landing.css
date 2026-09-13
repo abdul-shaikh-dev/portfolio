@@ -83,7 +83,9 @@ p { text-wrap:pretty; }
 /* The signature interaction: evidence changes form through the RAG loop. */
 .walkthrough { --scene-accent:var(--flash); position:relative; overflow:hidden; margin-top:38px; padding:30px; border-top:2px solid var(--flash); border-radius:0; background:#17372d; color:#f2f5fb; }
 .walkthrough figcaption { max-width:26ch; color:#f2f5fb; font-family:'DM Serif Display',Georgia,serif; font-size:28px; }
-.walkthrough figcaption span { max-width:50ch; color:#aebdb7; font-family:Manrope,sans-serif; font-size:11px; line-height:1.6; }
+.walkthrough figcaption span { display:block; max-width:50ch; margin-top:7px; color:#aebdb7; font-family:Manrope,sans-serif; font-size:11px; line-height:1.6; }
+.walkthrough.is-ingesting .adaptive-workbench { display:none; }
+.walkthrough:not(.is-ingesting) .knowledge-prep { display:none; }
 .demo-toolbar { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:18px 0; border-bottom:1px solid #526079; }
 .demo-toolbar > span { color:#aebdb7; font-size:11px; letter-spacing:.08em; text-transform:uppercase; }
 .demo-toolbar .extract-controls { margin:0; }
@@ -326,7 +328,7 @@ p { text-wrap:pretty; }
   .project-disclosure .work-story { padding-bottom:54px; }
   .story-copy { padding-left:28px; }
   .walkthrough { margin-top:28px; padding:18px 14px; }
-  .walkthrough figcaption { font-size:21px; }
+  .walkthrough figcaption { max-width:100%; font-size:21px; }
   .demo-toolbar { padding-block:11px; }
   .demo-toolbar > span { display:none; }
   .demo-toolbar .extract-controls { width:100%; justify-content:space-between; gap:6px; }

@@ -67,7 +67,7 @@
   function render(i){
     const previous=stages[index];index=i;const step=stages[i];const ingesting=step.phase.startsWith('ingest-');
     const order=['document','chunks','embed','store'];const ingestIndex=ingesting?order.indexOf(step.phase.replace('ingest-','')):order.length;
-    figure.classList.remove('inspecting-evidence');figure.dataset.extractionState=step.phase;figure.dataset.extractionPass=String(step.pass);
+    figure.classList.remove('inspecting-evidence');figure.classList.toggle('is-ingesting',ingesting);figure.dataset.extractionState=step.phase;figure.dataset.extractionPass=String(step.pass);
     host.querySelectorAll('[data-ingest]').forEach((node,j)=>{node.classList.toggle('is-active',ingesting&&j===ingestIndex);node.classList.toggle('is-complete',j<ingestIndex||!ingesting);});
     get('.ingestion-handoff').classList.toggle('is-ready',!ingesting);
     const active=ingesting?'':['query','chunks','ready','gap'].includes(step.phase)?'store':['prompt','send'].includes(step.phase)?'prompt':step.phase==='llm'?'llm':'output';
