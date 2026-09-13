@@ -273,6 +273,10 @@ p { text-wrap:pretty; }
 .skill-item h3 a:hover span { transform:translate(3px,-3px); }
 .skill-item p { max-width:50ch; margin-top:8px; font-size:14px; line-height:1.7; }
 .credentials { margin-top:18px; }
+.cert-list > * { display:grid; grid-template-columns:minmax(85px,.12fr) minmax(0,1fr) 56px 16px; column-gap:20px; align-items:center; }
+.cert-list .cert-code { min-width:0; }
+.cert-list .cert-year { grid-column:3; justify-self:end; margin-left:0; }
+.cert-list > a > span:last-child:not(.cert-year) { grid-column:4; justify-self:end; }
 
 .contact-section { position:relative; isolation:isolate; display:grid; grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr); gap:clamp(56px,8vw,120px); padding-block:clamp(62px,7vw,88px); }
 .contact-section::before { content:''; position:absolute; z-index:-1; inset:0 50%; width:100vw; transform:translateX(-50%); background:var(--landing-soft); }
@@ -383,6 +387,7 @@ p { text-wrap:pretty; }
   .expertise-section .section-heading > p { font-size:18px; }
   .skill-grid { grid-template-columns:1fr; }
   .skill-item { padding-block:22px; }
+  .cert-list > * { grid-template-columns:minmax(65px,.18fr) minmax(0,1fr) 42px 12px; column-gap:12px; }
   .contact-section { grid-template-columns:1fr; gap:34px; }
   .contact-actions { align-items:flex-start; flex-direction:column; }
 }
