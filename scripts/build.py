@@ -153,10 +153,12 @@ for role in current['roles']:
     contributions = '<ul class="role-contributions">' + ''.join('<li>'+b+'</li>' for b in bullets) + '</ul>'
     role_progression += f'<article class="progression-role"><p class="role-date">{e(role["period"])}</p><h4>{e(role["title"])}</h4><div class="progression-contributions">{contributions}</div></article>'
 role_progression += '</div>'
-earlier = ''
+earlier = '<div class="earlier-progression">'
 for role in data['timeline'][1:-1]:
-    earlier += f'<div class="earlier-role"><h4>{e(role["title"])}</h4><p class="role-date">{e(role["period"])}</p><ul>'+''.join('<li>'+b+'</li>' for b in role['bullets'])+'</ul></div>'
-career = f'''<article class="employer current-employer"><div class="employer-heading"><div><p class="role-date">May 2023 — Present</p><h3>Capgemini</h3><p>Mumbai, India · Global investment bank</p></div><span class="current-label">Current</span></div>{role_progression}</article><article class="employer"><div class="employer-heading"><div><p class="role-date">October 2018 — May 2023</p><h3>Associate to Senior Software Engineer</h3><p>Accenture · Mumbai</p></div></div><p class="role-summary">Progressed through three engineering roles in financial services, working on insurance platforms, API modernisation, Azure integrations, and document automation.</p><details class="career-details"><summary>Earlier roles & contributions <span aria-hidden="true">+</span></summary>{earlier}</details></article><div class="education"><span>Education</span><div><strong>{e(data['timeline'][-1]['title'])}</strong><p>{e(data['timeline'][-1]['org'])} · 2015–2018</p></div></div>'''
+    contributions = '<ul class="earlier-contributions">' + ''.join('<li>'+bullet+'</li>' for bullet in role['bullets']) + '</ul>'
+    earlier += f'<article class="earlier-role"><p class="role-date">{e(role["period"])}</p><div><h4>{e(role["title"])}</h4>{contributions}</div></article>'
+earlier += '</div>'
+career = f'''<div class="career-timeline"><article class="employer current-employer"><header class="employer-heading"><p class="role-date">May 2023 — Present</p><div><h3>Capgemini</h3><p class="employer-meta"><span>Mumbai, India</span><span>Global investment bank client</span></p></div><span class="current-label">Current</span></header>{role_progression}</article><article class="employer earlier-employer"><header class="employer-heading"><p class="role-date">October 2018 — May 2023</p><div><h3>Accenture</h3><p class="employer-meta"><span>Mumbai, India</span><span>Financial services</span></p></div></header>{earlier}</article></div><div class="education"><span>Education</span><div><strong>{e(data['timeline'][-1]['title'])}</strong><p>{e(data['timeline'][-1]['org'])} · 2015–2018</p></div></div>'''
 
 skills = ''.join(f'<article class="skill-item"><h3><a href="{e(x["href"])}">{e(x["name"])} <span aria-hidden="true">↗</span></a></h3><p>{e(x["desc"])}</p></article>' for x in data['skills'])
 certs = ''
