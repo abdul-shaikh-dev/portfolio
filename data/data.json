@@ -108,19 +108,21 @@
           "title": "Lead Software Engineer",
           "period": "April 2026 — Present",
           "bullets": [
-            "Lead <strong>architecture reviews and phased modernisation</strong> across Python, React, and .NET applications.",
-            "Guide teammates through implementation and the adoption of established <strong>CI, container, and Rancher practices</strong>.",
-            "Remain hands-on with <strong>backend delivery, performance work, engineering automation, and production blockers</strong>."
+            "Lead the <strong>phased modernisation of a Python and React infrastructure dashboard</strong>, guiding its developer through clearer service boundaries, REST APIs, and production delivery on Rancher.",
+            "Built and deployed <strong>.NET and Python APIs for legal and financial data</strong>, giving other teams supported access to previously isolated business information.",
+            "Resolved a <strong>financial API performance bottleneck</strong> by moving filtering and distinct operations into SQL Server and reducing memory-heavy in-process data handling.",
+            "Built <strong>Informatica-to-Python/Prefect migration tooling and Rancher onboarding automation</strong>, including code generation, validation, and retained workflow progress.",
+            "Unblocked a <strong>regulatory web-scraping application</strong> by delivering a Playwright browser runtime on Rancher and connecting Crawl4AI to it in Kubernetes."
           ]
         },
         {
           "title": "Senior Software Engineer",
           "period": "May 2023 — March 2026",
           "bullets": [
-            "Built enterprise <strong>knowledge and document-extraction capabilities</strong> that became a shared account foundation.",
-            "Delivered a production <strong>RAG clause-extraction application</strong> and extended controlled knowledge access to coding agents.",
-            "Modernised .NET services and moved <strong>backend and frontend applications from Windows hosting to Kubernetes</strong>.",
-            "Led messaging migrations and contributed to <strong>critical incident recovery</strong>."
+            "Designed a modular <strong>knowledge-management platform</strong> with multisource ingestion, RAG, adaptive extraction, and secured API and MCP access; it became the shared account foundation.",
+            "Brought a <strong>RAG clause-extraction application into production</strong> by modernising its Python codebase, adapting OCR and model delivery, and establishing a repeatable Rancher release path.",
+            "Modernised a large service estate across <strong>.NET services, React microfrontends, and NestJS APIs</strong>, covering framework upgrades, GitLab CI remediation, and Helm and Flux delivery to Rancher.",
+            "Migrated <strong>AutoSys-triggered .NET workloads to Kubernetes through Solace messaging</strong> and contributed to critical incident recovery as part of a global engineering team."
           ]
         }
       ]
