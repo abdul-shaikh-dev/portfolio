@@ -1,6 +1,6 @@
 # Abdul Gaffar Shaikh — Portfolio
 
-A static, recruiter-focused portfolio covering enterprise knowledge systems, application modernisation, backend engineering, and production delivery in financial services.
+A static portfolio covering enterprise knowledge systems, application modernisation, backend engineering, and production delivery in financial services.
 
 The site is generated from structured JSON and served as plain HTML, CSS, and JavaScript. It does not require a frontend framework or runtime build step in production.
 
