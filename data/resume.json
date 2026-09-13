@@ -1,0 +1,117 @@
+{
+  "person": {
+    "name": "Abdul Gaffar Shaikh",
+    "title": "Lead Software Engineer",
+    "location": "Mumbai, India",
+    "phone": "+91 88986 71746",
+    "email": "abdul219428@gmail.com",
+    "linkedin": {
+      "label": "linkedin.com/in/abdul-gaffar-shaikh21",
+      "url": "https://www.linkedin.com/in/abdul-gaffar-shaikh21/"
+    },
+    "github": {
+      "label": "github.com/abdul-shaikh-dev",
+      "url": "https://github.com/abdul-shaikh-dev"
+    }
+  },
+  "profile": "Lead software engineer with 7.5+ years in financial services, building backend systems, modernising applications, and delivering enterprise AI capabilities. Hands-on implementation alongside architecture reviews, performance optimisation, and guidance for teammates delivering modernisation work across teams.",
+  "experience": [
+    {
+      "company": "Capgemini",
+      "period": "May 2023 -- Present",
+      "subtitle": "Financial services engineering",
+      "location": "Mumbai, India",
+      "roles": [
+        {
+          "title": "Lead Software Engineer",
+          "period": "April 2026 -- Present",
+          "bullets": [
+            "Leading the **phased modernisation of a Python and React infrastructure dashboard**. Reviewed the codebase, defined architectural changes, and guided implementation of a structured backend and REST APIs. Both applications are deployed on Rancher; data-pipeline and storage improvements remain ongoing.",
+            "Built and deployed a **.NET API over legal business data**, making previously inaccessible data available to other teams. Established its deployment configuration and brought the service onto Rancher.",
+            "Built a **Python financial-data API** and established a maintainable reference implementation for continued development.",
+            "Resolved a **production performance bottleneck in financial-data APIs** by restructuring LINQ queries and processing paths, reducing pod memory from 6--7 GB to about 1 GB and endpoint response time from roughly five minutes to 40 seconds.",
+            "Guide **teammates delivering modernisation work**, reviewing architectural decisions and supporting adoption of established CI and deployment practices.",
+            "Built supporting tools for **Rancher onboarding** and **Informatica-to-Python/Prefect migration**, including code generation and persistent progress tracking.",
+            "Unblocked a **regulatory web-scraping application** by deploying a Playwright browser runtime on Rancher. Addressed Chromium deployment constraints, configured Helm/Flux deployment, and established the remote browser connection for Crawl4AI."
+          ]
+        },
+        {
+          "title": "Senior Software Engineer",
+          "period": "May 2023 -- March 2026",
+          "bullets": [
+            "Designed a **modular knowledge-management and RAG template** with scanned-document support, configurable ingestion, and built-in authentication. Adopted as the account standard and used for contract-field extraction; recognised in the CIO newsletter in 2026.",
+            "Built **adaptive extraction within the template** using LangGraph and vector retrieval. Returns fields with supporting evidence and focuses subsequent passes on missing fields. Supports reusable presets and on-demand schemas.",
+            "Extended enterprise knowledge to **Claude Code and Copilot CLI through MCP**, with group-based authorisation and time-limited credentials.",
+            "Brought an existing **PDF clause-extraction application into production** through codebase modernisation, environment integration, and automated deployment. Adapted OCR and model delivery to the firm's constraints. Running reliably on Rancher for about a year; recognised in the CIO newsletter.",
+            "Modernised **.NET services and onboarded React microfrontends and NestJS APIs to Rancher**, supporting the move from Windows hosting to Kubernetes. Upgraded .NET Core 3.1 services to .NET 6/8, adopted established GitLab CI templates, and resolved build and deployment issues with Helm and Flux.",
+            "Migrated Solace messaging workloads to Kubernetes and resolved reliability and deployment issues. Contributed to critical incident recovery as part of a global engineering team."
+          ]
+        }
+      ]
+    },
+    {
+      "company": "Senior Software Engineer",
+      "period": "December 2021 -- May 2023",
+      "subtitle": "Accenture Solutions Pvt. Ltd",
+      "location": "Mumbai, India",
+      "bullets": [
+        "Led API design for moving legacy C# class-library features to ASP.NET Core, defining error handling and service structure while retaining compatibility with Duck Creek's insurance configuration model.",
+        "Built an email-trigger application connecting a shared mailbox to the claims workflow using Azure Logic Apps, Blob Storage, and REST APIs. Established API documentation and automated quality checks for delivery.",
+        "Configured Duck Creek Claims capabilities for property and casualty insurance workflows."
+      ]
+    },
+    {
+      "company": "Software Engineer",
+      "period": "December 2020 -- December 2021",
+      "subtitle": "Accenture Solutions Pvt. Ltd",
+      "location": "Mumbai, India",
+      "bullets": [
+        "Converted C# class-library features into REST APIs and integrated them with Azure API Management using JWT bearer authentication. Built HTTP-triggered Azure Functions and APIs to transfer documents between policy and claims applications.",
+        "Developed a decompiler-based analysis tool to inspect application code and produce method and class metrics for development effort estimation."
+      ]
+    },
+    {
+      "company": "Associate Software Engineer",
+      "period": "October 2018 -- December 2020",
+      "subtitle": "Accenture Solutions Pvt. Ltd",
+      "location": "Mumbai, India",
+      "bullets": [
+        "Maintained and enhanced an insurance claims application through regular releases and upgraded ASP.NET applications. Built document extraction, migration, and verification tools for claims data and third-party storage integration."
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "category": "Backend",
+      "items": "C#, .NET, Entity Framework Core, LINQ, Python, FastAPI, SQLAlchemy, REST APIs"
+    },
+    {
+      "category": "Data & AI",
+      "items": "SQL Server, Oracle, RAG, LangGraph, LangChain, ChromaDB, Tesseract OCR, MCP"
+    },
+    {
+      "category": "Cloud & Delivery",
+      "items": "Kubernetes, Rancher, Helm, Flux, Docker, GitLab CI, Azure, Solace"
+    },
+    {
+      "category": "Quality & Tooling",
+      "items": "xUnit, pytest, SonarQube, Nexus IQ, Git, OpenAPI, Playwright"
+    },
+    {
+      "category": "Application Architecture",
+      "items": "API design, service decomposition, codebase reviews, performance optimisation"
+    }
+  ],
+  "certifications": [
+    "Microsoft Certified: Azure AI Fundamentals (2023)",
+    "Microsoft Certified: Azure Developer Associate (2020); Azure Fundamentals (2019)",
+    "Microsoft Certified: Security, Compliance, and Identity Fundamentals (2021)",
+    "Duck Creek Claims Configurator (2022); Claims Basic Configuration (2019)"
+  ],
+  "education": {
+    "degree": "B.E. in Electronics and Telecommunication",
+    "period": "September 2015 -- July 2018",
+    "institution": "Vivekanand Education Society's Institute of Technology",
+    "location": "Mumbai, India"
+  }
+}

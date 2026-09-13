@@ -1,44 +1,101 @@
-# Portfolio
+# Abdul Gaffar Shaikh — Portfolio
 
-A static portfolio with three responsibility-led work highlights, eight supporting projects, career history and visible expertise. Native anchor links and optional technical notes keep the content accessible without JavaScript.
+A static, recruiter-focused portfolio covering enterprise knowledge systems, application modernisation, backend engineering, and production delivery in financial services.
 
-The design uses a cobalt introduction with direct links into the three main stories, light/dark reading surfaces, and a dashboard architecture figure that separates deployed components from planned work. Responsive navigation and native disclosures keep the content available on smaller screens and without JavaScript.
+The site is generated from structured JSON and served as plain HTML, CSS, and JavaScript. It does not require a frontend framework or runtime build step in production.
 
-## Run locally
+## Local development
 
-```powershell
-python -m http.server 4173 --bind 127.0.0.1
-```
-
-Open http://127.0.0.1:4173.
-
-## Update content
-
-Edit `data/data.json`, then regenerate the page:
+Generate the website and start a local server:
 
 ```powershell
 python scripts/build.py
+python -m http.server 4173 --bind 127.0.0.1
 ```
 
-- `data/data.json`: project descriptions, career history, expertise and credentials.
-- `scripts/build.py`: page structure, project figures and concise career summaries.
-- `css/styles.css`: responsive layout and light/dark themes.
-- `js/script.js`: reading-position navigation, theme preference and email copying.
-- `index.html`: generated static page; update its source data or generator.
+Open [http://127.0.0.1:4173](http://127.0.0.1:4173).
 
-Project links such as `#project-mcp` and `#project-modernisation` navigate directly to the inline stories. The three highlights are knowledge management, application modernisation and delivery, and AI adoption/runtime integration. Onboarding automation and Informatica migration tooling are supporting work. The main navigation tracks the section at the reading position; a desktop project rail offers direct jumps between the three highlights. Implementation notes and earlier-career detail use native disclosure controls. There are no filters or project popups.
+## Content sources
 
-The Vite hub remains a supporting prototype. Informatica includes Python/Prefect code generation; its adoption and completion of the Oracle API's authentication have not been confirmed, so the copy makes no claims about those details.
+- `data/data.json` contains portfolio copy, work history, expertise, links, and credentials.
+- `data/resume.json` contains the resume profile, experience, skills, certifications, and education.
+- `scripts/build.py` generates `index.html` from the portfolio data.
+- `scripts/build_resume.py` generates `docs/resume.tex` from the resume data.
 
-## Build the resume
+`index.html` and `docs/resume.tex` are generated files. Edit their JSON sources or templates rather than changing them directly.
 
-The editable resume is `docs/resume.tex`. With MiKTeX installed, compile it from the project root:
+## Resume generation
+
+The resume pipeline has one editable source and two generated outputs:
+
+```text
+data/resume.json
+        │
+        ▼
+scripts/build_resume.py
+        │
+        ├── docs/resume.tex        reviewable LaTeX
+        │
+        ▼
+      LaTeX
+        │
+        └── output/pdf/resume.pdf  portfolio download
+```
+
+Generate the LaTeX locally:
+
+```powershell
+python scripts/build_resume.py
+```
+
+With MiKTeX installed, compile the PDF from the repository root:
 
 ```powershell
 New-Item -ItemType Directory -Force tmp/pdfs,output/pdf | Out-Null
 pdflatex --enable-installer -interaction=nonstopmode -halt-on-error -output-directory=tmp/pdfs docs/resume.tex
 pdflatex --enable-installer -interaction=nonstopmode -halt-on-error -output-directory=tmp/pdfs docs/resume.tex
 Copy-Item tmp/pdfs/resume.pdf output/pdf/resume.pdf
+python scripts/build.py
 ```
 
-Open a new terminal after installing MiKTeX so its executables are available on PATH. The first build can download missing LaTeX packages.
+The second LaTeX pass resolves document references. Rebuilding the website refreshes the cache-busting hash on the resume link.
+
+## Resume CI
+
+`.github/workflows/resume.yml` runs when resume data, its generator, or its template changes. It can also be started manually from the GitHub Actions page.
+
+For pull requests, the workflow:
+
+1. Generates `docs/resume.tex` from `data/resume.json`.
+2. Fails if the committed LaTeX is stale.
+3. Compiles the PDF with TeX Live.
+4. Uploads `Abdul-Gaffar-Shaikh-resume` as a workflow artifact for review.
+
+For pushes to `main`, it also updates the canonical PDF and the website’s cache-busted link, then commits generated files with `[skip ci]` to avoid a workflow loop.
+
+## Repository structure
+
+```text
+.
+├── .github/workflows/    GitHub Actions
+├── css/                  responsive layout and themes
+├── data/                 portfolio and resume sources
+├── docs/                 resume template and generated LaTeX
+├── js/                   navigation and interactive diagrams
+├── output/pdf/           published resume PDF
+├── scripts/              site and resume generators
+└── index.html            generated static site
+```
+
+## Useful checks
+
+```powershell
+python -m json.tool data/data.json > $null
+python -m json.tool data/resume.json > $null
+python -m py_compile scripts/build.py scripts/build_resume.py
+python scripts/build_resume.py
+python scripts/build.py
+node --check js/script.js
+node --check js/diagrams.js
+git diff --check
+```
