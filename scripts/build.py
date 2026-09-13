@@ -75,7 +75,7 @@ for key in data['featuredWork']:
             example = by_id[example_id]
             evidence = '<p class="recognition">' + e(example['recognition']) + '</p>' if example.get('recognition') else ''
             examples += f'<article class="delivery-example" id="project-{example_id}"><header><h5>{e(example["shortTitle"])}</h5><p class="delivery-preview">{e(example["previewOutcome"])}</p></header><div><p>{e(example.get("context") or example["summary"])}</p>{figures.get(example_id, "")}{evidence}{tags(example["tags"])}{technical_notes(example)}</div></article>'
-        examples += '<p class="delivery-links">Related backend work: <a href="#project-dotnet-api">.NET business-data API ↗</a> · <a href="#project-api">Python financial-data API ↗</a> · <a href="#project-api-performance">API memory optimisation ↗</a></p></div>'
+        examples += '<p class="delivery-links">Related backend work: <a href="#project-dotnet-api">.NET business-data API ↗</a> · <a href="#project-api">Python financial-data API ↗</a> · <a href="#project-api-performance">API performance optimisation ↗</a></p></div>'
     stories += f'''<section class="project-disclosure" id="project-{key}"><header class="project-summary"><div class="project-overview-title"><h3>{title}</h3><span class="project-outcome">{e(project_outcomes[key])}</span></div><p>{overview}</p></header><article class="work-story story-{key}"><div class="story-layout"><div class="story-copy">{context}<p>{e(p['summary'])}</p>{result}{recognition}{tags(p['tags'])}</div>{figures[key]}{examples}<div class="lead-details">{capabilities}{technical_notes(p)}</div></div></article></section>'''
 
 supporting = ''
