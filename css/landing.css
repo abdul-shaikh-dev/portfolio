@@ -59,7 +59,7 @@ p { text-wrap:pretty; }
 .work-directory a:is(:hover,:focus-visible)::after { opacity:1; transform:none; }
 
 /* One flagship system, followed by the broader engineering practice. */
-.work-section { position:relative; padding-block:36px 70px; }
+.work-section { position:relative; padding-block:36px 24px; }
 .work-header { margin:0; padding:0 0 22px; border-top:0; border-bottom:1px solid var(--line); }
 .work-header h2 { font-family:'DM Serif Display',Georgia,serif; font-size:clamp(2rem,3.4vw,3.2rem); font-weight:400; line-height:1; }
 .work-overview { border-bottom:1px solid var(--line); }
@@ -208,11 +208,11 @@ p { text-wrap:pretty; }
 .delivery-heading > p { max-width:51ch; color:color-mix(in srgb,var(--bg) 72%,transparent); font-size:15px; line-height:1.8; }
 .delivery-content { border-top:1px solid color-mix(in srgb,var(--bg) 30%,transparent); }
 .ledger-columns,.delivery-project { display:grid; grid-template-columns:minmax(190px,.82fr) repeat(3,minmax(0,1fr)); }
-.ledger-columns { position:sticky; z-index:4; top:80px; min-height:58px; align-items:center; border-bottom:1px solid color-mix(in srgb,var(--bg) 28%,transparent); background:color-mix(in srgb,var(--bg) 4%,var(--ink)); box-shadow:0 10px 22px color-mix(in srgb,#000 18%,transparent); color:color-mix(in srgb,var(--bg) 72%,transparent); font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+.ledger-columns { position:sticky; z-index:4; top:77px; min-height:48px; align-items:center; border-bottom:1px solid color-mix(in srgb,var(--bg) 28%,transparent); background:var(--ink); color:color-mix(in srgb,var(--bg) 72%,transparent); font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
 .ledger-columns span { padding-inline:20px; }
 .ledger-columns span:first-child { padding-left:0; }
 .delivery-ledger { counter-reset:delivery; }
-.delivery-project { position:relative; min-width:0; border-top:1px solid color-mix(in srgb,var(--bg) 24%,transparent); scroll-margin-top:96px; }
+.delivery-project { position:relative; min-width:0; border-top:1px solid color-mix(in srgb,var(--bg) 24%,transparent); scroll-margin-top:137px; }
 .delivery-project::after { content:''; position:absolute; right:0; bottom:-1px; left:0; height:2px; opacity:0; transform:scaleX(.06); transform-origin:left; background:linear-gradient(90deg,var(--inverse-accent),transparent 72%); transition:opacity .25s,transform .55s cubic-bezier(.22,.72,.2,1); }
 .delivery-project:hover::after,.delivery-project:focus-within::after { opacity:.9; transform:scaleX(1); }
 .ledger-identity,.ledger-cell { min-width:0; padding:25px 20px 29px; }
