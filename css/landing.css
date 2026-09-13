@@ -119,6 +119,7 @@ p { text-wrap:pretty; }
 .mini-vault { position:relative; width:105px; height:67px; margin-top:13px; border-inline:1px solid currentColor; background:linear-gradient(90deg,transparent,color-mix(in srgb,currentColor 12%,transparent),transparent); }
 .mini-vault::before,.mini-vault::after,.mini-vault i { content:''; position:absolute; left:-1px; right:-1px; height:18px; border:1px solid currentColor; border-radius:50%; }
 .mini-vault::before { top:-8px; background:#17372d; }.mini-vault::after { bottom:-8px; }.mini-vault i:nth-child(1) { top:14px; }.mini-vault i:nth-child(2) { top:36px; }
+.mini-vault b { position:absolute; z-index:2; inset:19px 7px auto; color:currentColor; font:600 7px/1.2 Manrope,sans-serif; letter-spacing:.08em; text-align:center; text-transform:uppercase; }
 .prep-packet { position:absolute; z-index:3; padding:3px 6px; background:#f6f4eb; color:#24463b; font-size:8px; opacity:0; pointer-events:none; }
 .packet-one { left:20%; top:73px; }.packet-two { left:47%; top:82px; }.packet-three { left:70%; top:77px; }
 [data-extraction-state="ingest-chunks"] .packet-one { animation:prep-flight 1.4s ease-in-out both; }
@@ -145,9 +146,15 @@ p { text-wrap:pretty; }
 .node-jump { display:block; width:100%; min-height:44px; padding:0; border:0; background:transparent; color:inherit; text-align:left; }
 .node-jump strong,.node-jump small { display:block; }.node-jump strong { margin-top:4px; color:#f2f5fb; font-family:'DM Serif Display',Georgia,serif; font-size:20px; font-weight:400; }.node-jump small { margin-top:3px; color:#91a59d; font-size:9px; line-height:1.5; }
 .evidence-vault { margin-top:42px; }
-.vault-body { position:relative; width:112px; height:54px; margin:20px 0 -8px 12px; border-inline:1px solid currentColor; }
+.vault-body { position:relative; width:126px; height:70px; margin:22px 0 2px 8px; border-inline:1px solid currentColor; background:linear-gradient(90deg,transparent,color-mix(in srgb,currentColor 8%,transparent),transparent); }
 .vault-body::before,.vault-body::after,.vault-body span { content:''; position:absolute; left:-1px; right:-1px; height:18px; border:1px solid currentColor; border-radius:50%; }
-.vault-body::before { top:-8px; background:#17372d; }.vault-body::after { bottom:-8px; }.vault-body span:nth-child(1) { top:10px; }.vault-body span:nth-child(2) { top:28px; }
+.vault-body::before { top:-8px; background:#17372d; }.vault-body::after { bottom:-8px; }.vault-body span:nth-child(1) { top:13px; }.vault-body span:nth-child(2) { top:36px; }
+.vault-body > b { position:absolute; z-index:2; right:7px; bottom:8px; left:7px; color:currentColor; font:600 7px/1.2 Manrope,sans-serif; letter-spacing:.07em; text-align:center; text-transform:uppercase; }
+.vector-field { position:absolute; z-index:3; top:7px; left:50%; display:grid; grid-template-columns:repeat(4,3px); gap:4px 6px; transform:translateX(-50%); }
+.vector-field i { width:3px; height:3px; border-radius:50%; background:currentColor; box-shadow:0 0 7px currentColor; opacity:.65; }
+.evidence-vault.is-active .vector-field i { animation:vector-pulse 1.2s ease-in-out infinite alternate; }
+.evidence-vault.is-active .vector-field i:nth-child(3n+2) { animation-delay:.25s; }
+.evidence-vault.is-active .vector-field i:nth-child(3n) { animation-delay:.5s; }
 .passage-stack { position:relative; margin-top:14px; }
 .passage-stack button { display:grid; grid-template-columns:27px 1fr; gap:8px; width:100%; min-height:48px; padding:8px 5px; border:0; border-top:1px solid #50655e; background:#17372d; color:#b7c5c0; text-align:left; transition:opacity .3s,background .3s,transform .3s; }
 .passage-stack b { color:currentColor; font:15px/1.2 'DM Serif Display',Georgia,serif; }.passage-stack span,.passage-stack small { display:block; font-size:9px; line-height:1.45; }.passage-stack small { color:#81958d; }
@@ -190,6 +197,7 @@ p { text-wrap:pretty; }
 @keyframes result-arrive { 0% { opacity:0; transform:translateX(-50px); } 35%,80% { opacity:1; } 100% { opacity:0; transform:translateX(58px); } }
 @keyframes model-orbit { to { transform:rotate(360deg); } }
 @keyframes field-arrive { from { background:#385e51; transform:translateY(7px); } to { background:transparent; transform:none; } }
+@keyframes vector-pulse { from { opacity:.28; transform:scale(.75); } to { opacity:1; transform:scale(1.35); } }
 
 /* Engineering work reads as a transformation ledger: constraint, intervention, and production state. */
 .engineering-delivery { position:relative; padding-block:72px 58px; overflow:clip; background:var(--ink); color:var(--bg); scroll-margin-top:76px; }
@@ -401,5 +409,5 @@ p { text-wrap:pretty; }
 
 @media(prefers-reduced-motion:reduce) {
   .work-directory a::after,.work-directory a,.skill-item h3 span,.prep-object,.prompt-piece,.passage-stack button,.result-ledger dl > div,.ingestion-handoff { transition:none; }
-  :is(.scan-sheet i,.model-orbit,.prep-packet,.evidence-slip,.prompt-capsule,.result-packet,.flow-path,.field-arriving) { animation:none!important; }
+  :is(.scan-sheet i,.model-orbit,.prep-packet,.evidence-slip,.prompt-capsule,.result-packet,.flow-path,.field-arriving,.vector-field i) { animation:none!important; }
 }
