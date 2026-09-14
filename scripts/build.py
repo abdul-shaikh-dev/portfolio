@@ -127,7 +127,8 @@ for group in delivery['groups']:
         aliases = ''.join(f'<span class="anchor-alias" id="{e(alias)}" aria-hidden="true"></span>' for alias in p.get('aliases', []))
         badge_text = p.get('statusLabel') or ('Prototype' if p.get('status') == 'prototype' else '')
         badge = f'<span class="prototype-badge">{e(badge_text)}</span>' if badge_text else ''
-        evidence = f'<p class="ledger-recognition">{e(p["recognition"])}</p>' if p.get('recognition') else ''
+        evidence_content = f'<p class="ledger-recognition">{e(p["recognition"])}</p>' if p.get('recognition') else ''
+        evidence = f'<div class="ledger-evidence-slot">{evidence_content}</div>'
         prominence = p.get('prominence', '')
         project_class = f' delivery-project--{e(prominence)}' if prominence else ''
         prominence_label = f'<p class="delivery-scope">{e(p["prominenceLabel"])}</p>' if p.get('prominenceLabel') else ''
@@ -154,10 +155,8 @@ for employer_index, employer in enumerate(career_data['employers']):
     contribution_class = 'role-contributions' if employer_index == 0 else 'earlier-contributions'
     roles = f'<div class="{role_class}">'
     for role in employer['roles']:
-        highlighted = set(role.get('highlightBullets', []))
         contributions = f'<ul class="{contribution_class}">' + ''.join(
-            f'<li{" class=\"role-highlight\"" if index in highlighted else ""}>{bullet}</li>'
-            for index, bullet in enumerate(role['bullets'])
+            f'<li>{bullet}</li>' for bullet in role['bullets']
         ) + '</ul>'
         role_body = f'<h4>{e(role["title"])}</h4><div class="progression-contributions">{contributions}</div>' if employer_index == 0 else f'<div><h4>{e(role["title"])}</h4>{contributions}</div>'
         roles += f'<article class="{item_class}"><p class="role-date">{e(role["period"])}</p>{role_body}</article>'

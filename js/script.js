@@ -85,6 +85,38 @@ window.addEventListener('load', scheduleNavigation);
 if (document.fonts?.ready) document.fonts.ready.then(scheduleNavigation);
 updateNavigation();
 
+// Re-align a direct chapter link after fonts and interactive content settle.
+const initialChapterLink = mapLinks.find(link => link.hash === location.hash);
+const initialChapterTarget = initialChapterLink && document.querySelector(initialChapterLink.hash);
+let preserveInitialChapter = Boolean(initialChapterTarget);
+for (const event of ['wheel', 'touchstart', 'keydown', 'pointerdown']) {
+  window.addEventListener(event, () => { preserveInitialChapter = false; }, { once: true, passive: true });
+}
+function alignInitialChapter() {
+  if (!preserveInitialChapter || location.hash !== initialChapterLink?.hash) return;
+  initialChapterTarget.scrollIntoView({ behavior: 'instant', block: 'start' });
+}
+if (initialChapterTarget) {
+  window.addEventListener('load', () => requestAnimationFrame(alignInitialChapter), { once: true });
+  if (document.fonts?.ready) document.fonts.ready.then(() => requestAnimationFrame(alignInitialChapter));
+}
+
+// Introduce each transformation once as it enters the reading area.
+const deliveryProjects = [...document.querySelectorAll('.delivery-project')];
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+if (deliveryProjects.length && 'IntersectionObserver' in window && !reduceMotion.matches) {
+  const deliverySection = document.querySelector('.engineering-delivery');
+  deliverySection?.classList.add('delivery-motion-ready');
+  const deliveryObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      deliveryObserver.unobserve(entry.target);
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: .08 });
+  deliveryProjects.forEach(project => deliveryObserver.observe(project));
+}
+
 // Preserve project links from earlier versions without retaining their popup interface.
 function followLegacyLink() {
   const match = location.hash.match(/^#work-(mcp|modernisation|engineering-support|onboarding|informatica|api|browser|platform|migrations)$/);
