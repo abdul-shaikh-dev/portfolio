@@ -136,17 +136,18 @@
       "capabilities": [
         {
           "title": "From source to useful answer",
-          "body": "The React interface supports Jira, Confluence, PDF, Word, text, and image ingestion, then exposes RAG queries and schema-driven extraction through one API."
+          "body": "React supports Jira, Confluence, documents, and images; the same API serves RAG queries and schema-driven extraction."
         },
         {
           "title": "Composable for each team",
-          "body": "Query, extraction, and ingestion modules can be enabled independently, while new sources can be added through the same modular structure."
+          "body": "Query, extraction, and ingestion modules are independently enabled, with new sources added through the same structure."
         }
       ],
       "feature": {
         "displayTitle": "Knowledge-management template",
         "overview": "Multisource ingestion, RAG, adaptive extraction, and secured agent access.",
         "headlineOutcome": "A shared foundation for enterprise knowledge",
+        "narrative": "Built one governed platform for enterprise knowledge, document extraction, and AI-assisted workflows, with a modular React interface and secured API and MCP access.",
         "figure": {
           "type": "walkthrough",
           "key": "extraction",
@@ -217,6 +218,7 @@
       ],
       "outcome": "A connected migration process with workflow findings, executive reporting, generated implementations, and retained progress.",
       "shortTitle": "Informatica to Python/Prefect",
+      "prominence": "compact",
       "group": "ai",
       "statusLabel": "Internal plugin",
       "intro": "Taking legacy workflows through discovery and migration planning to equivalent Python/Prefect code.",
@@ -224,7 +226,7 @@
       "transformation": {
         "inherited": "Legacy Informatica workflows requiring manual discovery and migration analysis.",
         "reshaped": "Built stateful discovery, assessment, reporting, and Python and Prefect code generation.",
-        "running": "A repeatable application-scale migration path."
+        "running": "A stateful path from legacy workflow evidence to assessed and generated Python/Prefect implementations."
       }
     },
     {
@@ -240,6 +242,7 @@
       ],
       "outcome": "A shared onboarding path that other teams use for Rancher delivery.",
       "shortTitle": "Rancher onboarding skill",
+      "prominence": "compact",
       "group": "platform",
       "intro": "Turning recurring Helm and Flux setup into a guided path other teams can use.",
       "proof": "Shared skill · adopted by other teams",
@@ -263,6 +266,7 @@
       "outcome": "An organisational prototype for finding and accessing internal engineering tools.",
       "status": "prototype",
       "shortTitle": "Internal tools hub",
+      "prominence": "compact",
       "group": "prototype",
       "intro": "A prototype to bring scattered engineering resources into one place.",
       "proof": "Configurable shell · prototype",
@@ -340,12 +344,13 @@
       "transformation": {
         "inherited": "Legal and financial data without supported access for other teams.",
         "reshaped": "Built .NET and EF Core access for SQL Server, and a structured FastAPI service for Oracle.",
-        "running": "Maintained APIs that teams can consume and extend."
+        "running": "Supported access to previously isolated legal and financial data through maintainable team APIs."
       }
     },
     {
       "id": "migrations",
       "shortTitle": "Messaging service migrations",
+      "prominence": "major",
       "category": "Production modernisation",
       "summary": "Converted scheduled .NET console processes into long-running Solace subscribers, enabling AutoSys-triggered workloads to move from Windows servers to Kubernetes. Led three of seven migrations through production with no post-deployment defects.",
       "detail": "Because AutoSys was not available in Rancher, a .NET bridge remained on Windows to receive command arguments from AutoSys jobs, construct messages, and publish them to Solace queues. Each former console process became a long-running Kubernetes subscriber using the in-house library built on the official Solace .NET packages. The migration covered application restructuring, message handling, AutoSys batch changes, end-to-end testing, and production release.",

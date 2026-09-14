@@ -46,6 +46,13 @@ def technical_notes(p):
     extra = f'<p>{e(p["notes"])}</p>' if p.get('notes') else ''
     return f'<details class="technical-notes"><summary>Implementation notes <span aria-hidden="true">+</span></summary><div><p>{e(p["detail"])}</p>{extra}</div></details>'
 
+def feature_details(p, narrative, capabilities):
+    if not narrative:
+        return capabilities + technical_notes(p)
+    notes = f'<p>{e(p["notes"])}</p>' if p.get('notes') else ''
+    implementation = f'<div class="feature-implementation"><p>{e(p["detail"])}</p>{notes}</div>' if p.get('detail') else ''
+    return f'''<details class="feature-details"><summary>Platform scope &amp; implementation <span aria-hidden="true">+</span></summary><div><p class="feature-context">{e(narrative)}</p>{capabilities}{implementation}</div></details>'''
+
 def walkthrough(figure):
     key = figure['key']
     title = figure['title']
@@ -64,11 +71,13 @@ stories = ''
 for key in data['featuredWork']:
     p = by_id[key]
     feature = p['feature']
-    context = f'<p>{e(p["context"])}</p>' if p.get('context') else ''
+    narrative = feature.get('narrative')
+    context = '' if narrative else (f'<p>{e(p["context"])}</p>' if p.get('context') else '')
+    story_summary = '' if narrative else f'<p>{e(p["summary"])}</p>'
     capabilities = '<div class="project-capabilities">' + ''.join(f'<div><h4>{e(c["title"])}</h4><p>{e(c["body"])}</p></div>' for c in p.get('capabilities', [])) + '</div>' if p.get('capabilities') else ''
     recognition = f'<p class="recognition">{e(p["recognition"])}</p>' if p.get('recognition') else ''
     result = f'<p class="story-result"><strong>Result</strong> {e(p["outcome"])}</p>'
-    stories += f'''<section class="project-disclosure" id="project-{key}"><header class="project-summary"><div class="project-overview-title"><h3>{e(feature['displayTitle'])}</h3><span class="project-outcome">{e(feature['headlineOutcome'])}</span></div><p>{e(feature['overview'])}</p></header><article class="work-story story-{key}"><div class="story-layout">{project_figure(p)}<div class="story-copy">{context}<p>{e(p['summary'])}</p>{result}{recognition}{tags(p['tags'])}</div><div class="lead-details">{capabilities}{technical_notes(p)}</div></div></article></section>'''
+    stories += f'''<section class="project-disclosure" id="project-{key}"><header class="project-summary"><div class="project-overview-title"><h3>{e(feature['displayTitle'])}</h3><span class="project-outcome">{e(feature['headlineOutcome'])}</span></div><p>{e(feature['overview'])}</p></header><article class="work-story story-{key}"><div class="story-layout">{project_figure(p)}<div class="story-copy">{context}{story_summary}{result}{recognition}{tags(p['tags'])}</div><div class="lead-details">{feature_details(p, narrative, capabilities)}</div></div></article></section>'''
 
 delivery = data['engineeringDelivery']
 delivery_columns = ''.join(f'<span>{e(label)}</span>' for label in delivery['columns'])
@@ -88,7 +97,10 @@ for group in delivery['groups']:
         prominence = p.get('prominence', '')
         project_class = f' delivery-project--{e(prominence)}' if prominence else ''
         prominence_label = f'<p class="delivery-scope">{e(p["prominenceLabel"])}</p>' if p.get('prominenceLabel') else ''
-        cells = ''.join(f'<div class="ledger-cell ledger-{name.lower()}"><span>{e(name)}</span><p>{e(transformation[name.lower()])}</p></div>' for name in delivery['columns'][1:])
+        if prominence == 'compact':
+            cells = f'''<div class="delivery-compact-story"><p><span>{e(delivery['columns'][2])}</span>{e(transformation['reshaped'])}</p><p><span>{e(delivery['columns'][3])}</span>{e(transformation['running'])}</p></div>'''
+        else:
+            cells = ''.join(f'<div class="ledger-cell ledger-{name.lower()}"><span>{e(name)}</span><p>{e(transformation[name.lower()])}</p></div>' for name in delivery['columns'][1:])
         engineering_delivery += f'''<article class="delivery-project{project_class}" id="project-{key}">{aliases}<div class="ledger-identity"><span class="ledger-number">{delivery_index:02}</span>{prominence_label}<div class="delivery-title"><h4>{e(p["shortTitle"])}</h4>{badge}</div></div>{cells}{evidence}{technical_notes(p)}</article>'''
     engineering_delivery += '</section>'
 engineering_delivery += '</div>'
