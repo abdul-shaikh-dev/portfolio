@@ -66,7 +66,7 @@
       "href": "#delivery-tooling"
     },
     {
-      "name": "Technical Ownership & Collaboration",
+      "name": "Architecture Guidance & Team Delivery",
       "badge": "",
       "desc": "Architecture guidance, mentoring, and incident recovery.",
       "href": "#timeline"
@@ -419,7 +419,7 @@
       "index": "04",
       "href": "#skills",
       "title": "Expertise",
-      "subtitle": "Engineering range"
+      "subtitle": "Capabilities in practice"
     },
     {
       "index": "05",
@@ -565,7 +565,7 @@
   },
   "expertiseSection": {
     "eyebrow": "Navigate by capability",
-    "title": "Engineering range.",
+    "title": "Capabilities in practice.",
     "intro": "Backend depth, with the cloud and AI experience to connect the wider system.",
     "credentialsLabel": "Certifications",
     "credentialsSummary": "Azure · AI · Security · Duck Creek"
