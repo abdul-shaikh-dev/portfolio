@@ -3,6 +3,7 @@ from pathlib import Path
 from html import escape
 import json
 from hashlib import sha256
+from datetime import date, datetime
 
 ROOT = Path(__file__).resolve().parents[1]
 data = json.loads((ROOT / 'data/data.json').read_text(encoding='utf-8'))
@@ -33,6 +34,34 @@ validate_content()
 email = data['hero']['email']['user'] + '@' + data['hero']['email']['domain']
 linkedin = data['hero']['linkedin']['url']
 github = data['hero']['github']['url']
+
+def career_start_date():
+    starts = []
+    for employer in data['career']['employers']:
+        for role in employer['roles']:
+            value = role['period'].split('—', 1)[0].strip()
+            for pattern in ('%b %Y', '%B %Y'):
+                try:
+                    starts.append(datetime.strptime(value, pattern).date())
+                    break
+                except ValueError:
+                    continue
+    if not starts:
+        raise ValueError('No parseable career start date found')
+    return min(starts)
+
+def experience_years(start, as_of=None):
+    as_of = as_of or date.today()
+    elapsed_months = max(0, (as_of.year - start.year) * 12 + as_of.month - start.month)
+    value = round(elapsed_months / 12, 1)
+    return str(int(value)) if value.is_integer() else f'{value:.1f}'
+
+career_started = career_start_date()
+experience_label = experience_years(career_started)
+hero_bio = e(data['hero']['bio']).replace(
+    e('{experience_years}'),
+    f'<span data-experience-start="{career_started:%Y-%m}">{experience_label}</span>'
+)
 
 def tags(items):
     return '<ul class="tags" aria-label="Technologies">' + ''.join(f'<li>{e(x)}</li>' for x in items) + '</ul>'
@@ -166,7 +195,7 @@ html = f'''<!doctype html>
 <a class="skip-link" href="#main-content">Skip to content</a>
 <header class="site-header"><div class="header-inner wrap"><a class="wordmark" href="#hero" aria-label="{e(data['footer']['name'])}, home">ags<span>/</span></a><nav aria-label="Main navigation">{navigation}</nav><button id="theme-toggle" class="icon-button" aria-label="Switch to dark mode" title="Change color theme" hidden><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor"/></svg></button></div></header>
 <main id="main-content">
-<section class="hero" id="hero"><div class="hero-inner wrap"><div class="hero-identity"><p class="intro">{e(hero['role'])}</p><h1>{e(hero['nameLine'])}<br><em>{e(hero['accentLine'])}</em></h1><p class="hero-stack">{e(hero['stack'])}</p><p class="hero-location">{e(hero['location'])}</p></div><div class="hero-positioning"><p class="hero-statement">{e(hero['statement']['before'])} <em>{e(hero['statement']['emphasis'])}</em> {e(hero['statement']['after'])}</p><p class="hero-bio">{e(hero['bio'])}</p><div class="hero-links"><a class="button" href="{asset('output/pdf/resume.pdf')}" target="_blank" rel="noopener">{e(hero['resumeLabel'])} <span aria-hidden="true">↗</span></a><a href="#impact">{e(hero['workLabel'])}</a>{external(linkedin,e(hero['linkedinLabel']))}</div></div></div></section>
+<section class="hero" id="hero"><div class="hero-inner wrap"><div class="hero-identity"><p class="intro">{e(hero['role'])}</p><h1>{e(hero['nameLine'])}<br><em>{e(hero['accentLine'])}</em></h1><p class="hero-stack">{e(hero['stack'])}</p><p class="hero-location">{e(hero['location'])}</p></div><div class="hero-positioning"><p class="hero-statement">{e(hero['statement']['before'])} <em>{e(hero['statement']['emphasis'])}</em> {e(hero['statement']['after'])}</p><p class="hero-bio">{hero_bio}</p><div class="hero-links"><a class="button" href="{asset('output/pdf/resume.pdf')}" target="_blank" rel="noopener">{e(hero['resumeLabel'])} <span aria-hidden="true">↗</span></a><a href="#impact">{e(hero['workLabel'])}</a>{external(linkedin,e(hero['linkedinLabel']))}</div></div></div></section>
 <nav class="chapter-nav" aria-label="Portfolio chapters"><div class="wrap">{portfolio_map}</div></nav>
 <section class="work-section wrap" id="impact" aria-label="Selected systems"><div class="work-overview">{stories}</div></section>
 <section class="engineering-delivery" id="engineering-delivery"><span class="anchor-alias" id="work-index" aria-hidden="true"></span><div class="wrap"><header class="delivery-heading"><div><p class="eyebrow">{e(delivery['eyebrow'])}</p><h2>{e(delivery['title']).replace(chr(10), '<br>')}</h2></div><p>{e(delivery['intro'])}</p></header><div class="delivery-content">{engineering_delivery}</div></div></section>
