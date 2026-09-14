@@ -300,7 +300,7 @@
       "shortTitle": "Service estate modernisation",
       "category": "Platform modernisation",
       "prominence": "major",
-      "prominenceLabel": "Multi-application modernisation",
+      "prominenceLabel": "Windows-to-Kubernetes modernisation",
       "summary": "Modernised a large estate of .NET services, React microfrontends, and NestJS APIs for Kubernetes, covering framework upgrades, CI adoption, build remediation, and Rancher deployment.",
       "detail": "Upgraded .NET Core 3.1 services to .NET 6 or .NET 8 and adopted the in-house GitLab CI templates. Resolved issues in builds, SonarQube and Nexus IQ checks, and container creation, then prepared Helm charts and Flux tenant configuration for Rancher deployment.",
       "tags": [
