@@ -57,12 +57,12 @@
       "name": "Cloud & Production Delivery",
       "badge": "",
       "desc": "CI, containers, Rancher, and runtime constraints.",
-      "href": "#delivery-production"
+      "href": "#project-service-estate"
     },
     {
       "name": "Engineering Automation",
       "badge": "",
-      "desc": "Onboarding skills and stateful migration tooling.",
+      "desc": "Shared onboarding, migration, and internal tools.",
       "href": "#delivery-tooling"
     },
     {
@@ -433,17 +433,11 @@
         ]
       },
       {
-        "id": "delivery-production",
-        "label": "Production enablement & migration",
+        "id": "delivery-tooling",
+        "label": "Engineering tooling & enablement",
         "projectIds": [
           "rancher-onboarding",
-          "informatica"
-        ]
-      },
-      {
-        "id": "delivery-tooling",
-        "label": "Internal tooling & prototypes",
-        "projectIds": [
+          "informatica",
           "platform"
         ]
       }
