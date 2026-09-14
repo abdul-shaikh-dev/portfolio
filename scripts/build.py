@@ -72,20 +72,25 @@ for key in data['featuredWork']:
 
 delivery = data['engineeringDelivery']
 delivery_columns = ''.join(f'<span>{e(label)}</span>' for label in delivery['columns'])
-engineering_delivery = f'<div class="ledger-columns" aria-hidden="true">{delivery_columns}</div><div class="delivery-ledger" role="list">'
+engineering_delivery = f'<div class="ledger-columns" aria-hidden="true">{delivery_columns}</div><div class="delivery-ledger">'
 delivery_index = 0
 for group in delivery['groups']:
+    group_title_id = f'{group["id"]}-title'
+    engineering_delivery += f'<section class="delivery-group" id="{e(group["id"])}" aria-labelledby="{e(group_title_id)}"><h3 class="delivery-group-title" id="{e(group_title_id)}">{e(group["label"])}</h3>'
     for item_index, key in enumerate(group['projectIds']):
         delivery_index += 1
         p = by_id[key]
         transformation = p['transformation']
-        group_anchor = f'<span class="anchor-alias" id="{e(group["id"])}" aria-hidden="true"></span>' if item_index == 0 else ''
         aliases = ''.join(f'<span class="anchor-alias" id="{e(alias)}" aria-hidden="true"></span>' for alias in p.get('aliases', []))
         badge_text = p.get('statusLabel') or ('Prototype' if p.get('status') == 'prototype' else '')
         badge = f'<span class="prototype-badge">{e(badge_text)}</span>' if badge_text else ''
         evidence = f'<p class="ledger-recognition">{e(p["recognition"])}</p>' if p.get('recognition') else ''
+        prominence = p.get('prominence', '')
+        project_class = f' delivery-project--{e(prominence)}' if prominence else ''
+        prominence_label = f'<p class="delivery-scope">{e(p["prominenceLabel"])}</p>' if p.get('prominenceLabel') else ''
         cells = ''.join(f'<div class="ledger-cell ledger-{name.lower()}"><span>{e(name)}</span><p>{e(transformation[name.lower()])}</p></div>' for name in delivery['columns'][1:])
-        engineering_delivery += f'''<article class="delivery-project" id="project-{key}" role="listitem">{group_anchor}{aliases}<div class="ledger-identity"><span class="ledger-number">{delivery_index:02}</span><p>{e(group['label'])}</p><div class="delivery-title"><h3>{e(p["shortTitle"])}</h3>{badge}</div></div>{cells}{evidence}{technical_notes(p)}</article>'''
+        engineering_delivery += f'''<article class="delivery-project{project_class}" id="project-{key}">{aliases}<div class="ledger-identity"><span class="ledger-number">{delivery_index:02}</span>{prominence_label}<div class="delivery-title"><h4>{e(p["shortTitle"])}</h4>{badge}</div></div>{cells}{evidence}{technical_notes(p)}</article>'''
+    engineering_delivery += '</section>'
 engineering_delivery += '</div>'
 
 portfolio_map = ''.join(
