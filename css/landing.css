@@ -72,10 +72,41 @@ p { text-wrap:pretty; }
 .story-copy { position:relative; max-width:none; padding-left:2.375rem; }
 .story-copy::before { content:'↳'; position:absolute; left:0; top:-.1875rem; color:var(--landing-accent); font:1.4375rem/1 Georgia,serif; }
 .project-disclosure .story-copy > p { margin:0 0 1rem; font-size:.9375rem; line-height:1.85; }
-.project-disclosure .story-copy > .story-narrative { grid-column:1/-1; max-width:82ch; margin-bottom:.25rem; color:var(--ink); font-size:1rem; }
 .story-result { font-family:'DM Serif Display',Georgia,serif; font-size:1.25rem!important; }
 .project-disclosure .recognition { margin:0 0 1.25rem; color:var(--landing-accent); font-size:.8125rem; line-height:1.8; }
 .lead-details .project-capabilities { grid-template-columns:repeat(auto-fit,minmax(16.25rem,1fr)); }
+.feature-details { margin-top:1rem; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.feature-details summary { display:flex; align-items:center; justify-content:space-between; min-height:3.25rem; color:var(--ink); font-size:.8125rem; cursor:pointer; list-style:none; }
+.feature-details summary::-webkit-details-marker { display:none; }
+.feature-details summary span { color:var(--landing-accent); font-size:1.125rem; transition:transform .2s; }
+.feature-details[open] summary span { transform:rotate(45deg); }
+.feature-details > div { padding:0 0 1.5rem; }
+.feature-context { max-width:82ch; color:var(--ink); font-size:.9375rem; line-height:1.8; }
+.feature-implementation { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:2rem; margin-top:1.5rem; padding-top:1.25rem; border-top:1px solid var(--line); }
+.feature-implementation p { color:var(--muted); font-size:.8125rem; line-height:1.75; }
+@media(min-width:56.3125rem) {
+  .story-mcp .story-copy { grid-template-columns:minmax(0,1.2fr) minmax(0,.9fr) auto; align-items:center; gap:1rem 2rem; padding-top:1rem; }
+  .story-mcp .story-copy::before { top:1.125rem; }
+  .story-mcp .story-result,.story-mcp .recognition { margin:0; }
+  .story-mcp .story-copy > .tags { grid-column:auto; justify-self:end; margin:0; }
+  .project-summary { padding-block:1rem .875rem; }
+  .walkthrough { margin-top:.375rem; padding:.75rem 1.25rem .375rem; }
+  .scene-heading { grid-template-columns:9rem minmax(0,1fr); gap:1.5rem; padding:.75rem 0 .625rem; }
+  .workbench-heading { padding:.5rem 0 .4375rem; }
+  .extraction-canvas { gap:clamp(1.25rem,3vw,2.75rem); padding:.5rem 0 .1875rem; }
+  .evidence-vault { margin-top:1rem; }
+  .vault-body { height:3.75rem; margin-top:1rem; }
+  .passage-stack { margin-top:.625rem; }
+  .passage-stack button { min-height:2.5rem; padding:.375rem .3125rem; }
+  .prompt-sheet { min-height:10.75rem; margin-top:.625rem; padding:.75rem .875rem; }
+  .prompt-piece { padding:.5625rem 0 .375rem; }
+  .model-studio { margin-top:2.25rem; }
+  .model-orbit { width:4.5rem; height:4.5rem; margin:.75rem auto .5rem; }
+  .result-ledger { margin-top:.5rem; }
+  .result-ledger dl { margin-top:.5rem; }
+  .result-ledger dl > div { padding:.3125rem .1875rem; }
+  .loop-caption { min-height:2.625rem; padding:.5rem 0 0 9rem; }
+}
 
 /* The signature interaction: evidence changes form through the RAG loop. */
 .walkthrough { --scene-accent:var(--flash); position:relative; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:0 1.5rem; overflow:hidden; margin-top:.75rem; padding:1rem 1.5rem .625rem; border-top:2px solid var(--flash); border-radius:0; background:#17372d; color:#f2f5fb; }

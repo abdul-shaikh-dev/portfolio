@@ -46,6 +46,13 @@ def technical_notes(p):
     extra = f'<p>{e(p["notes"])}</p>' if p.get('notes') else ''
     return f'<details class="technical-notes"><summary>Implementation notes <span aria-hidden="true">+</span></summary><div><p>{e(p["detail"])}</p>{extra}</div></details>'
 
+def feature_details(p, narrative, capabilities):
+    if not narrative:
+        return capabilities + technical_notes(p)
+    notes = f'<p>{e(p["notes"])}</p>' if p.get('notes') else ''
+    implementation = f'<div class="feature-implementation"><p>{e(p["detail"])}</p>{notes}</div>' if p.get('detail') else ''
+    return f'''<details class="feature-details"><summary>Platform scope &amp; implementation <span aria-hidden="true">+</span></summary><div><p class="feature-context">{e(narrative)}</p>{capabilities}{implementation}</div></details>'''
+
 def walkthrough(figure):
     key = figure['key']
     title = figure['title']
@@ -66,11 +73,11 @@ for key in data['featuredWork']:
     feature = p['feature']
     narrative = feature.get('narrative')
     context = '' if narrative else (f'<p>{e(p["context"])}</p>' if p.get('context') else '')
-    story_summary = f'<p class="story-narrative">{e(narrative)}</p>' if narrative else f'<p>{e(p["summary"])}</p>'
+    story_summary = '' if narrative else f'<p>{e(p["summary"])}</p>'
     capabilities = '<div class="project-capabilities">' + ''.join(f'<div><h4>{e(c["title"])}</h4><p>{e(c["body"])}</p></div>' for c in p.get('capabilities', [])) + '</div>' if p.get('capabilities') else ''
     recognition = f'<p class="recognition">{e(p["recognition"])}</p>' if p.get('recognition') else ''
     result = f'<p class="story-result"><strong>Result</strong> {e(p["outcome"])}</p>'
-    stories += f'''<section class="project-disclosure" id="project-{key}"><header class="project-summary"><div class="project-overview-title"><h3>{e(feature['displayTitle'])}</h3><span class="project-outcome">{e(feature['headlineOutcome'])}</span></div><p>{e(feature['overview'])}</p></header><article class="work-story story-{key}"><div class="story-layout">{project_figure(p)}<div class="story-copy">{context}{story_summary}{result}{recognition}{tags(p['tags'])}</div><div class="lead-details">{capabilities}{technical_notes(p)}</div></div></article></section>'''
+    stories += f'''<section class="project-disclosure" id="project-{key}"><header class="project-summary"><div class="project-overview-title"><h3>{e(feature['displayTitle'])}</h3><span class="project-outcome">{e(feature['headlineOutcome'])}</span></div><p>{e(feature['overview'])}</p></header><article class="work-story story-{key}"><div class="story-layout">{project_figure(p)}<div class="story-copy">{context}{story_summary}{result}{recognition}{tags(p['tags'])}</div><div class="lead-details">{feature_details(p, narrative, capabilities)}</div></div></article></section>'''
 
 delivery = data['engineeringDelivery']
 delivery_columns = ''.join(f'<span>{e(label)}</span>' for label in delivery['columns'])
