@@ -500,13 +500,12 @@
           {
             "title": "Lead Software Engineer",
             "period": "April 2026 — Present",
-            "highlightBullets": [0, 3],
             "bullets": [
-              "Lead the <strong>phased modernisation of a Python and React infrastructure dashboard</strong>, guiding its developer through clearer service boundaries, REST APIs, and production delivery on Rancher.",
-              "Built and deployed <strong>.NET and Python APIs for legal and financial data</strong>, giving other teams supported access to previously isolated business information.",
-              "Resolved a <strong>financial API performance bottleneck</strong> by moving filtering and distinct operations into SQL Server and reducing memory-heavy in-process data handling.",
-              "Built a <strong>shared Helm and Flux skill used by other teams for Rancher onboarding</strong>, creating, validating, and publishing the required repositories.",
-              "Built <strong>Informatica-to-Python/Prefect migration tooling</strong> with code generation, validation, and retained workflow progress."
+              "Lead the <strong>modernisation of a Python and React infrastructure dashboard</strong> through clearer service boundaries, REST APIs, and Rancher delivery while guiding its developer.",
+              "Built and deployed <strong>.NET and Python APIs</strong>, providing supported access to legal and financial data.",
+              "Resolved a <strong>financial API performance bottleneck</strong> by moving data operations into SQL Server and reducing memory-heavy processing.",
+              "Built a <strong>shared Helm and Flux onboarding skill</strong> used by other teams delivering applications to Rancher.",
+              "Built <strong>stateful Informatica-to-Python/Prefect migration tooling</strong> spanning assessment, validation, and code generation."
             ]
           },
           {
@@ -576,7 +575,7 @@
       "Let’s compare",
       "approaches"
     ],
-    "body": "Interested in application modernisation, backend architecture, or practical AI adoption? I’m always happy to exchange ideas and lessons from production.",
+    "body": "Interested in application modernisation, backend architecture, or practical AI adoption? Happy to exchange ideas and lessons from production.",
     "buttonLabel": "Get in touch"
   }
 }
