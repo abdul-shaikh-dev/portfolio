@@ -101,21 +101,66 @@ if (initialChapterTarget) {
   if (document.fonts?.ready) document.fonts.ready.then(() => requestAnimationFrame(alignInitialChapter));
 }
 
-// Introduce each transformation once as it enters the reading area.
-const deliveryProjects = [...document.querySelectorAll('.delivery-project')];
+// Keep one engineering transformation in focus while the compact index stays scannable.
+const transformationSelectors = [...document.querySelectorAll('[data-project-key]')];
+const transformationPanels = [...document.querySelectorAll('[data-project-panel]')];
+const transformationCanvas = document.querySelector('.transformation-canvas');
+const transformationPosition = document.querySelector('.transformation-position');
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
-if (deliveryProjects.length && 'IntersectionObserver' in window && !reduceMotion.matches) {
-  const deliverySection = document.querySelector('.engineering-delivery');
-  deliverySection?.classList.add('delivery-motion-ready');
-  const deliveryObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('is-visible');
-      deliveryObserver.unobserve(entry.target);
-    });
-  }, { rootMargin: '0px 0px -8% 0px', threshold: .08 });
-  deliveryProjects.forEach(project => deliveryObserver.observe(project));
+let activeTransformation = transformationSelectors.findIndex(link => link.getAttribute('aria-current') === 'true');
+if (activeTransformation < 0) activeTransformation = 0;
+
+function activateTransformation(key, { updateHash = false, reveal = false } = {}) {
+  const nextIndex = transformationSelectors.findIndex(link => link.dataset.projectKey === key);
+  if (nextIndex < 0) return false;
+  activeTransformation = nextIndex;
+  transformationSelectors.forEach((link, index) => {
+    if (index === nextIndex) link.setAttribute('aria-current', 'true');
+    else link.removeAttribute('aria-current');
+  });
+  transformationPanels.forEach(panel => {
+    const active = panel.dataset.projectPanel === key;
+    panel.hidden = !active;
+    panel.classList.remove('is-entering');
+    if (active && !reduceMotion.matches) requestAnimationFrame(() => panel.classList.add('is-entering'));
+  });
+  if (transformationPosition) transformationPosition.textContent = `${String(nextIndex + 1).padStart(2, '0')} / ${String(transformationSelectors.length).padStart(2, '0')}`;
+  if (updateHash) history.replaceState(null, '', `#project-${key}`);
+  if (reveal) {
+    transformationSelectors[nextIndex].scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth', block: 'nearest', inline: 'center' });
+    transformationCanvas?.scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth', block: 'start' });
+  }
+  return true;
 }
+
+const precisePointer = matchMedia('(hover: hover) and (pointer: fine)');
+transformationSelectors.forEach(link => {
+  const key = link.dataset.projectKey;
+  link.addEventListener('click', event => {
+    event.preventDefault();
+    activateTransformation(key, { updateHash: true, reveal: innerWidth <= 900 });
+  });
+  link.addEventListener('focus', () => activateTransformation(key));
+  link.addEventListener('keydown', event => {
+    const direction = ['ArrowRight', 'ArrowDown'].includes(event.key) ? 1 : ['ArrowLeft', 'ArrowUp'].includes(event.key) ? -1 : 0;
+    if (!direction) return;
+    event.preventDefault();
+    const currentIndex = transformationSelectors.indexOf(link);
+    const nextIndex = (currentIndex + direction + transformationSelectors.length) % transformationSelectors.length;
+    transformationSelectors[nextIndex].focus();
+  });
+  link.addEventListener('pointerenter', () => {
+    if (precisePointer.matches) activateTransformation(key);
+  });
+});
+
+document.querySelectorAll('[data-transform-direction]').forEach(button => {
+  button.addEventListener('click', () => {
+    const direction = Number(button.dataset.transformDirection);
+    const nextIndex = (activeTransformation + direction + transformationSelectors.length) % transformationSelectors.length;
+    activateTransformation(transformationSelectors[nextIndex].dataset.projectKey, { updateHash: true, reveal: innerWidth <= 900 });
+  });
+});
 
 // Preserve project links from earlier versions without retaining their popup interface.
 function followLegacyLink() {
@@ -134,6 +179,11 @@ function revealProjectLink() {
   const id = location.hash.slice(1);
   const target = document.getElementById(id);
   if (!target || !id.startsWith('project-')) return;
+  const key = id.replace(/^project-/, '');
+  if (activateTransformation(key)) {
+    requestAnimationFrame(() => transformationCanvas?.scrollIntoView({ behavior: 'instant', block: 'start' }));
+    return;
+  }
   let parent = target;
   while (parent) {
     if (parent instanceof HTMLDetailsElement) parent.open = true;

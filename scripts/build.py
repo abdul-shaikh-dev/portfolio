@@ -114,32 +114,41 @@ for key in data['featuredWork']:
     stories += f'''<section class="project-disclosure" id="project-{key}"><header class="project-summary"><div class="project-overview-title"><h3>{e(feature['displayTitle'])}</h3><span class="project-outcome">{e(feature['headlineOutcome'])}</span></div><p>{e(feature['overview'])}</p></header><article class="work-story story-{key}"><div class="story-layout">{project_figure(p)}<div class="story-copy">{context}{story_summary}{result}{recognition}{tags(p['tags'])}</div><div class="lead-details">{feature_details(p, narrative, capabilities)}</div></div></article></section>'''
 
 delivery = data['engineeringDelivery']
-delivery_columns = ''.join(f'<span>{e(label)}</span>' for label in delivery['columns'])
-engineering_delivery = f'<div class="ledger-columns" aria-hidden="true">{delivery_columns}</div><div class="delivery-ledger">'
+engineering_index = '<nav class="transformation-index" aria-label="Engineering projects">'
+engineering_panels = '<div class="transformation-panels">'
 delivery_index = 0
 for group in delivery['groups']:
     group_title_id = f'{group["id"]}-title'
-    engineering_delivery += f'<section class="delivery-group" id="{e(group["id"])}" aria-labelledby="{e(group_title_id)}"><h3 class="delivery-group-title" id="{e(group_title_id)}">{e(group["label"])}</h3>'
-    for item_index, key in enumerate(group['projectIds']):
+    engineering_index += f'<section class="transformation-group" id="{e(group["id"])}" aria-labelledby="{e(group_title_id)}"><h3 id="{e(group_title_id)}">{e(group["label"])}</h3><ol>'
+    for key in group['projectIds']:
         delivery_index += 1
         p = by_id[key]
         transformation = p['transformation']
         aliases = ''.join(f'<span class="anchor-alias" id="{e(alias)}" aria-hidden="true"></span>' for alias in p.get('aliases', []))
         badge_text = p.get('statusLabel') or ('Prototype' if p.get('status') == 'prototype' else '')
         badge = f'<span class="prototype-badge">{e(badge_text)}</span>' if badge_text else ''
-        evidence_content = f'<p class="ledger-recognition">{e(p["recognition"])}</p>' if p.get('recognition') else ''
-        evidence = f'<div class="ledger-evidence-slot">{evidence_content}</div>'
         prominence = p.get('prominence', '')
-        project_class = f' delivery-project--{e(prominence)}' if prominence else ''
         prominence_label = f'<p class="delivery-scope">{e(p["prominenceLabel"])}</p>' if p.get('prominenceLabel') else ''
         delivery_status = e(p.get('deliveryStatus', 'Current state'))
-        cells = ''.join(
-            f'<div class="ledger-cell ledger-{name.lower()}"><span class="ledger-stage"><b>{stage_index:02}</b>{e(name)}</span><p>{e(transformation[name.lower()])}</p>{f"<span class=\"delivery-status\">{delivery_status}</span>" if name == "Running" else ""}</div>'
+        active = delivery_index == 1
+        active_attr = ' aria-current="true"' if active else ''
+        major_class = ' transformation-selector--major' if prominence == 'major' else ''
+        engineering_index += (
+            f'<li><a class="transformation-selector{major_class}" href="#project-{e(key)}" data-project-key="{e(key)}"{active_attr}>'
+            f'<span class="selector-number">{delivery_index:02}</span><span class="selector-copy"><span class="selector-group-label">{e(group["label"])}</span><strong>{e(p["shortTitle"])}</strong>'
+            f'<small>{e(transformation["running"])}</small></span><span class="selector-status" aria-hidden="true"></span></a></li>'
+        )
+        phases = ''.join(
+            f'<section class="transformation-phase transformation-phase--{name.lower()}"><span><b>{stage_index:02}</b>{e(name)}</span><p>{e(transformation[name.lower()])}</p></section>'
             for stage_index, name in enumerate(delivery['columns'][1:], start=1)
         )
-        engineering_delivery += f'''<article class="delivery-project{project_class}" id="project-{key}">{aliases}<div class="ledger-identity"><span class="ledger-number">{delivery_index:02}</span>{prominence_label}<div class="delivery-title"><h4>{e(p["shortTitle"])}</h4>{badge}</div></div>{cells}{evidence}{technical_notes(p)}</article>'''
-    engineering_delivery += '</section>'
-engineering_delivery += '</div>'
+        recognition = f'<p class="transformation-recognition">{e(p["recognition"])}</p>' if p.get('recognition') else ''
+        hidden = '' if active else ' hidden'
+        engineering_panels += f'''<article class="transformation-panel" id="project-{e(key)}" data-project-panel="{e(key)}"{hidden}>{aliases}<header class="transformation-panel-heading"><div><span class="panel-number">{delivery_index:02}</span>{prominence_label}<h3>{e(p["shortTitle"])}</h3>{badge}</div><span class="delivery-status">{delivery_status}</span></header><div class="transformation-flow">{phases}</div>{recognition}{technical_notes(p)}</article>'''
+    engineering_index += '</ol></section>'
+engineering_index += '</nav>'
+engineering_panels += '</div>'
+engineering_delivery = f'''<div class="transformation-map"><div class="transformation-map-heading"><div><p>Project index</p><strong><span>{delivery_index:02}</span> systems moved forward</strong></div><p>Select a system to trace its path from operating constraint to production.</p></div><div class="transformation-map-body">{engineering_index}<section class="transformation-canvas" aria-label="Selected transformation"><header><div><span>Active transformation</span><span class="transformation-position" aria-live="polite">01 / {delivery_index:02}</span></div><div class="transformation-controls"><button type="button" data-transform-direction="-1" aria-label="Previous engineering project">←</button><button type="button" data-transform-direction="1" aria-label="Next engineering project">→</button></div></header>{engineering_panels}</section></div></div>'''
 
 portfolio_map = ''.join(
     f'<a href="{e(item["href"])}" aria-label="{e(item["title"])} — {e(item["subtitle"])}">'
