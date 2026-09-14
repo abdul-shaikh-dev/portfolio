@@ -298,6 +298,8 @@
       "id": "service-estate",
       "shortTitle": "Service estate modernisation",
       "category": "Platform modernisation",
+      "prominence": "major",
+      "prominenceLabel": "Estate-scale transformation",
       "summary": "Modernised a large estate of .NET services, React microfrontends, and NestJS APIs for Kubernetes, covering framework upgrades, CI adoption, build remediation, and Rancher deployment.",
       "detail": "Upgraded .NET Core 3.1 services to .NET 6 or .NET 8 and adopted the in-house GitLab CI templates. Resolved issues in builds, SonarQube and Nexus IQ checks, and container creation, then prepared Helm charts and Flux tenant configuration for Rancher deployment. The recurring application-chart, infrastructure-chart, and Flux setup also became a guided workflow that creates, validates, and publishes the required repositories using the firm’s conventions.",
       "tags": [
@@ -403,7 +405,7 @@
   "engineeringDelivery": {
     "eyebrow": "Engineering practice",
     "title": "From inherited systems\nto production.",
-    "intro": "The systems vary. The work follows a clear pattern: understand the constraint, reshape the implementation, and make it run in the target environment.",
+    "intro": "Start with the operating constraint. Clarify the system boundaries. Build the production path alongside the code.",
     "columns": [
       "Work",
       "Inherited",
