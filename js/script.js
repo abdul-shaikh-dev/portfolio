@@ -15,6 +15,15 @@ themeToggle.addEventListener('click', () => {
   try { localStorage.setItem('theme', next); } catch { /* Keep the session preference. */ }
 });
 
+// Derive tenure from the earliest career date embedded by the static build.
+document.querySelectorAll('[data-experience-start]').forEach(element => {
+  const [year, month] = element.dataset.experienceStart.split('-').map(Number);
+  const now = new Date();
+  const elapsedMonths = Math.max(0, (now.getFullYear() - year) * 12 + now.getMonth() + 1 - month);
+  const years = Math.round((elapsedMonths / 12) * 10) / 10;
+  element.textContent = String(years);
+});
+
 const copyButton = document.getElementById('copy-email');
 const copyStatus = document.getElementById('copy-status');
 let copyTimer;

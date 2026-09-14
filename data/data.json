@@ -29,7 +29,7 @@
       "emphasis": "backend and AI systems",
       "after": "for production."
     },
-    "bio": "7.5+ years in financial services, combining hands-on engineering with architecture guidance and team mentoring.",
+    "bio": "{experience_years} years in financial services, combining hands-on engineering with architecture guidance and team mentoring.",
     "resumeLabel": "Resume PDF",
     "workLabel": "Work ↓",
     "linkedinLabel": "LinkedIn"
@@ -404,7 +404,7 @@
       "index": "05",
       "href": "#cta",
       "title": "Contact",
-      "subtitle": "Start a conversation"
+      "subtitle": "Compare notes"
     }
   ],
   "engineeringDelivery": {
@@ -549,12 +549,12 @@
     "credentialsSummary": "Azure · AI · Security · Duck Creek"
   },
   "contactSection": {
-    "eyebrow": "Engineering roles & collaboration.",
+    "eyebrow": "Engineering conversations.",
     "title": [
-      "What are you trying",
-      "to make work"
+      "Let’s compare",
+      "approaches"
     ],
-    "body": "Hiring for a lead engineering role or tackling a modernisation challenge? I’d be glad to compare notes.",
-    "buttonLabel": "Start a conversation"
+    "body": "Interested in application modernisation, backend architecture, or practical AI adoption? I’m always happy to exchange ideas and lessons from production.",
+    "buttonLabel": "Get in touch"
   }
 }
