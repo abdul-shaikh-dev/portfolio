@@ -131,10 +131,11 @@ for group in delivery['groups']:
         prominence = p.get('prominence', '')
         project_class = f' delivery-project--{e(prominence)}' if prominence else ''
         prominence_label = f'<p class="delivery-scope">{e(p["prominenceLabel"])}</p>' if p.get('prominenceLabel') else ''
-        if prominence == 'compact':
-            cells = f'''<div class="delivery-compact-story"><p><span>{e(delivery['columns'][2])}</span>{e(transformation['reshaped'])}</p><p><span>{e(delivery['columns'][3])}</span>{e(transformation['running'])}</p></div>'''
-        else:
-            cells = ''.join(f'<div class="ledger-cell ledger-{name.lower()}"><span>{e(name)}</span><p>{e(transformation[name.lower()])}</p></div>' for name in delivery['columns'][1:])
+        delivery_status = e(p.get('deliveryStatus', 'Current state'))
+        cells = ''.join(
+            f'<div class="ledger-cell ledger-{name.lower()}"><span class="ledger-stage"><b>{stage_index:02}</b>{e(name)}</span><p>{e(transformation[name.lower()])}</p>{f"<span class=\"delivery-status\">{delivery_status}</span>" if name == "Running" else ""}</div>'
+            for stage_index, name in enumerate(delivery['columns'][1:], start=1)
+        )
         engineering_delivery += f'''<article class="delivery-project{project_class}" id="project-{key}">{aliases}<div class="ledger-identity"><span class="ledger-number">{delivery_index:02}</span>{prominence_label}<div class="delivery-title"><h4>{e(p["shortTitle"])}</h4>{badge}</div></div>{cells}{evidence}{technical_notes(p)}</article>'''
     engineering_delivery += '</section>'
 engineering_delivery += '</div>'

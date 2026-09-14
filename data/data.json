@@ -175,6 +175,7 @@
       "intro": "Building the service, improving the codebase, and carrying the work through deployment.",
       "outcome": "The dashboard has a better-structured codebase, with its React application and Python API deployed on Rancher. The Prefect and SQL data pipeline remains planned.",
       "previewOutcome": "Leading its transition from a coupled prototype to separately deployed React and Python services; database-backed ingestion remains in progress.",
+      "deliveryStatus": "Modernisation in progress",
       "transformation": {
         "inherited": "A useful infrastructure dashboard built as a coupled Python and React prototype.",
         "reshaped": "Separated frontend and backend, restructured Python, introduced REST APIs, and removed spreadsheet dependencies.",
@@ -200,6 +201,7 @@
       "outcome": "Successfully deployed on Rancher and running reliably in production for about a year.",
       "recognition": "Recognised in the CIO newsletter for contributions to the clause-extraction application’s production delivery.",
       "previewOutcome": "Legal-document OCR and RAG application modernised and running reliably in production.",
+      "deliveryStatus": "Running in production",
       "transformation": {
         "inherited": "A clause-extraction prototype blocked by code, Linux, model, and release constraints.",
         "reshaped": "Restructured Python, adapted OCR for Linux, packaged the model internally, and established GitLab CI.",
@@ -224,6 +226,7 @@
       "prominence": "compact",
       "group": "ai",
       "statusLabel": "Internal plugin",
+      "deliveryStatus": "Migration path established",
       "intro": "Taking legacy workflows through discovery and migration planning to equivalent Python/Prefect code.",
       "proof": "Stateful assessment → generated Python/Prefect",
       "transformation": {
@@ -247,6 +250,7 @@
       "outcome": "A shared onboarding path that other teams use for Rancher delivery.",
       "shortTitle": "Rancher onboarding skill",
       "prominence": "compact",
+      "deliveryStatus": "Adopted by teams",
       "group": "platform",
       "intro": "Turning recurring Helm and Flux setup into a guided path other teams can use.",
       "proof": "Shared skill · adopted by other teams",
@@ -272,6 +276,7 @@
       "status": "prototype",
       "shortTitle": "Internal tools hub",
       "prominence": "compact",
+      "deliveryStatus": "Working prototype",
       "group": "prototype",
       "intro": "A prototype to bring scattered engineering resources into one place.",
       "proof": "Configurable shell · prototype",
@@ -298,6 +303,7 @@
         "API performance"
       ],
       "group": "backend",
+      "deliveryStatus": "Performance improved",
       "proof": "Lower memory pressure · faster responses",
       "transformation": {
         "inherited": "Financial APIs under high memory pressure with multi-minute responses.",
@@ -310,13 +316,14 @@
       "shortTitle": "Application portfolio modernisation",
       "category": "Platform modernisation",
       "prominence": "major",
+      "deliveryStatus": "Delivered at scale",
       "summary": "Modernised a large portfolio of .NET services, React microfrontends, and NestJS APIs for Kubernetes, covering framework upgrades, CI adoption, build remediation, and Rancher deployment.",
-      "detail": "Upgraded .NET Core 3.1 services to .NET 6 or .NET 8 and adopted the in-house GitLab CI templates. Resolved issues in builds, SonarQube and Nexus IQ checks, and container creation, then prepared Helm charts and Flux tenant configuration for Rancher deployment.",
+      "detail": "Upgraded .NET Core 3.1 services to .NET 6 or .NET 8 and adopted the in-house GitLab CI templates. Resolved issues in builds, SonarQube and Nexus IQ checks, container creation, application configuration, and Rancher deployment.",
       "detailLabel": "Upgrade & deployment details",
       "tags": [
         ".NET / React / NestJS",
         "GitLab CI",
-        "Helm / Flux",
+        "Rancher",
         "Kubernetes"
       ],
       "proof": "Windows-hosted applications → repeatable Kubernetes delivery",
@@ -327,7 +334,7 @@
       ],
       "transformation": {
         "inherited": "Windows-hosted .NET services and mixed frontend applications.",
-        "reshaped": "Framework upgrades, GitLab CI remediation, and Helm and Flux onboarding.",
+        "reshaped": "Framework upgrades, application and GitLab CI remediation, and containerisation.",
         "running": "Repeatable Rancher delivery across the application portfolio."
       }
     },
@@ -344,6 +351,7 @@
         "SQL Server / Oracle"
       ],
       "proof": "Two data domains → maintained team APIs",
+      "deliveryStatus": "Delivered for reuse",
       "aliases": [
         "supporting-backend",
         "project-dotnet-api",
@@ -359,6 +367,7 @@
       "id": "migrations",
       "shortTitle": "Messaging service migrations",
       "prominence": "major",
+      "deliveryStatus": "Running in production",
       "category": "Production modernisation",
       "summary": "Converted scheduled .NET console processes into long-running Solace subscribers, enabling AutoSys-triggered workloads to move from Windows servers to Kubernetes. Led three of seven migrations through production with no post-deployment defects.",
       "detail": "Because AutoSys was not available in Rancher, a .NET bridge remained on Windows to receive command arguments from AutoSys jobs, construct messages, and publish them to Solace queues. Each former console process became a long-running Kubernetes subscriber using the in-house library built on the official Solace .NET packages. The migration covered application restructuring, message handling, AutoSys batch changes, end-to-end testing, and production release.",
@@ -506,7 +515,7 @@
             "bullets": [
               "Designed a modular <strong>knowledge-management platform</strong> with multisource ingestion, RAG, adaptive extraction, and secured API and MCP access; it became the shared account foundation.",
               "Brought a <strong>RAG clause-extraction application into production</strong> by modernising its Python codebase, adapting OCR and model delivery, and establishing a repeatable Rancher release path.",
-              "Modernised a large application portfolio across <strong>.NET services, React microfrontends, and NestJS APIs</strong>, covering framework upgrades, GitLab CI remediation, and Helm and Flux delivery to Rancher.",
+              "Modernised a large application portfolio across <strong>.NET services, React microfrontends, and NestJS APIs</strong>, covering framework upgrades, GitLab CI remediation, containerisation, and delivery to Rancher.",
               "Migrated <strong>AutoSys-triggered .NET workloads to Kubernetes through Solace messaging</strong> and contributed to critical incident recovery as part of a global engineering team."
             ]
           }
