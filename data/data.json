@@ -29,7 +29,7 @@
       "emphasis": "backend and AI systems",
       "after": "for production."
     },
-    "bio": "{experience_years} years in financial services, combining hands-on engineering with architecture guidance and team mentoring.",
+    "bio": "{experience} in financial services, combining hands-on engineering with architecture guidance and team mentoring.",
     "resumeLabel": "Resume PDF",
     "workLabel": "Work ↓",
     "linkedinLabel": "LinkedIn"
@@ -164,6 +164,7 @@
       "context": "The dashboard gives stakeholders an application-level view of ServiceNow CMDB data across virtual machines, services, and container platforms.",
       "summary": "Led a phased modernisation of the Python and React codebase. The restructured backend and React application are now deployed on Rancher, with scheduled data ingestion and database-backed storage forming the next stage.",
       "detail": "The plan separates frontend and backend responsibilities, restructures the Python code, removes spreadsheet dependencies, and replaces direct consumption of generated JSON files with REST endpoints. The next stage uses Prefect flows to collect data into SQL, with the Python API serving it to React.",
+      "detailLabel": "Architecture & data-flow changes",
       "tags": [
         "Architecture review",
         "Python / React",
@@ -188,6 +189,7 @@
       "context": "The existing Python and React application could extract clauses from legal PDFs, but code, model-delivery, and Linux runtime constraints blocked release.",
       "summary": "Modernised the codebase, resolved deployment issues, and established a repeatable release process suited to the firm’s document-processing and model-delivery constraints. The application has run reliably on Rancher in production for about a year.",
       "detail": "The Python RAG service uses Tesseract OCR and FAISS. OCR was adapted for Linux and the application moved onto GitLab CI. With Hugging Face unavailable, the embedding model was packaged from Nexus into the application container, resolving the application and environment issues that blocked production deployment.",
+      "detailLabel": "Production-readiness changes",
       "tags": [
         "Python / React",
         "RAG",
@@ -210,6 +212,7 @@
       "category": "Informatica migration plugin",
       "summary": "Built a stateful plugin that assesses Informatica workflows at application scale, produces executive reporting, and generates equivalent Python/Prefect implementations. It retains progress across runs and follows internal scheduling and deployment conventions.",
       "detail": "The plugin separates discovery, assessment and code generation into focused skills. Discovery accepts manual evidence or Informatica XML exports and records missing behaviour and unresolved references. Assessment examines complexity and commonality across workflows. Generated code follows the firm’s Python project structure and AutoSys, Rancher and Prefect conventions. Each skill’s progress is tracked in JSON so the process can continue across runs.",
+      "detailLabel": "Migration workflow details",
       "notes": "The discovery step keeps extracted metadata, assumptions and missing runtime details explicit. Parameter files, scheduler details, production run history and SME notes provide additional context when available for downstream assessment and code generation.",
       "tags": [
         "Informatica",
@@ -235,6 +238,7 @@
       "category": "Platform enablement",
       "summary": "Built a guided Helm and Flux onboarding skill that applies the firm’s repository conventions and is used by other teams delivering applications to Rancher.",
       "detail": "The skill guides teams through application-chart, infrastructure-chart, and Flux tenant setup. It creates the required repositories, validates their configuration, and publishes them using the firm’s conventions, turning recurring onboarding work into a repeatable path that other teams can use.",
+      "detailLabel": "Skill workflow & validation",
       "tags": [
         "Helm",
         "Flux",
@@ -258,6 +262,7 @@
       "category": "Internal tooling prototype",
       "summary": "Prototyped a configurable Vite shell for independently deployed skills, MCP integrations, and modernisation reporting. Built the initial ServiceNow reporting module, which other developers later extended.",
       "detail": "Vite module federation keeps the tools independently modular within a configurable shell. The hub brings together GitLab-hosted skills, MCP integrations, and modernisation reporting. The initial ServiceNow reporting module established a base that other developers have since extended.",
+      "detailLabel": "Composition & extension model",
       "tags": [
         "Vite",
         "Module federation",
@@ -286,6 +291,7 @@
       "category": "Application performance",
       "summary": "Financial-services APIs processing large datasets were consuming 6–7 GB per pod and taking about five minutes for some responses. Reshaped LINQ queries and processing reduced memory to about 1 GB and response time to 40 seconds.",
       "detail": "The APIs were loading large result sets and performing filtering and distinct operations in memory. The LINQ and processing flow was redesigned so SQL Server handled that work before returning results, large intermediate lists were avoided, and related data was loaded only when an endpoint needed it. This reduced memory pressure and removed the multi-minute response bottleneck.",
+      "detailLabel": "Query & processing changes",
       "tags": [
         "C#",
         "LINQ",
@@ -306,6 +312,7 @@
       "prominence": "major",
       "summary": "Modernised a large portfolio of .NET services, React microfrontends, and NestJS APIs for Kubernetes, covering framework upgrades, CI adoption, build remediation, and Rancher deployment.",
       "detail": "Upgraded .NET Core 3.1 services to .NET 6 or .NET 8 and adopted the in-house GitLab CI templates. Resolved issues in builds, SonarQube and Nexus IQ checks, and container creation, then prepared Helm charts and Flux tenant configuration for Rancher deployment.",
+      "detailLabel": "Upgrade & deployment details",
       "tags": [
         ".NET / React / NestJS",
         "GitLab CI",
@@ -330,6 +337,7 @@
       "category": "Backend engineering",
       "summary": "Built supported access paths for previously isolated business data: a .NET and EF Core API over legal data in SQL Server, and a maintainable FastAPI service over financial data in Oracle.",
       "detail": "The .NET and Entity Framework Core service exposed existing SQL Server tables and views through a supported API and was carried through Helm, Flux, and Rancher deployment. The Python service established a maintainable FastAPI structure for financial data held in Oracle, giving its team a reference implementation they could continue to extend.",
+      "detailLabel": "API & deployment details",
       "tags": [
         ".NET / EF Core",
         "Python / FastAPI",
@@ -354,6 +362,7 @@
       "category": "Production modernisation",
       "summary": "Converted scheduled .NET console processes into long-running Solace subscribers, enabling AutoSys-triggered workloads to move from Windows servers to Kubernetes. Led three of seven migrations through production with no post-deployment defects.",
       "detail": "Because AutoSys was not available in Rancher, a .NET bridge remained on Windows to receive command arguments from AutoSys jobs, construct messages, and publish them to Solace queues. Each former console process became a long-running Kubernetes subscriber using the in-house library built on the official Solace .NET packages. The migration covered application restructuring, message handling, AutoSys batch changes, end-to-end testing, and production release.",
+      "detailLabel": "Messaging migration details",
       "outcome": "Seven service migrations with zero post-deployment defects and zero business disruption.",
       "tags": [
         ".NET",
@@ -380,12 +389,14 @@
       "index": "01",
       "href": "#project-mcp",
       "title": "Knowledge & AI",
+      "mobileTitle": "Knowledge",
       "subtitle": "Account knowledge foundation"
     },
     {
       "index": "02",
       "href": "#engineering-delivery",
       "title": "Engineering delivery",
+      "mobileTitle": "Delivery",
       "subtitle": "Modernisation through production"
     },
     {
@@ -480,6 +491,7 @@
           {
             "title": "Lead Software Engineer",
             "period": "April 2026 — Present",
+            "highlightBullets": [0, 3],
             "bullets": [
               "Lead the <strong>phased modernisation of a Python and React infrastructure dashboard</strong>, guiding its developer through clearer service boundaries, REST APIs, and production delivery on Rancher.",
               "Built and deployed <strong>.NET and Python APIs for legal and financial data</strong>, giving other teams supported access to previously isolated business information.",

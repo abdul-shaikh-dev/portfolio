@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import json
 import re
+from datetime import date, datetime
 from pathlib import Path
 
 
@@ -60,6 +61,38 @@ def subheading(company: str, period: str, subtitle: str, location: str) -> str:
         f"    {{{tex(company)}}}{{{tex(period)}}}\n"
         f"    {{{tex(subtitle)}}}{{{tex(location)}}}"
     )
+
+
+def experience_start(data: dict) -> date:
+    """Find the earliest role start date in the resume data."""
+    starts: list[date] = []
+    periods: list[str] = []
+    for item in data["experience"]:
+        periods.append(item["period"])
+        periods.extend(role["period"] for role in item.get("roles", []))
+    for period in periods:
+        value = period.split("--", 1)[0].strip()
+        for pattern in ("%b %Y", "%B %Y"):
+            try:
+                starts.append(datetime.strptime(value, pattern).date())
+                break
+            except ValueError:
+                continue
+    if not starts:
+        raise ValueError("No parseable experience start date found")
+    return min(starts)
+
+
+def experience_phrase(start: date, as_of: date | None = None) -> str:
+    """Return a readable tenure label that updates as the resume is built."""
+    as_of = as_of or date.today()
+    elapsed_months = max(0, (as_of.year - start.year) * 12 + as_of.month - start.month)
+    full_years, remaining_months = divmod(elapsed_months, 12)
+    if remaining_months >= 10:
+        return f"nearly {full_years + 1} years"
+    if remaining_months >= 3:
+        return f"more than {full_years} years"
+    return f"{full_years}+ years"
 
 
 def build_body(data: dict) -> str:
@@ -123,10 +156,12 @@ def build_body(data: dict) -> str:
 {subheading(education['degree'], education['period'], education['institution'], education['location'])}
 \\resumeSubHeadingListEnd"""
 
+    profile = data["profile"].replace("{experience}", experience_phrase(experience_start(data)))
+
     return "\n\n".join(
         [
             header,
-            rf"\section{{Profile}}" + "\n" + rf"\small{{{tex(data['profile'])}}}",
+            rf"\section{{Profile}}" + "\n" + rf"\small{{{tex(profile)}}}",
             "\n".join(current_parts),
             "\n".join(earlier_parts),
             skills,
