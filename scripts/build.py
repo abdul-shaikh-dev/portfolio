@@ -50,16 +50,20 @@ def career_start_date():
         raise ValueError('No parseable career start date found')
     return min(starts)
 
-def experience_years(start, as_of=None):
+def experience_phrase(start, as_of=None):
     as_of = as_of or date.today()
     elapsed_months = max(0, (as_of.year - start.year) * 12 + as_of.month - start.month)
-    value = round(elapsed_months / 12, 1)
-    return str(int(value)) if value.is_integer() else f'{value:.1f}'
+    full_years, remaining_months = divmod(elapsed_months, 12)
+    if remaining_months >= 10:
+        return f'nearly {full_years + 1} years'
+    if remaining_months >= 3:
+        return f'more than {full_years} years'
+    return f'{full_years}+ years'
 
 career_started = career_start_date()
-experience_label = experience_years(career_started)
+experience_label = experience_phrase(career_started)
 hero_bio = e(data['hero']['bio']).replace(
-    e('{experience_years}'),
+    e('{experience}'),
     f'<span data-experience-start="{career_started:%Y-%m}">{experience_label}</span>'
 )
 
@@ -73,7 +77,8 @@ def technical_notes(p):
     if not p.get('detail') or p.get('showDetail') is False:
         return ''
     extra = f'<p>{e(p["notes"])}</p>' if p.get('notes') else ''
-    return f'<details class="technical-notes"><summary>Implementation notes <span aria-hidden="true">+</span></summary><div><p>{e(p["detail"])}</p>{extra}</div></details>'
+    label = p.get('detailLabel', 'Implementation notes')
+    return f'<details class="technical-notes"><summary>{e(label)} <span aria-hidden="true">+</span></summary><div><p>{e(p["detail"])}</p>{extra}</div></details>'
 
 def feature_details(p, narrative, capabilities):
     if not narrative:
@@ -136,7 +141,7 @@ engineering_delivery += '</div>'
 
 portfolio_map = ''.join(
     f'<a href="{e(item["href"])}" aria-label="{e(item["title"])} — {e(item["subtitle"])}">'
-    f'<span>{e(item["title"])}</span></a>'
+    f'<span data-mobile-label="{e(item.get("mobileTitle", item["title"]))}">{e(item["title"])}</span></a>'
     for item in data['portfolioMap']
 )
 
@@ -148,7 +153,11 @@ for employer_index, employer in enumerate(career_data['employers']):
     contribution_class = 'role-contributions' if employer_index == 0 else 'earlier-contributions'
     roles = f'<div class="{role_class}">'
     for role in employer['roles']:
-        contributions = f'<ul class="{contribution_class}">' + ''.join(f'<li>{bullet}</li>' for bullet in role['bullets']) + '</ul>'
+        highlighted = set(role.get('highlightBullets', []))
+        contributions = f'<ul class="{contribution_class}">' + ''.join(
+            f'<li{" class=\"role-highlight\"" if index in highlighted else ""}>{bullet}</li>'
+            for index, bullet in enumerate(role['bullets'])
+        ) + '</ul>'
         role_body = f'<h4>{e(role["title"])}</h4><div class="progression-contributions">{contributions}</div>' if employer_index == 0 else f'<div><h4>{e(role["title"])}</h4>{contributions}</div>'
         roles += f'<article class="{item_class}"><p class="role-date">{e(role["period"])}</p>{role_body}</article>'
     roles += '</div>'

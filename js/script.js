@@ -20,8 +20,11 @@ document.querySelectorAll('[data-experience-start]').forEach(element => {
   const [year, month] = element.dataset.experienceStart.split('-').map(Number);
   const now = new Date();
   const elapsedMonths = Math.max(0, (now.getFullYear() - year) * 12 + now.getMonth() + 1 - month);
-  const years = Math.round((elapsedMonths / 12) * 10) / 10;
-  element.textContent = String(years);
+  const fullYears = Math.floor(elapsedMonths / 12);
+  const remainingMonths = elapsedMonths % 12;
+  if (remainingMonths >= 10) element.textContent = `nearly ${fullYears + 1} years`;
+  else if (remainingMonths >= 3) element.textContent = `more than ${fullYears} years`;
+  else element.textContent = `${fullYears}+ years`;
 });
 
 const copyButton = document.getElementById('copy-email');
