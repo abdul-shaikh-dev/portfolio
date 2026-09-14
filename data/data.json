@@ -228,27 +228,6 @@
       }
     },
     {
-      "id": "browser",
-      "title": "Unblocking browser automation on Rancher.",
-      "category": "Platform enablement",
-      "summary": "Unblocked regulatory scraping when the standard Chromium runtime could not be deployed on Rancher. Delivered a Playwright-based remote browser service and connected Crawl4AI to it in Kubernetes.",
-      "detail": "The application could not run Chromium on Rancher because of vulnerability-related deployment constraints. An official Playwright container, a Helm release in the Flux tenant, and revised browser launch and Chrome DevTools Protocol settings gave Crawl4AI a working remote browser in Kubernetes.",
-      "tags": [
-        "Playwright",
-        "Rancher"
-      ],
-      "outcome": "The team had a working browser runtime for its scraping application.",
-      "shortTitle": "Browser automation on Rancher",
-      "group": "platform",
-      "intro": "Removing a browser-runtime blocker from a team’s regulatory scraping workflow.",
-      "proof": "Blocked browser runtime → working Kubernetes service",
-      "transformation": {
-        "inherited": "Regulatory scraping blocked by Chromium constraints on Rancher.",
-        "reshaped": "Deployed a Playwright browser service through Helm and Flux and resolved CDP connectivity.",
-        "running": "Crawl4AI working against a browser runtime in Kubernetes."
-      }
-    },
-    {
       "id": "platform",
       "title": "A prototype hub for organising our tools.",
       "category": "Internal tooling prototype",
@@ -419,7 +398,8 @@
         "projectIds": [
           "service-estate",
           "modernisation",
-          "engineering-support"
+          "engineering-support",
+          "migrations"
         ]
       },
       {
@@ -434,8 +414,6 @@
         "id": "delivery-production",
         "label": "Production enablement & migration",
         "projectIds": [
-          "migrations",
-          "browser",
           "informatica"
         ]
       },
@@ -485,8 +463,7 @@
               "Lead the <strong>phased modernisation of a Python and React infrastructure dashboard</strong>, guiding its developer through clearer service boundaries, REST APIs, and production delivery on Rancher.",
               "Built and deployed <strong>.NET and Python APIs for legal and financial data</strong>, giving other teams supported access to previously isolated business information.",
               "Resolved a <strong>financial API performance bottleneck</strong> by moving filtering and distinct operations into SQL Server and reducing memory-heavy in-process data handling.",
-              "Built <strong>Informatica-to-Python/Prefect migration tooling and Rancher onboarding automation</strong>, including code generation, validation, and retained workflow progress.",
-              "Unblocked a <strong>regulatory web-scraping application</strong> by delivering a Playwright browser runtime on Rancher and connecting Crawl4AI to it in Kubernetes."
+              "Built <strong>Informatica-to-Python/Prefect migration tooling and Rancher onboarding automation</strong>, including code generation, validation, and retained workflow progress."
             ]
           },
           {
