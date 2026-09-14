@@ -51,7 +51,7 @@
       "name": "Backend Engineering & Performance",
       "badge": "",
       "desc": ".NET and Python APIs, data access, and performance.",
-      "href": "#delivery-backend"
+      "href": "#delivery-applications"
     },
     {
       "name": "Cloud & Production Delivery",
@@ -415,19 +415,19 @@
     ],
     "groups": [
       {
-        "id": "delivery-applications",
-        "label": "Applications & service modernisation",
+        "id": "delivery-estate",
+        "label": "Estate & workload modernisation",
         "projectIds": [
           "service-estate",
-          "modernisation",
-          "engineering-support",
           "migrations"
         ]
       },
       {
-        "id": "delivery-backend",
-        "label": "Backend systems & performance",
+        "id": "delivery-applications",
+        "label": "Application & backend engineering",
         "projectIds": [
+          "modernisation",
+          "engineering-support",
           "backend-apis",
           "api-performance"
         ]
