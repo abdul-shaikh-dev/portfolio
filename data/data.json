@@ -228,6 +228,28 @@
       }
     },
     {
+      "id": "rancher-onboarding",
+      "title": "A shared skill for Rancher onboarding.",
+      "category": "Platform enablement",
+      "summary": "Built a guided Helm and Flux onboarding skill that applies the firm’s repository conventions and is used by other teams delivering applications to Rancher.",
+      "detail": "The skill guides teams through application-chart, infrastructure-chart, and Flux tenant setup. It creates the required repositories, validates their configuration, and publishes them using the firm’s conventions, turning recurring onboarding work into a repeatable path that other teams can use.",
+      "tags": [
+        "Helm",
+        "Flux",
+        "Rancher"
+      ],
+      "outcome": "A shared onboarding path that other teams use for Rancher delivery.",
+      "shortTitle": "Rancher onboarding skill",
+      "group": "platform",
+      "intro": "Turning recurring Helm and Flux setup into a guided path other teams can use.",
+      "proof": "Shared skill · adopted by other teams",
+      "transformation": {
+        "inherited": "Teams assembled application, infrastructure, and Flux repositories through repeated manual setup.",
+        "reshaped": "Encoded the account conventions into a guided skill that creates, validates, and publishes the repositories.",
+        "running": "A shared onboarding path used by other teams for Rancher delivery."
+      }
+    },
+    {
       "id": "platform",
       "title": "A prototype hub for organising our tools.",
       "category": "Internal tooling prototype",
@@ -280,7 +302,7 @@
       "prominence": "major",
       "prominenceLabel": "Estate-scale transformation",
       "summary": "Modernised a large estate of .NET services, React microfrontends, and NestJS APIs for Kubernetes, covering framework upgrades, CI adoption, build remediation, and Rancher deployment.",
-      "detail": "Upgraded .NET Core 3.1 services to .NET 6 or .NET 8 and adopted the in-house GitLab CI templates. Resolved issues in builds, SonarQube and Nexus IQ checks, and container creation, then prepared Helm charts and Flux tenant configuration for Rancher deployment. The recurring application-chart, infrastructure-chart, and Flux setup also became a guided workflow that creates, validates, and publishes the required repositories using the firm’s conventions.",
+      "detail": "Upgraded .NET Core 3.1 services to .NET 6 or .NET 8 and adopted the in-house GitLab CI templates. Resolved issues in builds, SonarQube and Nexus IQ checks, and container creation, then prepared Helm charts and Flux tenant configuration for Rancher deployment.",
       "tags": [
         ".NET / React / NestJS",
         "GitLab CI",
@@ -414,6 +436,7 @@
         "id": "delivery-production",
         "label": "Production enablement & migration",
         "projectIds": [
+          "rancher-onboarding",
           "informatica"
         ]
       },
@@ -463,7 +486,8 @@
               "Lead the <strong>phased modernisation of a Python and React infrastructure dashboard</strong>, guiding its developer through clearer service boundaries, REST APIs, and production delivery on Rancher.",
               "Built and deployed <strong>.NET and Python APIs for legal and financial data</strong>, giving other teams supported access to previously isolated business information.",
               "Resolved a <strong>financial API performance bottleneck</strong> by moving filtering and distinct operations into SQL Server and reducing memory-heavy in-process data handling.",
-              "Built <strong>Informatica-to-Python/Prefect migration tooling and Rancher onboarding automation</strong>, including code generation, validation, and retained workflow progress."
+              "Built a <strong>shared Helm and Flux skill used by other teams for Rancher onboarding</strong>, creating, validating, and publishing the required repositories.",
+              "Built <strong>Informatica-to-Python/Prefect migration tooling</strong> with code generation, validation, and retained workflow progress."
             ]
           },
           {

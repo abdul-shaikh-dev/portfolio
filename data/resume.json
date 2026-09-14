@@ -31,7 +31,8 @@
             "Built a **Python financial-data API** and established a maintainable reference implementation for continued development.",
             "Resolved a **production performance bottleneck in financial-data APIs** by restructuring LINQ queries and processing paths, reducing pod memory from 6--7 GB to about 1 GB and endpoint response time from roughly five minutes to 40 seconds.",
             "Guide **teammates delivering modernisation work**, reviewing architectural decisions and supporting adoption of established CI and deployment practices.",
-            "Built supporting tools for **Rancher onboarding** and **Informatica-to-Python/Prefect migration**, including code generation and persistent progress tracking."
+            "Built a **shared Helm and Flux skill used by other teams for Rancher onboarding**, creating, validating, and publishing the required repositories.",
+            "Built supporting tools for **Informatica-to-Python/Prefect migration**, including code generation and persistent progress tracking."
           ]
         },
         {
