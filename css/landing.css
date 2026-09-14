@@ -67,11 +67,12 @@ p { text-wrap:pretty; }
 .project-overview-title { position:relative; }
 .project-disclosure .project-overview-title h3 { max-width:19ch; font-family:'DM Serif Display',Georgia,serif; font-size:clamp(2rem,3.2vw,3.1rem); font-weight:400; line-height:1.02; }
 .project-outcome { display:block; margin-top:.625rem; color:var(--landing-accent); font-family:'DM Serif Display',Georgia,serif; font-size:.9375rem; font-style:italic; line-height:1.65; }
-.project-disclosure .work-story { max-width:none; margin:0; padding-block:0 4.5rem; border:0; }
+.project-disclosure .work-story { max-width:none; margin:0; padding-block:0 3.75rem; border:0; }
 .project-disclosure .story-layout { margin-top:0; }
 .story-copy { position:relative; max-width:none; padding-left:2.375rem; }
 .story-copy::before { content:'↳'; position:absolute; left:0; top:-.1875rem; color:var(--landing-accent); font:1.4375rem/1 Georgia,serif; }
 .project-disclosure .story-copy > p { margin:0 0 1rem; font-size:.9375rem; line-height:1.85; }
+.project-disclosure .story-copy > .story-narrative { grid-column:1/-1; max-width:82ch; margin-bottom:.25rem; color:var(--ink); font-size:1rem; }
 .story-result { font-family:'DM Serif Display',Georgia,serif; font-size:1.25rem!important; }
 .project-disclosure .recognition { margin:0 0 1.25rem; color:var(--landing-accent); font-size:.8125rem; line-height:1.8; }
 .lead-details .project-capabilities { grid-template-columns:repeat(auto-fit,minmax(16.25rem,1fr)); }
@@ -237,6 +238,15 @@ p { text-wrap:pretty; }
 .delivery-project--major .ledger-number { margin-bottom:1.125rem; font-size:1.75rem; }
 .delivery-project--major .delivery-title h4 { max-width:14ch; font-size:clamp(1.625rem,2.2vw,2rem); line-height:1.12; }
 .delivery-project--major .ledger-cell p { font-size:.875rem; font-weight:500; }
+.delivery-project--compact { grid-template-columns:minmax(11.875rem,.82fr) minmax(0,3fr); }
+.delivery-project--compact .ledger-identity { padding-block:1.25rem 1.375rem; }
+.delivery-project--compact .ledger-number { margin-bottom:.75rem; }
+.delivery-project--compact .delivery-title h4 { font-size:1.1875rem; }
+.delivery-compact-story { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); border-left:1px solid color-mix(in srgb,var(--delivery-line) 48%,transparent); }
+.delivery-compact-story p { min-width:0; padding:1.25rem; color:color-mix(in srgb,var(--delivery-ink) 82%,transparent); font-size:.8125rem; line-height:1.65; }
+.delivery-compact-story p + p { border-left:1px solid color-mix(in srgb,var(--delivery-line) 48%,transparent); color:var(--delivery-ink); }
+.delivery-compact-story span { display:block; margin-bottom:.5rem; color:color-mix(in srgb,var(--delivery-muted) 82%,transparent); font-size:.625rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+.delivery-project--compact .technical-notes { grid-column:2/-1; }
 
 /* Career progression carries the leadership story. */
 .experience-section { position:relative; padding-block:5.375rem; }
@@ -307,9 +317,28 @@ p { text-wrap:pretty; }
   .hero-inner { min-height:auto; gap:1.75rem; padding-block:3rem 2.625rem; }
   .hero-positioning { padding-top:0; }
   .hero h1 { max-width:none; }
-  .ledger-columns,.delivery-project { grid-template-columns:minmax(10.625rem,.75fr) repeat(3,minmax(0,1fr)); }
-  .ledger-identity,.ledger-cell { padding-inline:.875rem; }
-  .ledger-identity { padding-left:0; }
+  .ledger-columns { display:none; }
+  .delivery-group + .delivery-group { margin-top:1.25rem; }
+  .delivery-group-title { padding:2rem 0 .625rem; font-size:1.25rem; }
+  .delivery-project { grid-template-columns:repeat(3,minmax(0,1fr)); padding-block:1.125rem; }
+  .ledger-identity { grid-column:1/-1; display:grid; grid-template-columns:3rem 1fr; padding:0 0 1rem; }
+  .ledger-number { grid-row:1/3; margin:0; }
+  .delivery-scope { grid-column:2; margin:0 0 .375rem; }
+  .delivery-title { grid-column:2; }
+  .delivery-title h4 { max-width:none; font-size:1.5rem; }
+  .ledger-cell { padding:.875rem; border-top:1px solid color-mix(in srgb,var(--delivery-line) 46%,transparent); }
+  .ledger-identity + .ledger-cell { border-left:0; }
+  .ledger-cell > span { display:block; margin-bottom:.5rem; color:color-mix(in srgb,var(--delivery-muted) 82%,transparent); font-size:.625rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+  .ledger-cell p { max-width:none; }
+  .ledger-running::before { display:none; }
+  .ledger-recognition,.engineering-delivery .technical-notes { grid-column:1/-1; margin-inline:3rem 0; }
+  .delivery-project--major { margin-inline:-.875rem; padding:1.375rem .875rem; }
+  .delivery-project--major .ledger-number { font-size:1.5rem; }
+  .delivery-project--major .delivery-title h4 { font-size:1.75rem; }
+  .delivery-project--compact { grid-template-columns:1fr; }
+  .delivery-project--compact .ledger-identity { grid-column:1; }
+  .delivery-compact-story { grid-column:1; border-top:1px solid color-mix(in srgb,var(--delivery-line) 46%,transparent); border-left:0; }
+  .delivery-project--compact .technical-notes { grid-column:1; }
   .experience-section { padding-block:4.25rem; }
   .experience-layout { grid-template-columns:1fr; gap:1.75rem; }
   .experience-intro { display:flex; align-items:center; justify-content:space-between; gap:1.5rem; }
@@ -387,6 +416,10 @@ p { text-wrap:pretty; }
   .ledger-cell p { max-width:none; }
   .ledger-running::before { display:none; }
   .ledger-recognition,.engineering-delivery .technical-notes { margin-inline:5.9375rem 0; }
+  .delivery-compact-story { display:block; margin-left:2.375rem; }
+  .delivery-compact-story p { padding:.75rem 0; }
+  .delivery-compact-story p + p { border-top:1px solid color-mix(in srgb,var(--delivery-line) 42%,transparent); border-left:0; }
+  .delivery-project--compact .technical-notes { margin-left:2.375rem; }
   .delivery-project--major { margin-inline:-.875rem; padding-inline:.875rem; padding-block:1.5rem; }
   .delivery-project--major .ledger-number { font-size:1.5rem; }
   .delivery-project--major .delivery-title h4 { font-size:1.75rem; }
