@@ -297,11 +297,10 @@
     },
     {
       "id": "service-estate",
-      "shortTitle": "Service estate modernisation",
+      "shortTitle": "Application portfolio modernisation",
       "category": "Platform modernisation",
       "prominence": "major",
-      "prominenceLabel": "Windows-to-Kubernetes modernisation",
-      "summary": "Modernised a large estate of .NET services, React microfrontends, and NestJS APIs for Kubernetes, covering framework upgrades, CI adoption, build remediation, and Rancher deployment.",
+      "summary": "Modernised a large portfolio of .NET services, React microfrontends, and NestJS APIs for Kubernetes, covering framework upgrades, CI adoption, build remediation, and Rancher deployment.",
       "detail": "Upgraded .NET Core 3.1 services to .NET 6 or .NET 8 and adopted the in-house GitLab CI templates. Resolved issues in builds, SonarQube and Nexus IQ checks, and container creation, then prepared Helm charts and Flux tenant configuration for Rancher deployment.",
       "tags": [
         ".NET / React / NestJS",
@@ -309,16 +308,16 @@
         "Helm / Flux",
         "Kubernetes"
       ],
-      "proof": "Windows-hosted estate → repeatable Kubernetes delivery",
+      "proof": "Windows-hosted applications → repeatable Kubernetes delivery",
       "aliases": [
         "project-delivery",
         "project-service-modernisation",
         "project-onboarding"
       ],
       "transformation": {
-        "inherited": "Windows-hosted .NET services and a mixed frontend estate.",
+        "inherited": "Windows-hosted .NET services and mixed frontend applications.",
         "reshaped": "Framework upgrades, GitLab CI remediation, and Helm and Flux onboarding.",
-        "running": "Repeatable Rancher delivery across the service estate."
+        "running": "Repeatable Rancher delivery across the application portfolio."
       }
     },
     {
@@ -415,8 +414,8 @@
     ],
     "groups": [
       {
-        "id": "delivery-estate",
-        "label": "Estate & workload modernisation",
+        "id": "delivery-kubernetes",
+        "label": "Windows-to-Kubernetes modernisation",
         "projectIds": [
           "service-estate",
           "migrations"
@@ -490,7 +489,7 @@
             "bullets": [
               "Designed a modular <strong>knowledge-management platform</strong> with multisource ingestion, RAG, adaptive extraction, and secured API and MCP access; it became the shared account foundation.",
               "Brought a <strong>RAG clause-extraction application into production</strong> by modernising its Python codebase, adapting OCR and model delivery, and establishing a repeatable Rancher release path.",
-              "Modernised a large service estate across <strong>.NET services, React microfrontends, and NestJS APIs</strong>, covering framework upgrades, GitLab CI remediation, and Helm and Flux delivery to Rancher.",
+              "Modernised a large application portfolio across <strong>.NET services, React microfrontends, and NestJS APIs</strong>, covering framework upgrades, GitLab CI remediation, and Helm and Flux delivery to Rancher.",
               "Migrated <strong>AutoSys-triggered .NET workloads to Kubernetes through Solace messaging</strong> and contributed to critical incident recovery as part of a global engineering team."
             ]
           }
