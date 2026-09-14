@@ -555,6 +555,7 @@
     }
   },
   "expertiseSection": {
+    "eyebrow": "Navigate by capability",
     "title": "Engineering range.",
     "intro": "Backend depth, with the cloud and AI experience to connect the wider system.",
     "credentialsLabel": "Certifications",
